@@ -1,0 +1,259 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+    <meta charset="utf-8" />
+    <title>Fizika šizika</title>
+    <script type="text/javascript" src="js/phaser.min.js"></script>
+    <style type="text/css">
+        body {
+            margin:0;
+        }
+
+    </style>
+</head>
+<body>
+
+    <script type="text/javascript">
+        var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example', { preload: preload, create: create, update: update, render: render });
+
+        function preload() {
+            game.load.image('orb', 'images/orb-blue.png');
+            game.load.image('goal1', 'images/goal1.png');
+            game.load.image('goal2', 'images/goal2.png');
+            game.load.physics('physicsData', 'priprema/player1.json');
+            game.load.spritesheet('player1', 'images/player_reket1.png', 89, 145);
+            game.load.spritesheet('player2', 'images/player_reket2.png', 89, 145);
+            game.load.spritesheet('kaboom', 'assets/games/invaders/explode.png', 128, 128);
+            game.load.audio('blaster', 'assets/audio/SoundEffects/blaster.mp3');
+        }
+
+        var gWidth = 800;
+        var gHeight = 600;
+
+        var orb;
+        var goal1;
+        var goal2;
+        var block;
+        var player1;
+        var player2;
+        var boxMaterial;
+        var gamerMaterial;
+        var ballMaterial;
+
+        var cursors;
+        var key2;
+
+        var result = 'Move with the cursors';
+        var score1 = 0;
+        var score2 = 0;
+        var scoreText;
+        var explosions;
+        var blaster;
+        var maxScore = 3;
+
+        function create() {
+
+            game.scale.setMaximum();
+            game.scale.setScreenSize(true);
+
+            //  Enable p2 physics
+            game.physics.startSystem(Phaser.Physics.P2JS);
+
+            game.physics.p2.restitution = 2;
+            game.physics.p2.gravity = 0.25;
+
+            orb = game.add.sprite(400, 300, 'orb');
+            player1 = game.add.sprite(0 + 100, game.world.height / 2, 'player1');
+            player2 = game.add.sprite(game.world.width - 100, game.world.height / 2, 'player2');
+            goal1 = game.add.sprite(10, 300, 'goal1');
+            goal2 = game.add.sprite(790, 300, 'goal2');
+
+
+            //  Enable the physics bodies on all the sprites
+            game.physics.p2.enable([orb, player1, player2, goal1, goal2], false);
+            game.physics.p2.world.defaultContactMaterial.friction = 0.3;
+
+            //  The following just loads the polygon data into the objects
+            orb.body.clearShapes();
+            orb.body.loadPolygon('physicsData', 'orb-blue');
+            orb.body.onBeginContact.add(contactHandler, this);
+
+            player1.body.clearShapes();
+            player1.body.loadPolygon('physicsData', 'player_reket1');
+            player1.body.setZeroVelocity();
+
+            player2.body.clearShapes();
+            player2.body.loadPolygon('physicsData', 'player_reket1');
+            player2.body.setZeroVelocity();
+
+            goal1.body.clearShapes();
+            goal1.body.loadPolygon('physicsData', 'goal1');
+            goal1.body.setZeroVelocity();
+            goal1.body.static = true;
+
+            goal2.body.clearShapes();
+            goal2.body.loadPolygon('physicsData', 'goal2');
+            goal2.body.setZeroVelocity();
+            goal2.body.static = true;
+
+            boxMaterial = game.physics.p2.createMaterial('worldMaterial');
+            goal1.body.setMaterial(boxMaterial);
+            goal2.body.setMaterial(boxMaterial);
+
+            gamerMaterial = game.physics.p2.createMaterial('gamerMaterial');
+            
+            player1.body.setMaterial(gamerMaterial);
+            player2.body.setMaterial(gamerMaterial);
+            player1.body.mass = 1;
+            player2.body.mass = 1;           
+
+            //ballMaterial = game.physics.p2.createMaterial('ballMaterial');
+            //orb.body.setMaterial(ballMaterial);
+            orb.body.setMaterial(gamerMaterial);
+            orb.body.mass = 2;
+            
+            var worldMaterial = game.physics.p2.createMaterial('worldMaterial');
+            game.physics.p2.setWorldMaterial(worldMaterial, true, true, true, true);
+            var contactMaterial = game.physics.p2.createContactMaterial(gamerMaterial, worldMaterial);
+
+            contactMaterial.friction = 0.3;     // Friction to use in the contact of these two materials.
+            contactMaterial.restitution = 1.7;  // Restitution (i.e. how bouncy it is!) to use in the contact of these two materials.
+            contactMaterial.stiffness = 1e7;    // Stiffness of the resulting ContactEquation that this ContactMaterial generate.
+            contactMaterial.relaxation = 3;     // Relaxation of the resulting ContactEquation that this ContactMaterial generate.
+            contactMaterial.frictionStiffness = 1e7;    // Stiffness of the resulting FrictionEquation that this ContactMaterial generate.
+            contactMaterial.frictionRelaxation = 3;     // Relaxation of the resulting FrictionEquation that this ContactMaterial generate.
+            contactMaterial.surfaceVelocity = 0;        // Will add surface velocity to this material. If bodyA rests on top if bodyB, and the surface velocity is positive, bodyA will slide to the right.
+            
+            cursors = game.input.keyboard.createCursorKeys();
+            key2 = {
+                up: game.input.keyboard.addKey(Phaser.Keyboard.W),
+                down: game.input.keyboard.addKey(Phaser.Keyboard.S),
+                left: game.input.keyboard.addKey(Phaser.Keyboard.A),
+                right: game.input.keyboard.addKey(Phaser.Keyboard.D),
+            };
+            scoreText = game.add.text(16, 16, 'score: 0 : 0', { fontSize: '32px', fill: '#FFF' });
+
+            //  An explosion pool
+            explosions = game.add.group();
+            explosions.createMultiple(30, 'kaboom');
+            explosions.forEach(setupInvader, this);
+
+            blaster = game.add.audio('blaster');
+            game.add.audio('blaster');
+        }
+
+
+
+        function update() {
+            if (cursors.left.isDown)
+                player1.body.velocity.x = -150;
+            else if (cursors.right.isDown)
+                player1.body.velocity.x = 150;
+            else if (cursors.up.isDown)
+                player1.body.velocity.y = -150;
+            else if (cursors.down.isDown)
+                player1.body.velocity.y = 150;
+
+            if (key2.left.isDown)
+                player2.body.velocity.x = -150;
+            else if (key2.right.isDown)
+                player2.body.velocity.x = 150;
+            else if (key2.up.isDown)
+                player2.body.velocity.y = -150;
+            else if (key2.down.isDown)
+                player2.body.velocity.y = 150;
+        }
+
+        function render() {
+
+        }
+
+        function contactHandler(body, shape1, shape2, equation) {
+            if (body) {
+                //alert(body.sprite.key);
+                if (body.sprite.key == 'goal1')
+                    score2++;
+                if (body.sprite.key == 'goal2') {
+                    score1++;
+                }
+
+                if (body.sprite.key == 'goal1') {
+                    //  And create an explosion :)
+                    var explosion = explosions.getFirstExists(false);
+                    explosion.reset(goal1.body.x, goal1.body.y);
+                    explosion.play('kaboom', 30, false, true);
+                    setCenter();
+                }
+                if (body.sprite.key == 'goal2') {
+                    //  And create an explosion :)
+                    var explosion = explosions.getFirstExists(false);
+                    explosion.reset(goal2.body.x, goal2.body.y);
+                    explosion.play('kaboom', 30, false, true);
+                    setCenter();
+                }
+
+                scoreText.text = 'score: ' + score1 + ' : ' + score2;
+
+                //if (score1 >= 2) game.Over; //game.state.start('Over');
+                //if (score2 >= 2) game.Over; //game.state.start('Over');
+                if (score1 >= maxScore) window.location.href = "GameOver.html" + "?score1=" + score1 + "&score2=" + score2;
+                if (score2 >= maxScore) window.location.href = "GameOver.html" + "?score1=" + score1 + "&score2=" + score2;
+            }
+        }
+
+        function setupInvader(orb) {
+            orb.anchor.x = 0.5;
+            orb.anchor.y = 0.5;
+            orb.animations.add('kaboom');
+        }
+
+        function setCenter() {
+            blaster.play();
+            orb.body.x = gWidth / 2;
+            orb.body.y = gHeight / 2;
+            orb.body.setZeroVelocity();
+
+            player1.body.setZeroVelocity();
+            player1.body.x = 0 + 100;
+            player1.body.y = game.world.height / 2;
+
+            player2.body.setZeroVelocity();
+            player2.body.x = game.world.width - 100;
+            player2.body.y = game.world.height / 2;
+        }
+
+        function resetGame() {
+            score1 = 0;
+            score2 = 0;
+            scoreText.text = 'score: ' + score1 + ' : ' + score2;
+        }
+
+        var resizeGame = this._fitScreen = function () {
+            //calculates aspect ratio of the game
+            var gameAspRatio = mt.data.map.viewportWidth / mt.data.map.viewportHeight;
+            //calculates aspect ratio of the device
+            var deviceAspRatio = window.innerWidth / window.innerHeight;
+            var ratioDiv = gameAspRatio / deviceAspRatio;
+
+            //if the screen is too narrow (larger than), there will be black borders on top and bottom of the screen
+            //if too wide (smaller than) - borders on the sides
+            if (ratioDiv > 1.2 || ratioDiv < 0.8) {
+                game.scale.pageAlignVertically = true;
+                game.scale.pageAlignHorizontally = true;
+                game.scale.setShowAll();
+                game.scale.refresh();
+            }
+                //else game is stretched
+            else {
+                game.scale.setMaximum();
+                game.scale.setScreenSize(true);
+            }
+        };
+        
+        
+    </script>
+    
+</body>
+</html>

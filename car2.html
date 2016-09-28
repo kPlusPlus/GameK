@@ -1,0 +1,219 @@
+﻿<!DOCTYPE html>
+<!--
+  kPlusPlus game
+-->
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+    <meta charset="utf-8" />
+    <title>kCar</title>
+
+    
+    <script type="text/javascript" src="js/phaser.js"></script>
+    <!--
+    <script type="text/javascript" src="https://github.com/photonstorm/phaser/releases/download/v2.3.0/phaser.js"></script>
+    -->
+    <style type="text/css">
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <script type="text/javascript">
+        var gWidth = 800;
+        var gHeight = 600;
+
+        var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'car drive', { preload: preload, create: create, update: update, render: render });
+
+        function preload() {
+            //game.load.physics('physicsData', 'cars/cars.json');
+            game.load.spritesheet('player1', 'cars/cars1_p1.png', 30, 30);
+            game.load.spritesheet('player2', 'cars/cars1_p2.png', 30, 30);
+            game.load.spritesheet('trucks', 'cars/truck1_in.png', 800, 600)
+            game.load.spritesheet('kaboom', 'assets/games/invaders/explode.png', 128, 128);
+            game.load.audio('blaster', 'assets/audio/SoundEffects/blaster.mp3');
+        }
+
+        var player1;
+        var player2;
+        var truckIN;
+        var boxMaterial;
+        var gamerMaterial;
+        var ballMaterial;
+
+        var cursors;
+        var key2;
+
+        var result = 'Move with the cursors';
+        var score1 = 0;
+        var score2 = 0;
+        var scoreText;
+        var explosions;
+        var blaster;
+        var maxScore = 3;
+        var angle;
+
+        function create() {
+
+            //game.scale.setMaximum();
+            //game.scale.setScreenSize(true);
+            resizeGame();
+
+            game.physics.startSystem(Phaser.Physics.ARCADE);
+            game.stage.backgroundColor = "#0000AA";
+
+            player1 = game.add.sprite(0 + 100, game.world.height / 2, 'player1');
+            player2 = game.add.sprite(game.world.width - 100, game.world.height / 2, 'player2');
+            truckIN = game.add.sprite(game.width / 2, game.height / 2, 'trucks');
+
+            //game.physics.arcade.enable(player1);
+            //game.physics.arcade.enable(player2);
+            game.physics.arcade.enable([player1, player2]);
+            game.physics.arcade.enable(truckIN);
+
+            player1.body.enable = true;
+            player2.body.enable = true;
+            player1.body.collideWorldBounds = true;
+            player1.body.bounce.set(1);
+            player2.body.collideWorldBounds = true;
+            player2.body.bounce.set(1);
+
+            cursors = game.input.keyboard.createCursorKeys();
+            key2 = {
+                up: game.input.keyboard.addKey(Phaser.Keyboard.W),
+                down: game.input.keyboard.addKey(Phaser.Keyboard.S),
+                left: game.input.keyboard.addKey(Phaser.Keyboard.A),
+                right: game.input.keyboard.addKey(Phaser.Keyboard.D),
+            };
+            scoreText = game.add.text(16, 16, 'LAP: 0 : 0', { fontSize: '32px', fill: '#FFF' });
+
+            //  An explosion pool
+            explosions = game.add.group();
+            explosions.createMultiple(30, 'kaboom');
+            // explosions.forEach(setupInvader, this);
+
+            blaster = game.add.audio('blaster');
+            game.add.audio('blaster');
+
+        };
+
+
+        function update() {
+            game.physics.arcade.collide(player1, player2);
+
+            if (cursors.left.isDown) {
+                player1.body.sprite.angle -= 2;
+            }
+            else if (cursors.right.isDown) {
+                player1.body.sprite.angle += 2;
+            }
+            else if (cursors.up.isDown) {
+                angle = player1.body.sprite.angle;
+                player1.body.velocity.x += 4 * Math.sin(Math.radians(angle));
+                player1.body.velocity.y -= 4 * Math.cos(Math.radians(angle));
+            }
+            else if (cursors.down.isDown) {
+                angle = player1.body.sprite.angle;
+                player2.body.velocity.x -= 4 * Math.sin(Math.radians(angle));
+                player2.body.velocity.y += 4 * Math.cos(Math.radians(angle));
+            }
+
+            if (key2.left.isDown)
+                player2.body.sprite.angle -= 2;
+            else if (key2.right.isDown)
+                player2.body.sprite.angle += 2;
+            else if (key2.up.isDown) {
+                angle = player2.body.sprite.angle;
+                player2.body.velocity.x += 4 * Math.sin(Math.radians(angle));
+                player2.body.velocity.y -= 4 * Math.cos(Math.radians(angle));                
+            }
+            else if (key2.down.isDown) {
+                angle = player2.body.sprite.angle;
+                player2.body.velocity.x -= 4 * Math.sin(Math.radians(angle));
+                player2.body.velocity.y += 4 * Math.cos(Math.radians(angle));            }
+
+        }
+
+
+        function render() {
+
+        }
+
+        function contactHandler(body, shape1, shape2, equation) {
+            if (body) {
+                //alert(body.sprite.key);
+                if (body.sprite.key == 'goal1')
+                    score2++;
+                if (body.sprite.key == 'goal2') {
+                    score1++;
+                }
+
+                if (body.sprite.key == 'goal1') {
+                    //  And create an explosion :)
+                    var explosion = explosions.getFirstExists(false);
+                    explosion.reset(goal1.body.x, goal1.body.y);
+                    explosion.play('kaboom', 30, false, true);
+                    setCenter();
+                }
+                if (body.sprite.key == 'goal2') {
+                    //  And create an explosion :)
+                    var explosion = explosions.getFirstExists(false);
+                    explosion.reset(goal2.body.x, goal2.body.y);
+                    explosion.play('kaboom', 30, false, true);
+                    setCenter();
+                }
+
+                scoreText.text = 'score: ' + score1 + ' : ' + score2;
+
+                //if (score1 >= 2) game.Over; //game.state.start('Over');
+                //if (score2 >= 2) game.Over; //game.state.start('Over');
+                if (score1 >= maxScore) window.location.href = "GameOver.html" + "?score1=" + score1 + "&score2=" + score2;
+                if (score2 >= maxScore) window.location.href = "GameOver.html" + "?score1=" + score1 + "&score2=" + score2;
+            }
+        }
+
+        var resizeGame = this._fitScreen = function () {
+            game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+            game.scale.pageAlignHorizontally = true;
+            game.scale.pageAlignVertically = true;
+            game.scale.forceOrientation(true, true);
+            game.scale.setShowAll();
+            game.scale.refresh();
+        }
+
+        var saveObjects = {
+            score1,
+            score2
+        };
+
+
+        function save() {
+            localStorage.setItem("save", JSON.stringify(saveObject));
+        }
+
+        // Converts from degrees to radians.
+        Math.radians = function (degrees) {
+            return degrees * Math.PI / 180;
+        };
+
+        // Converts from radians to degrees.
+        Math.degrees = function (radians) {
+            return radians * 180 / Math.PI;
+        };
+
+        /*
+        // save an item
+localStorage.setItem("item-key", "item data");
+// retrieve an item
+localStorage.getItem("item-key");
+// remove an item
+localStorage.removeItem("item-key");
+// remove all items
+localStorage.clear();
+        */
+    </script>
+
+</body>
+</html>

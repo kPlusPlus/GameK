@@ -1,0 +1,26 @@
+{ 
+    
+    "orb-blue": [
+        
+        {
+            "density": 2, "friction": 0, "bounce": 0, 
+            "filter": { "categoryBits": 1, "maskBits": 65535 },
+            "shape": [   8, 22  ,  4, 20  ,  0, 8  ,  2, 4  ,  14, 0  ,  18, 2  ,  20, 18  ,  14, 22  ]
+        } ,
+        {
+            "density": 2, "friction": 0, "bounce": 0, 
+            "filter": { "categoryBits": 1, "maskBits": 65535 },
+            "shape": [   0, 8  ,  4, 20  ,  0, 14  ]
+        } ,
+        {
+            "density": 2, "friction": 0, "bounce": 0, 
+            "filter": { "categoryBits": 1, "maskBits": 65535 },
+            "shape": [   14, 0  ,  2, 4  ,  8, 0  ]
+        } ,
+        {
+            "density": 2, "friction": 0, "bounce": 0, 
+            "filter": { "categoryBits": 1, "maskBits": 65535 },
+            "shape": [   22, 14  ,  20, 18  ,  18, 2  ,  22, 8  ]
+        }
+    ]
+}

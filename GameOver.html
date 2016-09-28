@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Game Over</title>
+<style type="text/css">
+    .result {
+        font-family: Verdana, Geneva, sans-serif;
+        font-size: 36px;
+        font-weight: bold;
+        color: #33F;
+    }
+    .main {
+        background: url('images/win.jpg');
+        font-style: normal;
+        font-family: Arial;
+        background-color: cornsilk;
+        height: 700px;
+        width: 800px;
+        color: #F8F9FE;
+    }
+</style>
+</head>
+<body>
+    <script>
+        var score1 = 0;
+        var score2 = 0;
+        var url = window.location.toString();
+
+        if (getQueryStringValue('score1')) score1 = parseInt( getUrlVars()["score1"] ); 
+        if (getQueryStringValue('score2')) score2 = parseInt( getUrlVars()["score2"] ); 
+
+        function getQueryStringValue(key) {
+            return unescape(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + escape(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));
+        }
+
+        function getUrlVars() {
+            var vars = [], hash;
+            var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+            for (var i = 0; i < hashes.length; i++) {
+                hash = hashes[i].split('=');
+                vars.push(hash[0]);
+                vars[hash[0]] = hash[1];
+            }
+            return vars;
+        }
+
+    </script>
+    <div class="main" id="main" >
+        <pre>
+
+        <h1>Game Over       Result</h1>
+        -------------------------------------------------
+        <span class="result">
+        player 1: <script>
+            document.write(score1);
+            if (score1 > score2) {                
+                document.write("<img src='images/win.png' />");
+            }
+            else
+            { document.write("<img src='images/nowin.png' />"); }
+            
+            </script> 
+        player 2: <script>
+            document.write(score2);
+            if (score2 > score1) {                
+                document.write("<img src='images/win.png' />");
+            }
+            else { document.write("<img src='images/nowin.png' />"); }
+            
+            </script>
+            
+		</span></pre>
+    </div>
+</body>
+</html>

@@ -1,0 +1,84 @@
+{ 
+    
+    "cars1_p1": [
+        
+        {
+            "density": 2, "friction": 0, "bounce": 0, 
+            "filter": { "categoryBits": 1, "maskBits": 65535 },
+            "shape": [   27, 12  ,  23, 12  ,  6, 11  ,  9, 5  ,  27, 5  ]
+        } ,
+        {
+            "density": 2, "friction": 0, "bounce": 0, 
+            "filter": { "categoryBits": 1, "maskBits": 65535 },
+            "shape": [   2, 18  ,  6, 18  ,  10, 24  ,  2, 25  ]
+        } ,
+        {
+            "density": 2, "friction": 0, "bounce": 0, 
+            "filter": { "categoryBits": 1, "maskBits": 65535 },
+            "shape": [   19, 25  ,  23, 18  ,  27, 18  ,  27, 25  ]
+        } ,
+        {
+            "density": 2, "friction": 0, "bounce": 0, 
+            "filter": { "categoryBits": 1, "maskBits": 65535 },
+            "shape": [   9, 5  ,  6, 11  ,  2, 11  ,  2, 5  ]
+        } ,
+        {
+            "density": 2, "friction": 0, "bounce": 0, 
+            "filter": { "categoryBits": 1, "maskBits": 65535 },
+            "shape": [   10, 24  ,  23, 12  ,  23, 18  ,  19, 25  ,  17, 27  ,  12, 27  ,  10, 26  ]
+        } ,
+        {
+            "density": 2, "friction": 0, "bounce": 0, 
+            "filter": { "categoryBits": 1, "maskBits": 65535 },
+            "shape": [   17, 2  ,  20, 5  ,  9, 5  ,  12, 2  ]
+        } ,
+        {
+            "density": 2, "friction": 0, "bounce": 0, 
+            "filter": { "categoryBits": 1, "maskBits": 65535 },
+            "shape": [   23, 12  ,  10, 24  ,  6, 18  ,  6, 11  ]
+        }
+    ]
+    , 
+    "truck1_in": [
+        
+        {
+            "density": 2, "friction": 0, "bounce": 0, 
+            "filter": { "categoryBits": 1, "maskBits": 65535 },
+            "shape": [   140.5, 225  ,  164, 185.5  ,  196.5, 151  ,  232.5, 125  ,  282, 101.5  ,  131.5, 348  ,  124.5, 307  ,  127.5, 265  ]
+        } ,
+        {
+            "density": 2, "friction": 0, "bounce": 0, 
+            "filter": { "categoryBits": 1, "maskBits": 65535 },
+            "shape": [   629.5, 409  ,  595, 446.5  ,  561.5, 471  ,  519, 492.5  ,  473, 507.5  ,  424, 515.5  ,  664.5, 326  ,  652.5, 368  ]
+        } ,
+        {
+            "density": 2, "friction": 0, "bounce": 0, 
+            "filter": { "categoryBits": 1, "maskBits": 65535 },
+            "shape": [   337, 86.5  ,  385, 81.5  ,  386, 81.5  ,  595, 151.5  ,  664.5, 326  ,  139.5, 370  ,  131.5, 348  ,  282, 101.5  ]
+        } ,
+        {
+            "density": 2, "friction": 0, "bounce": 0, 
+            "filter": { "categoryBits": 1, "maskBits": 65535 },
+            "shape": [   665.5, 281  ,  666.5, 304  ,  664.5, 326  ,  595, 151.5  ,  616, 172.5  ,  639.5, 204  ,  656.5, 241  ]
+        } ,
+        {
+            "density": 2, "friction": 0, "bounce": 0, 
+            "filter": { "categoryBits": 1, "maskBits": 65535 },
+            "shape": [   366, 515.5  ,  313, 506.5  ,  264, 489.5  ,  222, 466.5  ,  196, 446.5  ,  139.5, 370  ,  664.5, 326  ,  424, 515.5  ]
+        } ,
+        {
+            "density": 2, "friction": 0, "bounce": 0, 
+            "filter": { "categoryBits": 1, "maskBits": 65535 },
+            "shape": [   139.5, 370  ,  196, 446.5  ,  173.5, 424  ,  155, 399.5  ]
+        } ,
+        {
+            "density": 2, "friction": 0, "bounce": 0, 
+            "filter": { "categoryBits": 1, "maskBits": 65535 },
+            "shape": [   489, 94.5  ,  529, 109.5  ,  576, 136.5  ,  595, 151.5  ,  386, 81.5  ,  435, 83.5  ]
+        }
+    ]
+    , 
+    "truck1_out": [
+        
+    ]
+}

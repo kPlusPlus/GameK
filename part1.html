@@ -1,0 +1,265 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Phaser - Making your first game, part 8</title>
+    <script type="text/javascript" src="js/phaser.min.js"></script>
+    <style type="text/css">
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <script type="text/javascript">
+        //phaser.io/examples/v2/games/invaders
+
+        var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update });
+        var bullets;
+        var bulletTime = 0
+        var explosions;
+        
+
+function preload() {
+
+    game.load.image('sky', 'assets/sky.png');
+    game.load.image('ground', 'assets/platform.png');
+    game.load.image('star', 'assets/star.png');
+    game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
+    game.load.audio('blaster', 'assets/audio/SoundEffects/blaster.mp3');
+    game.load.image('bullet', 'assets/games/invaders/bullet.png');
+    game.load.spritesheet('kaboom', 'assets/games/invaders/explode.png', 128, 128);
+    
+}
+
+var player;
+var platforms;
+var cursors;
+
+var stars;
+var score = 0;
+var scoreText;
+var blaster;
+
+var bulletSpeed = 300;
+
+function create() {
+
+    //  We're going to be using physics, so enable the Arcade Physics system
+    game.physics.startSystem(Phaser.Physics.ARCADE);
+
+    //  A simple background for our game
+    game.add.sprite(0, 0, 'sky');
+
+    //  The platforms group contains the ground and the 2 ledges we can jump on
+    platforms = game.add.group();
+
+    //  We will enable physics for any object that is created in this group
+    platforms.enableBody = true;
+
+    // Here we create the ground.
+    var ground = platforms.create(0, game.world.height - 64, 'ground');
+
+    //  Scale it to fit the width of the game (the original sprite is 400x32 in size)
+    ground.scale.setTo(2, 2);
+
+    //  This stops it from falling away when you jump on it
+    ground.body.immovable = true;
+
+    //  Now let's create two ledges
+    var ledge = platforms.create(400, 400, 'ground');
+    ledge.body.immovable = true;
+
+    ledge = platforms.create(-150, 250, 'ground');
+    ledge.body.immovable = true;
+
+    // The player and its settings
+    player = game.add.sprite(32, game.world.height - 150, 'dude');
+
+    //  We need to enable physics on the player
+    game.physics.arcade.enable(player);
+
+    //  Player physics properties. Give the little guy a slight bounce.
+    player.body.bounce.y = 0.2;
+    player.body.gravity.y = 300;
+    player.body.collideWorldBounds = true;
+
+    //  Our two animations, walking left and right.
+    player.animations.add('left', [0, 1, 2, 3], 10, true);
+    player.animations.add('right', [5, 6, 7, 8], 10, true);
+
+    //  Finally some stars to collect
+    stars = game.add.group();
+
+    //  We will enable physics for any star that is created in this group
+    stars.enableBody = true;
+
+    //  Here we'll create 12 of them evenly spaced apart
+    for (var i = 0; i < 12; i++)
+    {
+        //  Create a star inside of the 'stars' group
+        var star = stars.create(i * 70, 0, 'star');
+
+        //  Let gravity do its thing
+        star.body.gravity.y = 300;
+
+        //  This just gives each star a slightly random bounce value
+        star.body.bounce.y = 0.7 + Math.random() * 0.2;
+    }
+
+    //  An explosion pool
+    explosions = game.add.group();
+    explosions.createMultiple(30, 'kaboom');
+    explosions.forEach(setupInvader, this);
+
+    //  Our controls.
+    cursors = game.input.keyboard.createCursorKeys();
+    fireButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+
+    scoreText = game.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
+
+    blaster = game.add.audio('blaster');
+    game.add.audio('blaster');
+
+    //  Our bullet group
+    bullets = game.add.group();
+    bullets.enableBody = true;
+    bullets.physicsBodyType = Phaser.Physics.ARCADE;
+    bullets.createMultiple(30, 'bullet');
+    bullets.setAll('anchor.x', 0.5);
+    bullets.setAll('anchor.y', 1);
+    bullets.setAll('outOfBoundsKill', true);
+    bullets.setAll('checkWorldBounds', true);
+}
+
+function update() {
+
+    //  Collide the player and the stars with the platforms
+    game.physics.arcade.collide(player, platforms);
+    game.physics.arcade.collide(stars, platforms);
+
+    //  Checks to see if the player overlaps with any of the stars, if he does call the collectStar function
+    game.physics.arcade.overlap(player, stars, collectStar, null, this);
+
+    //  Reset the players velocity (movement)
+    player.body.velocity.x = 0;
+
+    if (cursors.left.isDown)
+    {
+        //  Move to the left
+        player.body.velocity.x = -150;
+
+        player.animations.play('left');
+    }
+    else if (cursors.right.isDown)
+    {
+        //  Move to the right
+        player.body.velocity.x = 150;
+
+        player.animations.play('right');
+    }
+    else
+    {
+        //  Stand still
+        player.animations.stop();
+
+        player.frame = 4;
+    }
+
+    //  Allow the player to jump if they are touching the ground.
+    if (cursors.up.isDown && player.body.touching.down)
+    {
+        player.body.velocity.y = -350;
+    }
+
+    //  Firing?
+    if (fireButton.isDown) {
+        fireBullet();
+    }
+
+    //  Run collision
+    game.physics.arcade.overlap(bullets, stars, collisionHandler, null, this);
+
+}
+
+
+function collectStar (player, star) {
+
+    // Removes the star from the screen
+    star.kill();
+    // Add and update the score
+    score += 10;
+    scoreText.text = 'Score: ' + score;
+    blaster.play();
+}
+
+function collisionHandler(bullet, stars) {
+
+    //  When a bullet hits an alien we kill them both
+    bullet.kill();
+    stars.kill();
+
+    //  Increase the score
+    score += 10;
+    scoreText.text = 'Score: ' + score;
+    blaster.play();
+
+    //  And create an explosion :)    
+    var explosion = explosions.getFirstExists(false);
+    explosion.reset(stars.body.x, stars.body.y);
+    explosion.play('kaboom', 30, false, true);    
+    /*
+
+    if (aliens.countLiving() == 0) {
+        score += 1000;
+        scoreText.text = scoreString + score;
+
+        enemyBullets.callAll('kill', this);
+        stateText.text = " You Won, \n Click to restart";
+        stateText.visible = true;
+
+        //the "click to restart" handler
+        game.input.onTap.addOnce(restart, this);
+    }
+    */
+
+}
+
+function fireBullet() {
+
+    //  To avoid them being allowed to fire too fast we set a time limit
+    if (game.time.now > bulletTime) {
+        //  Grab the first bullet we can from the pool
+        bullet = bullets.getFirstExists(false);
+
+        if (bullet) {
+            //  And fire it
+            bullet.reset(player.x, player.y + 8);
+            bullet.body.velocity.y = -400;
+            bulletTime = game.time.now + 200;
+        }
+    }
+}
+
+function resetBullet(bullet) {
+
+    //  Called if the bullet goes out of the screen
+    bullet.kill();
+}
+
+function setupInvader(stars) {
+
+    
+    stars.anchor.x = 0.5;
+    stars.anchor.y = 0.5;
+    stars.animations.add('kaboom');
+
+}
+
+
+
+    </script>
+
+</body>
+</html>
