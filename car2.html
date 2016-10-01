@@ -169,9 +169,16 @@
 
                 //if (score1 >= 2) game.Over; //game.state.start('Over');
                 //if (score2 >= 2) game.Over; //game.state.start('Over');
-                if (score1 >= maxScore) window.location.href = "GameOver.html" + "?score1=" + score1 + "&score2=" + score2;
-                if (score2 >= maxScore) window.location.href = "GameOver.html" + "?score1=" + score1 + "&score2=" + score2;
+                if (score1 >= maxScore) 
+                    GameOver();
+                if (score2 >= maxScore) 
+                    GameOver();
             }
+        }
+
+        function GameOver() {
+            save();
+            window.location.href = "GameOver.html" + "?score1=" + score1 + "&score2=" + score2;
         }
 
         var resizeGame = this._fitScreen = function () {

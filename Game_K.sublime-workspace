@@ -71,16 +71,20 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 283.0,
-		"last_filter": "Package Control: ",
+		"height": 368.0,
+		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"",
+				"HTML: Wrap Selection With Tag"
+			],
 			[
 				"Package Control: ",
 				"Package Control: Install Package"
 			]
 		],
-		"width": 400.0
+		"width": 432.0
 	},
 	"console":
 	{
@@ -104,7 +108,10 @@
 	],
 	"file_history":
 	[
+		"/E/Sublime Text Build 3114 x64/Data/Packages/Package Control/Package Control.sublime-settings",
+		"/E/GameK/car1mp.html",
 		"/E/GameK/sample.html",
+		"/E/LaraVel/LaraBara/backup.php",
 		"/E/LaraVel/pok.php",
 		"/E/LaraVel/LaraBara/.env",
 		"/E/LaraVel/web.config",

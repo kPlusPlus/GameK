@@ -37,6 +37,10 @@
         var player2;
         var player1speed = 5;
         var player2speed = 5;
+        var bestLap1 = 9999;
+        var bestLap2 = 9999;
+        var timeLap1 = 0;
+        var timeLap2 = 0;        
         var StartOverLap1 = false;
         var StartOverLap2 = false;
         var HalfOVerLap1 = false;
@@ -176,8 +180,14 @@
     }
 
     function GameOver(){
-        if (score1 >= maxScore) window.location.href = "GameOver.html" + "?score1=" + score1 + "&score2=" + score2;
-        if (score2 >= maxScore) window.location.href = "GameOver.html" + "?score1=" + score1 + "&score2=" + score2;
+        if (score1 >= maxScore){
+            save(); 
+            window.location.href = "GameOver.html" + "?score1=" + score1 + "&score2=" + score2;
+        }
+        if (score2 >= maxScore){ 
+            save();
+            window.location.href = "GameOver.html" + "?score1=" + score1 + "&score2=" + score2;
+        }
     }
 
     function checkOverlap(spriteA, spriteB) {
@@ -194,9 +204,10 @@
     }
 
     function render() {
-
+        // empty functions
     }
 
+/*
     function contactHandler(body, shape1, shape2, equation) {
 
 
@@ -207,7 +218,7 @@
             if (score2 >= maxScore) window.location.href = "GameOver.html" + "?score1=" + score1 + "&score2=" + score2;
         }
     }
-
+*/
 
 
     var resizeGame = this._fitScreen = function () {
@@ -225,7 +236,9 @@
     };
 
     function save() {
-        localStorage.setItem("save", JSON.stringify(saveObject));
+        //alert( JSON.stringify(saveObjects) );
+        localStorage.setItem("save", JSON.stringify(saveObjects));
+        alert("Save Result");
     }
 
         // Converts from degrees to radians.
