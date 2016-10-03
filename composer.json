@@ -6,6 +6,8 @@
         }
     ],
     "require": {
-        "devristo/phpws": "dev-master"
+        "devristo/phpws": "dev-master",
+        "components/jquery": "^3.1",
+        "phpunit/phpunit": "^5.5"
     }
 }

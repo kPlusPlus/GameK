@@ -4,8 +4,36 @@
 		"selected_items":
 		[
 			[
+				"lap",
+				"timeLap1"
+			],
+			[
+				"best",
+				"bestLap1"
+			],
+			[
+				"time",
+				"timeLap1"
+			],
+			[
+				"timeL",
+				"timeLap1"
+			],
+			[
+				"save",
+				"saveObject"
+			],
+			[
+				"str",
+				"stringify"
+			],
+			[
+				"Gam",
+				"GameOver"
+			],
+			[
 				"html",
-				"html5	Simple HTML5 Boilerplate"
+				"html5\tSimple HTML5 Boilerplate"
 			],
 			[
 				"db",
@@ -160,18 +188,11 @@
 	"buffers":
 	[
 		{
-			"file": "MySQL/savescores.php",
+			"file": "car1.html",
 			"settings":
 			{
-				"buffer_size": 1898,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "score.html",
-			"settings":
-			{
-				"buffer_size": 680,
+				"buffer_size": 11180,
+				"encoding": "UTF-8 with BOM",
 				"line_ending": "Windows"
 			}
 		}
@@ -184,9 +205,13 @@
 	"command_palette":
 	{
 		"height": 392.0,
-		"last_filter": "Package Control: ",
+		"last_filter": "inst",
 		"selected_items":
 		[
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
 			[
 				"Package Control: ",
 				"Package Control: Install Package"
@@ -212,7 +237,7 @@
 				"Build: Cancel"
 			]
 		],
-		"width": 512.0
+		"width": 416.0
 	},
 	"console":
 	{
@@ -235,18 +260,24 @@
 	},
 	"expanded_folders":
 	[
-		"/E/GameK/MySQL"
+		"/E/GameK"
 	],
 	"file_history":
 	[
-		"/E/GameK/MySQL/getscores.php",
+		"/C/Users/kresimir/AppData/Local/Temp/ajax.php",
+		"/E/GameK/chat/install.php",
+		"/E/GameK/chat/lib/config.php",
+		"/E/temp/places_moz_bookmarks_2016-10-02.dump.sql",
+		"/C/Users/kresimir/AppData/Local/Temp/Temp1_phpLiteAdmin_v1-9-6.zip/phpliteadmin.config.sample.php",
+		"/E/GameK/MySQL/savescores.php",
 		"/E/GameK/score.html",
+		"/E/GameK/car2.html",
 		"/E/GameK/car1.html",
+		"/E/GameK/MySQL/getscores.php",
 		"/E/GameK/MySQL/myform.php",
 		"/E/GameK/MySQL/myform5.php",
 		"/E/GameK/MySQL/test.php",
 		"/E/GameK/MySQL/testR.php",
-		"/E/GameK/car2.html",
 		"/E/LaraVel/LaraBara/resources/views/welcome.blade.php",
 		"/E/GameK/car_test.html",
 		"/E/GameK/part1.html",
@@ -290,6 +321,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"Storage",
+			"contactHandler",
+			"localStorage",
+			"save",
+			"maxScore",
 			"resetGame",
 			"Lap",
 			"lap",
@@ -318,64 +354,37 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "MySQL/savescores.php",
+					"file": "car1.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1898,
+						"buffer_size": 11180,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								628,
-								628
+								1819,
+								1819
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 5,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 54.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "score.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 680,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								332,
-								332
-							]
-						],
-						"settings":
-						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
 							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 2,
+							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 162.0,
+						"translation.y": 774.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -416,6 +425,10 @@
 	},
 	"menu_visible": true,
 	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.sftp":
 	{
 		"height": 0.0
 	},

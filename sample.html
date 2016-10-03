@@ -1,8 +1,37 @@
-<li>Shopping list</h1>
-<ul>
-	<li>bricks</li>
-	<li>mortar</li>
-	<li>wheelbarrow</li>
-	<li>shovel</li>
-	<li>gloves</li>
-</ul>
+<html>
+<head>
+    <script src="vendor/components/jquery/jquery.min.js"></script>
+</head>
+<body>
+    <script>
+        var score1, score2;
+        var bestLap1, bestLap2;
+
+        var saveObjects = {
+            score1,
+            score2,
+            bestLap1,
+            bestLap2
+        };
+
+        $(document).ready(function () {
+            $("input:button").click(function () {
+                saveObjects.bestLap1 = 10;
+                saveObjects.bestLap2 = 20;
+                $.post("websocket/save_json.php", JSON.stringify(saveObjects) );
+                alert("EE");
+            });
+        });
+    </script>
+
+    <input type="button" id="button" name="button" value="stisni" />
+
+
+    <form name="foo" action="websocket/save_json.php" method="POST" id="foo">
+        <label for="bar">A bar</label>
+        <input id="bar" name="bar" type="text" value="" />
+        <input type="submit" value="Send" />
+    </form>
+
+</body>
+</html>

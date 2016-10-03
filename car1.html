@@ -5,9 +5,11 @@
 
     <meta charset="utf-8" />
     <title>kCar 0.1</title>
-    
+
     <script type="text/javascript" src="js/phaser.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Revalia" rel="stylesheet"> 
+
     <style type="text/css">
         body {
             margin: 0;
@@ -20,27 +22,46 @@
 
     <script type="text/javascript">
         var gWidth = 800;
-        var gHeight = 600;        
+        var gHeight = 600;
 
         var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'car drive', { preload: preload, create: create, update: update, render: render });
 
-        function preload() {            
+/*
+WebFontConfig = {
+
+    //  'active' means all requested fonts have finished loading
+    //  We set a 1 second delay before calling 'createText'.
+    //  For some reason if we don't the browser cannot render the text the first time it's created.
+    active: function() { game.time.events.add(Phaser.Timer.SECOND, createText, this); },
+
+    //  The Google Fonts we want to load (specify as many as you like in the array)
+    google: {
+        families: ['Revalia','Patua One']
+    }
+
+};
+*/
+        function preload() {
+            game.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js');
             game.load.physics('physicsData', 'cars/cars.json');
             game.load.image('player1', 'cars/cars1_p1.png');
             game.load.image('player2', 'cars/cars1_p2.png');
             game.load.image('trucks', 'cars/truck1_in.png');
-            game.load.spritesheet('start_line','cars/start_line.png',150,5);     
-            game.load.spritesheet('half_line','cars/start_line.png',150,5);
+            game.load.spritesheet('start_line', 'cars/start_line.png', 150, 5);
+            game.load.spritesheet('half_line', 'cars/start_line.png', 150, 5);
         }
 
         var player1;
         var player2;
         var player1speed = 5;
         var player2speed = 5;
-        var bestLap1 = 9999;
-        var bestLap2 = 9999;
+        var startTime;
+        var bestLap1 = 99999;
+        var bestLap2 = 99999;
+        var bestRace1 = 99999;
+        var bestRace2 = 99999;
         var timeLap1 = 0;
-        var timeLap2 = 0;        
+        var timeLap2 = 0;
         var StartOverLap1 = false;
         var StartOverLap2 = false;
         var HalfOVerLap1 = false;
@@ -75,9 +96,9 @@
             game.physics.p2.restitution = 1;
             game.physics.p2.gravity = 0.25;
 
-            
+
             player1 = game.add.sprite(0 + 100, game.world.height / 2 + 100, 'player1');
-            player2 = game.add.sprite(0 + 50, game.world.height / 2 + 100, 'player2');            
+            player2 = game.add.sprite(0 + 50, game.world.height / 2 + 100, 'player2');
             start_line = game.add.sprite(1, game.height / 2, 'start_line');
             half_line = game.add.sprite(game.width - 150, game.height / 2, 'half_line');
             truckIN = game.add.sprite(game.width / 2, game.height / 2, 'trucks');
@@ -86,7 +107,7 @@
             game.physics.p2.enable([player1, player2, truckIN], false);
             game.physics.p2.world.defaultContactMaterial.friction = 0.3;
 
-            //  The following just loads the polygon data into the objects            
+            //  The following just loads the polygon data into the objects
             player1.body.clearShapes();
             player1.body.loadPolygon('physicsData', 'cars1_p1');
             player1.body.setZeroVelocity();
@@ -101,13 +122,13 @@
             truckIN.body.loadPolygon('physicsData', 'truck1_in');
             truckIN.body.setZeroVelocity();
             truckIN.body.static = true;
-            
+
             gamerMaterial = game.physics.p2.createMaterial('gamerMaterial');
 
             player1.body.setMaterial(gamerMaterial);
             player2.body.setMaterial(gamerMaterial);
             player1.body.mass = 1;
-            player2.body.mass = 1;            
+            player2.body.mass = 1;
             player1.anchor.setTo(0.5, 0.5);
             player2.anchor.setTo(0.5, 0.5);
             var worldMaterial = game.physics.p2.createMaterial('worldMaterial');
@@ -129,117 +150,139 @@
                 left: game.input.keyboard.addKey(Phaser.Keyboard.A),
                 right: game.input.keyboard.addKey(Phaser.Keyboard.D),
             };
-            scoreText = game.add.text(16, 16, 'LAP: ' + score1 +  ' : 0', { fontSize: '32px', fill: '#FFF' });
+            scoreText = game.add.text(16, 16, 'LAP: ' + score1 + ' : 0', 
+            { font: 'Revalia',fontSize: '12px', fill: '#FFF' });
+            startTime = Date.now();
+            timeLap1 = startTime;
+            timeLap2 = timeLap1;
+            startRace();            
         };
 
+        function startRace() {
+            loadData();
+            ShowResult();
+            StartOverLap1 = true;
+            HalfOVerLap1 = false;
+            StartOverLap2 = true;
+            HalfOverLap2 = false;           
+        }
 
         function update() {
 
             if (cursors.left.isDown)
             { player1.body.rotateLeft(100); }   //car movement
-        else if (cursors.right.isDown) { player1.body.rotateRight(100); }
-        else { player1.body.setZeroRotation(); }
-        if (cursors.up.isDown) { player1.body.thrust(400); }
-        else if (cursors.down.isDown) { player1.body.reverse(400); }
+            else if (cursors.right.isDown) { player1.body.rotateRight(100); }
+            else { player1.body.setZeroRotation(); }
+            if (cursors.up.isDown) { player1.body.thrust(400); }
+            else if (cursors.down.isDown) { player1.body.reverse(400); }
 
-        if (key2.left.isDown)
+            if (key2.left.isDown)
             { player2.body.rotateLeft(100); }   //car movement
-        else if (key2.right.isDown) { player2.body.rotateRight(100); }
-        else { player2.body.setZeroRotation(); }
-        if (key2.up.isDown) { player2.body.thrust(400); }
-        else if (key2.down.isDown) { player2.body.reverse(400); }
+            else if (key2.right.isDown) { player2.body.rotateRight(100); }
+            else { player2.body.setZeroRotation(); }
+            if (key2.up.isDown) { player2.body.thrust(400); }
+            else if (key2.down.isDown) { player2.body.reverse(400); }
 
-        if ( checkOverlap(player1,start_line) == true && StartOverLap1 == false  ) {
-            StartOverLap1 = true;
-            HalfOVerLap1 = false;
-            score1 += 1;
-            ShowResult();
-            GameOver();
+            if (checkOverlap(player1, start_line) == true && StartOverLap1 == false) {
+                StartOverLap1 = true;
+                HalfOVerLap1 = false;
+                score1 += 1;
+                if (score1 > 1) {
+                    if (bestLap1 > (Date.now() - timeLap1)) bestLap1 = Date.now() - timeLap1;
+                    timeLap1 = Date.now();
+                }
+                ShowResult();
+                GameOver();
+            }
+
+            if (checkOverlap(player1, half_line) == true && StartOverLap1 == true && HalfOVerLap1 == false) {
+                StartOverLap1 = false;
+                HalfOVerLap1 = true;
+            }
+
+            if (checkOverlap(player2, start_line) == true && StartOverLap2 == false) {
+                StartOverLap2 = true;
+                HalfOVerLap2 = false;
+                score2 += 1;
+                if (score2 > 1) {
+                    if (bestLap2 > (Date.now() - timeLap2)) bestLap2 = Date.now() - timeLap2;
+                    timeLap2 = Date.now();
+                }
+                ShowResult();
+                GameOver();
+            }
+
+            if (checkOverlap(player2, half_line) == true && StartOverLap2 == true && HalfOVerLap2 == false) {
+                StartOverLap2 = false;
+                HalfOVerLap2 = true;
+            }
+
         }
 
-        if ( checkOverlap(player1,half_line) == true && StartOverLap1 == true && HalfOVerLap1 == false)
-        {
-            StartOverLap1 = false;
-            HalfOVerLap1 = true;
+        function GameOver() {
+            if (score1 >= maxScore) {
+                save();
+                //confirm("Press a button!");
+                window.location.href = "GameOver.html" + "?score1=" + score1 + "&score2=" + score2;
+            }
+            if (score2 >= maxScore) {
+                save();
+                window.location.href = "GameOver.html" + "?score1=" + score1 + "&score2=" + score2;
+            }
         }
 
-        if ( checkOverlap(player2,start_line) == true && StartOverLap2 == false  ) {
-            StartOverLap2 = true;
-            HalfOVerLap2 = false;
-            score2 += 1;
-            ShowResult();
-            GameOver();
+        function checkOverlap(spriteA, spriteB) {
+
+            var boundsA = spriteA.getBounds();
+            var boundsB = spriteB.getBounds();
+
+            return Phaser.Rectangle.intersects(boundsA, boundsB);
         }
 
-        if ( checkOverlap(player2,half_line) == true && StartOverLap2 == true && HalfOVerLap2 == false)
-        {
-            StartOverLap2 = false;
-            HalfOVerLap2 = true;
+        function ShowResult() {
+            scoreText.text = 'LAP: ' + score1 + ' : ' + score2 + " BEST LAP: " + (bestLap1 / 1000) + " " + (bestLap2 / 1000);
         }
 
-    }
-
-    function GameOver(){
-        if (score1 >= maxScore){
-            save(); 
-            window.location.href = "GameOver.html" + "?score1=" + score1 + "&score2=" + score2;
+        function render() {
+            // empty functions
         }
-        if (score2 >= maxScore){ 
-            save();
-            window.location.href = "GameOver.html" + "?score1=" + score1 + "&score2=" + score2;
+
+
+        var resizeGame = this._fitScreen = function () {
+            game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+            game.scale.pageAlignHorizontally = true;
+            game.scale.pageAlignVertically = true;
+            game.scale.forceOrientation(true, true);
+            game.scale.setShowAll();
+            game.scale.refresh();
         }
-    }
 
-    function checkOverlap(spriteA, spriteB) {
+        var saveObjects = {
+            score1,
+            score2,
+            bestLap1,
+            bestLap2
+        };
 
-        var boundsA = spriteA.getBounds();
-        var boundsB = spriteB.getBounds();
-
-        return Phaser.Rectangle.intersects(boundsA, boundsB);
-    }
-
-    function ShowResult()
-    {
-        scoreText.text = 'LAP: ' + score1 +  ' : ' + score2;
-    }
-
-    function render() {
-        // empty functions
-    }
-
-/*
-    function contactHandler(body, shape1, shape2, equation) {
-
-
-        if (body) {
-            scoreText.text = 'score: ' + score1 + ' : ' + score2;
-
-            if (score1 >= maxScore) window.location.href = "GameOver.html" + "?score1=" + score1 + "&score2=" + score2;
-            if (score2 >= maxScore) window.location.href = "GameOver.html" + "?score1=" + score1 + "&score2=" + score2;
+        function save() {
+            //alert( JSON.stringify(saveObjects) );
+            beforeSave();
+            localStorage.setItem("save", JSON.stringify(saveObjects));
+            alert("Save Result");
         }
-    }
-*/
 
+        function beforeSave() {
+            saveObjects.score1 = score1;
+            saveObjects.score2 = score2;
+            saveObjects.bestLap1 = bestLap1;
+            saveObjects.bestLap2 = bestLap2;
+        }
 
-    var resizeGame = this._fitScreen = function () {
-        game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-        game.scale.pageAlignHorizontally = true;
-        game.scale.pageAlignVertically = true;
-        game.scale.forceOrientation(true, true);
-        game.scale.setShowAll();
-        game.scale.refresh();
-    }
-
-    var saveObjects = {
-        score1,
-        score2
-    };
-
-    function save() {
-        //alert( JSON.stringify(saveObjects) );
-        localStorage.setItem("save", JSON.stringify(saveObjects));
-        alert("Save Result");
-    }
+        function loadData() {
+            var myObj = JSON.parse(localStorage.getItem("save"));
+            bestLap1 = myObj["bestLap1"];
+            bestLap2 = myObj["bestLap2"];
+        }
 
         // Converts from degrees to radians.
         Math.radians = function (degrees) {

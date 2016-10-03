@@ -1,0 +1,10 @@
+$.ajax
+    ({
+        type: "GET",
+        dataType : 'json',
+        async: false,
+        url: 'http://your.host/save_json.php',
+        data: { data: JSON.stringify(eventsholded) },
+        success: function () {alert("Thanks!"); },
+        failure: function() {alert("Error!");}
+    });
