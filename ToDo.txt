@@ -1,0 +1,7 @@
+    <div style="position:relative;left:10px;top:20px;clear:both;">
+        <input type="text" name="player1name" id="player1name" value="player1">
+        <input type="text" name="player1email" value="p1@pl.com">
+        <input type="text" name="player2name" id="player2name" value="player2">
+        <input type="text" name="player2email" value="p2@pl.com">
+        <input type="text" name="chatLine">
+    </div>
