@@ -170,14 +170,16 @@
             else if (cursors.down.isDown) { player1.body.reverse(400); }
 
 
+            
+
             if ($.urlParam("player")) {
                 if ($.urlParam("player") == 1) {
                     savePlayer1();
-                    //readPlayer2();
+                    readPlayer2();
                 }
-                if ($.urlParam("Player") == 2) {
+                if ($.urlParam("player") == 2) {
                     savePlayer2();
-                    //readPlayer1();
+                    readPlayer1();
                 }
             }
 
