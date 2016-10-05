@@ -4,6 +4,38 @@
 		"selected_items":
 		[
 			[
+				"read",
+				"readPlayer2"
+			],
+			[
+				"rea",
+				"readPlayer1"
+			],
+			[
+				"sec",
+				"SECOND"
+			],
+			[
+				"time",
+				"Timer"
+			],
+			[
+				"save",
+				"savePlayer1"
+			],
+			[
+				"fi",
+				"firstName"
+			],
+			[
+				"va",
+				"value\tAttr"
+			],
+			[
+				"preg",
+				"preg_replace"
+			],
+			[
 				"lap",
 				"timeLap1"
 			],
@@ -12,16 +44,8 @@
 				"bestLap1"
 			],
 			[
-				"time",
-				"timeLap1"
-			],
-			[
 				"timeL",
 				"timeLap1"
-			],
-			[
-				"save",
-				"saveObject"
 			],
 			[
 				"str",
@@ -188,10 +212,10 @@
 	"buffers":
 	[
 		{
-			"file": "car1.html",
+			"file": "car1mp.html",
 			"settings":
 			{
-				"buffer_size": 11180,
+				"buffer_size": 13223,
 				"encoding": "UTF-8 with BOM",
 				"line_ending": "Windows"
 			}
@@ -205,9 +229,13 @@
 	"command_palette":
 	{
 		"height": 392.0,
-		"last_filter": "inst",
+		"last_filter": "php",
 		"selected_items":
 		[
+			[
+				"php",
+				"Set Syntax: PHP"
+			],
 			[
 				"inst",
 				"Package Control: Install Package"
@@ -237,13 +265,17 @@
 				"Build: Cancel"
 			]
 		],
-		"width": 416.0
+		"width": 400.0
 	},
 	"console":
 	{
-		"height": 213.0,
+		"height": 146.0,
 		"history":
 		[
+			"exit",
+			"run pok.php",
+			"run",
+			"dir",
 			"help",
 			"list",
 			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) "
@@ -260,10 +292,23 @@
 	},
 	"expanded_folders":
 	[
-		"/E/GameK"
+		"/E/GameK",
+		"/E/GameK/WebSocket"
 	],
 	"file_history":
 	[
+		"/E/GameK/main.js",
+		"/E/GameK/todo.txt",
+		"/E/GameK/chat/js/script.js",
+		"/E/GameK/WebSocket/index.html",
+		"/E/GameK/test/test.html",
+		"/E/GameK/WebSocket/save_json.php",
+		"/E/GameK/chat/ajax-chat.html",
+		"/E/LaraVel/pok.php",
+		"/E/LaraVel/back.php",
+		"/E/LaraVel/sb-admin-laravel-5-master/resources/views/welcome.blade.php",
+		"/E/LaraVel/sb-admin-laravel-5-master/resources/views/blank.blade.php",
+		"/E/LaraVel/sb-admin-laravel-5-master/composer.json",
 		"/C/Users/kresimir/AppData/Local/Temp/ajax.php",
 		"/E/GameK/chat/install.php",
 		"/E/GameK/chat/lib/config.php",
@@ -321,6 +366,12 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"}\n",
+			"readPlayer2",
+			"savePlayer1",
+			"json",
+			"tzGET",
+			"¸.php",
 			"Storage",
 			"contactHandler",
 			"localStorage",
@@ -359,19 +410,19 @@
 			[
 				{
 					"buffer": 0,
-					"file": "car1.html",
+					"file": "car1mp.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 11180,
+						"buffer_size": 13223,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1819,
-								1819
+								0,
+								0
 							]
 						],
 						"settings":
@@ -384,7 +435,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 774.0,
+						"translation.y": 1298.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -474,7 +525,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 250.0,
+	"side_bar_width": 194.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
