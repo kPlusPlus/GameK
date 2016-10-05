@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+// Javascript file
+<head>
+    <script src="../vendor/components/jquery/jquery.min.js" type="text/javascript"></script>
+    <script src="../js/jquery.json-2.4_min.js"></script>
+    <script>
+        var car = {
+            type: "Fiat",
+            model: "500",
+            color: "white",
+
+            poruka: function () {
+                alert("bjezi");
+            }
+        };
+
+        $(document).ready(function () {
+            var data = new Object();
+            data.hello = "Hello";
+            data.world = 'World';
+            data.worked = " it worked ";
+            data.somebool = true;
+            data.array = new Array("he\"ll\"o", '"World"');
+            var dataString = $.toJSON(data);
+            $.post('phpfile.php', { data: dataString }, function (res) {
+                var obj = $.evalJSON(res);
+                if (obj.somebool === true)
+                    $("#result").html(obj.hello + ' ' + obj.array[1] + obj.worked + ". Message from PHP: " + obj.php_message);
+                $("#result").html(JSON.stringify( obj ));
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="result">This is not the text I am hoping to see...</div>
+</body>
+</html>

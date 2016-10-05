@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="../vendor/components/jquery/jquery.min.js" type="text/javascript"></script>
+    <script src="../js/jquery.json-2.4_min.js"></script>
+</head>
+
+
+<p> bla bla </p>
+<button id="hide">Hide</button>
+<button id="show">Show</button>
+
+<script>
+    var car = {
+        type: "Fiat",
+        model: "500",
+        color: "white",
+
+        poruka: function () {
+            alert("bjezi");
+        }
+    };
+
+    var text = '{"name":"John Johnson","street":"Oslo West 16","phone":"555 1234567"}';
+
+    var obj = $.toJSON(car);
+    alert(obj);
+
+    $("#hide").click(function () {
+        $("p").hide(1000);
+    });
+
+    $("#show").click(function () {
+        $("p").show(1000);
+    });
+</script>
+
+<?php
+$book = array(
+    "title" => "JavaScript: The Definitive Guide",
+    "author" => "David Flanagan",
+    "edition" => 6
+);
+?>
+<script type="text/javascript">
+var book = <?php echo json_encode($book, JSON_PRETTY_PRINT) ?>;
+/* var book = {
+    "title": "JavaScript: The Definitive Guide",
+    "author": "David Flanagan",
+    "edition": 6
+}; */
+alert(book.title);
+</script>
+
+
+</html>
