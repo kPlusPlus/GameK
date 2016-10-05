@@ -169,11 +169,11 @@
         else if (cursors.down.isDown) { player1.body.reverse(400); }            
     }
     if (playerActive > 0) {
-        if ($.urlParam("player") == 1) {
+        if (playerActive == 1) {
             game.time.events.add(Phaser.Timer.SECOND * 2, savePlayer1, this);
             game.time.events.add(Phaser.Timer.SECOND * 2, readPlayer2, this);                    
         }
-        if ($.urlParam("player") == 2) {
+        if (playerActive == 2) {
             game.time.events.add(Phaser.Timer.SECOND * 2, savePlayer2, this);
             game.time.events.add(Phaser.Timer.SECOND * 2, readPlayer1, this);
         }

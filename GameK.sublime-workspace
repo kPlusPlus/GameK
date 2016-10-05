@@ -215,7 +215,7 @@
 			"file": "car1mp.html",
 			"settings":
 			{
-				"buffer_size": 13223,
+				"buffer_size": 12814,
 				"encoding": "UTF-8 with BOM",
 				"line_ending": "Windows"
 			}
@@ -292,11 +292,12 @@
 	},
 	"expanded_folders":
 	[
-		"/E/GameK",
-		"/E/GameK/WebSocket"
+		"/E/GameK"
 	],
 	"file_history":
 	[
+		"/E/GameK/car1mp.html",
+		"/E/GameK/ToDo.txt",
 		"/E/GameK/main.js",
 		"/E/GameK/todo.txt",
 		"/E/GameK/chat/js/script.js",
@@ -366,6 +367,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"playerActive",
 			"}\n",
 			"readPlayer2",
 			"savePlayer1",
@@ -414,15 +416,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 13223,
+						"buffer_size": 12814,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								6949,
+								6949
 							]
 						],
 						"settings":
@@ -435,7 +437,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1298.0,
+						"translation.y": 3865.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
