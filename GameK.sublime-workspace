@@ -215,7 +215,7 @@
 			"file": "car1mp.html",
 			"settings":
 			{
-				"buffer_size": 12814,
+				"buffer_size": 10615,
 				"encoding": "UTF-8 with BOM",
 				"line_ending": "Windows"
 			}
@@ -416,15 +416,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 12814,
+						"buffer_size": 10615,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6949,
-								6949
+								9017,
+								9017
 							]
 						],
 						"settings":
@@ -434,10 +434,10 @@
 							"synced": false,
 							"syntax": "Packages/HTML/HTML.sublime-syntax",
 							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3865.0,
+						"translation.y": 6307.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
