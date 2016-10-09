@@ -63,14 +63,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "WEB/index.html",
-			"settings":
-			{
-				"buffer_size": 8465,
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -119,6 +111,7 @@
 	],
 	"file_history":
 	[
+		"/E/GameK/WEB/index.html",
 		"/E/GameK/WEB/assets/js/util.js",
 		"/E/Sublime Text Build 3114 x64/Data/Packages/Package Control/Package Control.sublime-settings",
 		"/E/GameK/car1mp.html",
@@ -187,41 +180,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "WEB/index.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 8465,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								7849,
-								7849
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 3493.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
