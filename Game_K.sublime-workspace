@@ -105,12 +105,11 @@
 	"expanded_folders":
 	[
 		"/E/GameK",
-		"/E/GameK/WEB",
-		"/E/GameK/WEB/assets",
-		"/E/GameK/WEB/assets/js"
+		"/E/GameK/WEB"
 	],
 	"file_history":
 	[
+		"/E/GameK/Templates/GK.dwt - Copy.php",
 		"/E/GameK/WEB/index.html",
 		"/E/GameK/WEB/assets/js/util.js",
 		"/E/Sublime Text Build 3114 x64/Data/Packages/Package Control/Package Control.sublime-settings",
