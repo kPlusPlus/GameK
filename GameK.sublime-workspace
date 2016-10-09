@@ -4,6 +4,34 @@
 		"selected_items":
 		[
 			[
+				"preg_",
+				"preg_match"
+			],
+			[
+				"em",
+				"empty"
+			],
+			[
+				"margin",
+				"margin-bottom"
+			],
+			[
+				"padd",
+				"padding"
+			],
+			[
+				"max",
+				"max-width"
+			],
+			[
+				"ba",
+				"background-color"
+			],
+			[
+				"sess",
+				"session_start"
+			],
+			[
 				"read",
 				"readPlayer2"
 			],
@@ -211,15 +239,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "car1mp.html",
-			"settings":
-			{
-				"buffer_size": 10615,
-				"encoding": "UTF-8 with BOM",
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -296,6 +315,29 @@
 	],
 	"file_history":
 	[
+		"/E/LaraVel/LaraBara/.env",
+		"/E/LaraVel/LaraDoctrine/.env",
+		"/E/LaraVel/pokIns.bat",
+		"/C/Users/kresimir/AppData/Local/Temp/Temp1_vlacms_2016-10-07_085409.zip/routes.php",
+		"/C/Users/kresimir/AppData/Local/Temp/Temp1_vlacms_2016-10-07_085409.zip/models/User.php",
+		"/C/Users/kresimir/AppData/Local/Temp/Temp1_vlacms_2016-10-07_085409.zip/models/Categorizable.php",
+		"/E/DW_reg.txt",
+		"/E/LaraVel/config.inc.php",
+		"/C/Users/kresimir/AppData/Local/Temp/Temp1_vlacms_2016-10-07_085409.zip/controllers/CategoryController.php",
+		"/C/Users/kresimir/AppData/Local/Temp/Temp1_vlacms_2016-10-07_085409.zip/controllers/AbillityController.php",
+		"/C/Users/kresimir/AppData/Local/Temp/Temp1_vlacms_2016-10-07_085409.zip/database/seeds/DatabaseSeeder.php",
+		"/C/Users/kresimir/AppData/Local/Temp/Temp1_vlacms_2016-10-07_085409.zip/views/userable.blade.php",
+		"/E/LaraVel/phpMyAdmin/setup/frames/config.inc.php",
+		"/E/GameK/test.php",
+		"/E/GameK/t1.html",
+		"/E/GameK/login.php",
+		"/E/LaraVel/adminlte-generator/composer.json",
+		"/E/GameK/FB/import.sql",
+		"/E/LaraVel/pok.php",
+		"/E/GameK/config.php",
+		"/E/GameK/whois.php",
+		"/E/GameK/logout.php",
+		"/E/GameK/FB/src/Facebook/FacebookRedirectLoginHelper.php",
 		"/E/GameK/car1mp.html",
 		"/E/GameK/ToDo.txt",
 		"/E/GameK/main.js",
@@ -305,7 +347,6 @@
 		"/E/GameK/test/test.html",
 		"/E/GameK/WebSocket/save_json.php",
 		"/E/GameK/chat/ajax-chat.html",
-		"/E/LaraVel/pok.php",
 		"/E/LaraVel/back.php",
 		"/E/LaraVel/sb-admin-laravel-5-master/resources/views/welcome.blade.php",
 		"/E/LaraVel/sb-admin-laravel-5-master/resources/views/blank.blade.php",
@@ -341,7 +382,6 @@
 		"/E/LaraVel/LaraBara/app/Http/Controllers/CustomerController.php",
 		"/E/LaraVel/LaraBara/app/Http/Controllers/CustromerController.php",
 		"/E/LaraVel/LaraBara/app/Http/Controllers/Controller.php",
-		"/E/LaraVel/LaraBara/.env",
 		"/E/LaraVel/LaraBara/app/Order.php",
 		"/E/LaraVel/LaraBara/app/Customer.php",
 		"/E/LaraVel/LaraBara/app/Address.php",
@@ -407,42 +447,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "car1mp.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 10615,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								9017,
-								9017
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 6307.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
