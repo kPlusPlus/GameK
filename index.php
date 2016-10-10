@@ -4,19 +4,19 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
-<html>
+<html><!-- InstanceBegin template="/Templates/GK.dwt.php" codeOutsideHTMLIsLocked="false" -->
 	<head>
-    <!-- TemplateBeginEditable name="doctitle" -->
-		<title>Phantom by HTML5 UP</title>
-        <!-- TemplateEndEditable -->
+    <!-- InstanceBeginEditable name="doctitle" -->
+		<title>kGame</title>
+        <!-- InstanceEndEditable -->
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="../assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/main.css" />
 		<!--[if lte IE 9]><link rel="stylesheet" href="../assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="../assets/css/ie8.css" /><![endif]-->
-        <!-- TemplateBeginEditable name="head" -->
-        <!-- TemplateEndEditable -->
+        <!-- InstanceBeginEditable name="head" -->
+        <!-- InstanceEndEditable -->
 	</head>
 	<body>
 		<!-- Wrapper -->
@@ -28,7 +28,7 @@
 
 							<!-- Logo -->
 								<a href="index.html" class="logo">
-									<span class="symbol"><img src="../images/logo.svg" alt="" /></span><span class="title">Phantom</span>
+									<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Phantom</span>
 								</a>
 
 							<!-- Nav -->
@@ -54,43 +54,42 @@
 					</nav>
 
 				<!-- Main -->
-                <!-- TemplateBeginEditable name="ER_main" -->
+                <!-- InstanceBeginEditable name="ER_main" -->
 					<div id="main">
 						<div class="inner">
 							<header>
-								<h1>This is Phantom, a free, fully responsive site<br />
-								template designed by <a href="http://html5up.net">HTML5 UP</a>.</h1>
-								<p>Etiam quis viverra lorem, in semper lorem. Sed nisl arcu euismod sit amet nisi euismod sed cursus arcu elementum ipsum arcu vivamus quis venenatis orci lorem ipsum et magna feugiat veroeros aliquam. Lorem ipsum dolor sit amet nullam dolore.</p>
+							  <h1>kGame applications </h1>
+							  <p>List of all applications</p>
 							</header>
 							<section class="tiles">
 								<article class="style1">
 									<span class="image">
-										<img src="../images/pic01.jpg" alt="" />
+										<img src="images/pic01.jpg" alt="" />
 									</span>
 									<a href="generic.html">
-										<h2>Magna</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+									<h2>TEST page</h2>
+									<div class="content">
+											<p>Simple test page</p>
 										</div>
 									</a>
 								</article>
 								<article class="style2">
 									<span class="image">
-										<img src="../images/pic02.jpg" alt="" />
+										<img src="images/pic02.jpg" alt="" />
 									</span>
 									<a href="generic.html">
-										<h2>Lorem</h2>
+										<h2>kCAR</h2>
 										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+										  <p>kCar is simple race game for 2 gamers.</p>
 										</div>
 									</a>
 								</article>
 								<article class="style3">
 									<span class="image">
-										<img src="../images/pic03.jpg" alt="" />
+										<img src="images/pic03.jpg" alt="" />
 									</span>
 									<a href="generic.html">
-										<h2>Feugiat</h2>
+										<h2>kCar 0.11<hr> multyplay</h2>
 										<div class="content">
 											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
 										</div>
@@ -98,18 +97,18 @@
 								</article>
 								<article class="style4">
 									<span class="image">
-										<img src="../images/pic04.jpg" alt="" />
+										<img src="images/pic04.jpg" alt="" />
 									</span>
-									<a href="generic.html">
-										<h2>Tempus</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
+									<a href="test3.3.html">
+									<h2>ponger</h2>
+									<div class="content">
+									  <p>Ponger for 2 players, very impresive.</p>
+									</div>
 									</a>
 								</article>
 								<article class="style5">
 									<span class="image">
-										<img src="../images/pic05.jpg" alt="" />
+										<img src="images/pic05.jpg" alt="" />
 									</span>
 									<a href="generic.html">
 										<h2>Aliquam</h2>
@@ -120,7 +119,7 @@
 								</article>
 								<article class="style6">
 									<span class="image">
-										<img src="../images/pic06.jpg" alt="" />
+										<img src="images/pic06.jpg" alt="" />
 									</span>
 									<a href="generic.html">
 										<h2>Veroeros</h2>
@@ -131,7 +130,7 @@
 								</article>
 								<article class="style2">
 									<span class="image">
-										<img src="../images/pic07.jpg" alt="" />
+										<img src="images/pic07.jpg" alt="" />
 									</span>
 									<a href="generic.html">
 										<h2>Ipsum</h2>
@@ -142,7 +141,7 @@
 								</article>
 								<article class="style3">
 									<span class="image">
-										<img src="../images/pic08.jpg" alt="" />
+										<img src="images/pic08.jpg" alt="" />
 									</span>
 									<a href="generic.html">
 										<h2>Dolor</h2>
@@ -153,7 +152,7 @@
 								</article>
 								<article class="style1">
 									<span class="image">
-										<img src="../images/pic09.jpg" alt="" />
+										<img src="images/pic09.jpg" alt="" />
 									</span>
 									<a href="generic.html">
 										<h2>Nullam</h2>
@@ -164,7 +163,7 @@
 								</article>
 								<article class="style5">
 									<span class="image">
-										<img src="../images/pic10.jpg" alt="" />
+										<img src="images/pic10.jpg" alt="" />
 									</span>
 									<a href="generic.html">
 										<h2>Ultricies</h2>
@@ -175,7 +174,7 @@
 								</article>
 								<article class="style6">
 									<span class="image">
-										<img src="../images/pic11.jpg" alt="" />
+										<img src="images/pic11.jpg" alt="" />
 									</span>
 									<a href="generic.html">
 										<h2>Dictum</h2>
@@ -186,7 +185,7 @@
 								</article>
 								<article class="style4">
 									<span class="image">
-										<img src="../images/pic12.jpg" alt="" />
+										<img src="images/pic12.jpg" alt="" />
 									</span>
 									<a href="generic.html">
 										<h2>Pretium</h2>
@@ -198,7 +197,7 @@
 							</section>
 						</div>
 					</div>
-                    <!-- TemplateEndEditable --><!-- END MAIN -->
+                    <!-- InstanceEndEditable -->
 
 				<!-- Footer -->
 					<footer id="footer">
@@ -250,4 +249,4 @@
 			<script src="assets/js/main.js"></script>
 
 	</body>
-</html>
+<!-- InstanceEnd --></html>

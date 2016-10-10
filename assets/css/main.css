@@ -1623,7 +1623,8 @@
 	}
 
 	body {
-		background: #ffffff;
+		background: #FFFFFF;
+		/* background:#FFBD33; */
 	}
 
 		body.is-loading *, body.is-loading *:before, body.is-loading *:after {
@@ -1658,7 +1659,8 @@
 		@media screen and (max-width: 1280px) {
 
 			body, input, select, textarea {
-				font-size: 12pt;
+	font-size: 12pt;
+	font-family: "Source Sans Pro", Helvetica, sans-serif;
 			}
 
 		}
