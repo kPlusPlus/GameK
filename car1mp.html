@@ -337,9 +337,16 @@ function GameOver() {
 
 
 		function loadData() {
+            // ToDo: debug if not cookies exists
 			var myObj = JSON.parse(localStorage.getItem("save"));
-			bestLap1 = myObj["bestLap1"];
-			bestLap2 = myObj["bestLap2"];
+			// alert(myObj);
+			if (myObj == null) {
+			    bestLap1 = bestLap2 = 99999;
+			}
+			else {
+			    bestLap1 = myObj["bestLap1"];
+			    bestLap2 = myObj["bestLap2"];
+			}
 		}
 
 		// Converts from degrees to radians.

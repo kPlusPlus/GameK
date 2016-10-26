@@ -1,0 +1,25 @@
+Microsoft Windows [Version 10.0.10586]
+(c) 2015 Microsoft Corporation. All rights reserved.
+
+E:\GameK\priprema>php php_mssql_backup.php
+
+Fatal error: Call to undefined function mssql_connect() in E:\GameK\priprema\php
+_mssql_backup.php on line 53
+
+E:\GameK\priprema>php php_mssql_backup.php
+
+Warning: PHP Startup: Unable to load dynamic library 'C:\Program Files (x86)\PHP
+\v5.6\ext\php_pdo_sqlsrv_56_ts.dll' - The specified module could not be found.
+ in Unknown on line 0
+
+Warning: PHP Startup: Unable to load dynamic library 'C:\Program Files (x86)\PHP
+\v5.6\ext\php_sqlsrv_56_ts.dll' - The specified module could not be found.
+ in Unknown on line 0
+
+Fatal error: Call to undefined function mssql_connect() in E:\GameK\priprema\php
+_mssql_backup.php on line 53
+
+E:\GameK\priprema>
+
+
+php php_mssql_backup.php output.sql
