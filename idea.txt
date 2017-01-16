@@ -1,0 +1,14 @@
+idea
+
+
+booble eater
+
+kao u biljaru sa bijelom kuglom gadjamo
+po površini ima kugla 
+	žute, zelene, plave koje jedemo
+	crvene odbijamo se od njih i oduzimaju 1 život
+	crne samo se odbijamo od njih
+
+igra se sve dok ne pojedemo sve jestive ili dok protivnik ne ostane
+bez životnih bodova
+
