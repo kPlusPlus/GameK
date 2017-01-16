@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<!--k++ 16/01/2017  boobler game -->
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+    <meta charset="utf-8" />
+    <title>kBooble 0.01</title>
+
+    <script type="text/javascript" src="js/phaser.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js" async></script>
+    <link href="https://fonts.googleapis.com/css?family=Revalia" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Lato|Merriweather|Open+Sans|Raleway|Roboto" rel="stylesheet"> 
+
+    <style type="text/css">
+        body {
+            margin: 0;
+            font-weight: 100;
+            font-family: 'Lato';
+        }
+/*
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Raleway', sans-serif;
+    font-family: 'Merriweather', serif;
+    font-family: 'Lato', sans-serif;
+    font-family: 'Roboto', sans-serif;
+*/
+    .score_line
+    {
+        font-family: 'Merriweather', serif;
+        text-align: center;
+        color: yellow;
+    }
+
+    </style>
+</head>
+<body>
+
+    <script type="text/javascript">
+        var gWidth = 800;
+        var gHeight = 600;
+
+        var game = new Phaser.Game(gWidth, gHeight, Phaser.CANVAS, 'booble double', { preload: preload, create: create, update: update, render: render });
+
+        function preload() {
+            game.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js');
+            
+        }
+
+        var player1;
+        var player2;
+
+        var cursors;
+        var key2;
+
+        var result = 'Move with the cursors';
+        var score1 = 0;
+        var score2 = 0;
+        var scoreText;
+        var maxScore = 100;
+        var angle;
+
+        function create() {
+
+            game.scale.setMaximum();
+            //game.scale.setScreenSize(true);
+            resizeGame();
+
+            //  Enable p2 physics
+            game.physics.startSystem(Phaser.Physics.P2JS);
+            game.stage.backgroundColor = "#FF8C00";
+
+            game.physics.p2.restitution = 1;
+            game.physics.p2.gravity = 0.25;
+
+
+            player1 = game.add.sprite(0 + 100, game.world.height / 2 + 100, 'player1');
+            player2 = game.add.sprite(0 + 50, game.world.height / 2 + 100, 'player2');
+        };
+
+        function startRace() {
+            loadData();
+            InitVal();
+            ShowResult();
+        }
+
+        function update() {
+
+
+        }
+
+        function InitVal() {
+            score1 = 0;
+            score2 = 0;   
+        }
+        function GameOver() {
+            if (score1 >= maxScore) {
+                save();
+                //confirm("Press a button!");
+                window.location.href = "GameOver.html" + "?score1=" + score1 + "&score2=" + score2;
+            }
+            if (score2 >= maxScore) {
+                save();
+                window.location.href = "GameOver.html" + "?score1=" + score1 + "&score2=" + score2;
+            }
+        }
+
+        function checkOverlap(spriteA, spriteB) {
+
+            var boundsA = spriteA.getBounds();
+            var boundsB = spriteB.getBounds();
+
+            return Phaser.Rectangle.intersects(boundsA, boundsB);
+        }
+
+        function ShowResult() {
+            scoreText.text = 'Scores: ' + score1 + ' : ' + score2 ;
+        }
+
+        function render() {
+            // empty functions
+        }
+
+
+        var resizeGame = this._fitScreen = function () {
+            game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+            game.scale.pageAlignHorizontally = true;
+            game.scale.pageAlignVertically = true;
+            game.scale.forceOrientation(true, true);
+            game.scale.setShowAll();
+            game.scale.refresh();
+        }
+
+        var saveObjects = {
+            score1,
+            score2,
+        };
+
+        function save() {
+            //alert( JSON.stringify(saveObjects) );
+            beforeSave();
+            localStorage.setItem("save", JSON.stringify(saveObjects));
+            alert("Save Result");
+        }
+
+        function beforeSave() {
+            saveObjects.score1 = score1;
+            saveObjects.score2 = score2;
+            //saveObjects.bestLap1 = bestLap1;
+            //saveObjects.bestLap2 = bestLap2;
+        }
+
+        function loadData() {
+            var myObj = JSON.parse(localStorage.getItem("save"));
+            //bestLap1 = myObj["bestLap1"];
+            //bestLap2 = myObj["bestLap2"];
+        }
+
+        // Converts from degrees to radians.
+        Math.radians = function (degrees) {
+            return degrees * Math.PI / 180;
+        };
+
+        // Converts from radians to degrees.
+        Math.degrees = function (radians) {
+            return radians * 180 / Math.PI;
+        };
+
+    </script>
+
+</body>
+</html>

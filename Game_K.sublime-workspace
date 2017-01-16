@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"text",
+				"text-align"
+			],
+			[
 				"sh",
 				"shape1"
 			],
@@ -63,6 +67,25 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "idea.txt",
+			"settings":
+			{
+				"buffer_size": 286,
+				"encoding": "UTF-8",
+				"line_ending": "Windows",
+				"name": "idea"
+			}
+		},
+		{
+			"file": "kBooble.html",
+			"settings":
+			{
+				"buffer_size": 4736,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -104,17 +127,19 @@
 	},
 	"expanded_folders":
 	[
-		"/E/GameK/WEB"
+		"/E/GameK"
 	],
 	"file_history":
 	[
+		"/E/GameK/car1.html",
+		"/E/GameK/test.html",
+		"/E/GameK/sample.html",
 		"/E/WebApplication1/Views/Account/_ExternalLoginsListPartial.cshtml",
 		"/E/GameK/Templates/GK.dwt - Copy.php",
 		"/E/GameK/WEB/index.html",
 		"/E/GameK/WEB/assets/js/util.js",
 		"/E/Sublime Text Build 3114 x64/Data/Packages/Package Control/Package Control.sublime-settings",
 		"/E/GameK/car1mp.html",
-		"/E/GameK/sample.html",
 		"/E/LaraVel/LaraBara/backup.php",
 		"/E/LaraVel/pok.php",
 		"/E/LaraVel/LaraBara/.env",
@@ -130,7 +155,6 @@
 		"/E/LaraVel/LaraBara/app/Http/Middleware/SecondMiddleware.php",
 		"/E/LaraVel/LaraBara/app/Http/Controllers/UserController.php",
 		"/E/LaraVel/LaraBara/app/Http/Kernel.php",
-		"/E/GameK/car1.html",
 		"/E/LaraVel/LaraBara/app/Http/Controllers/ABCController.php",
 		"/E/LaraVel/LaraBara/app/Http/Controllers/TestController.php",
 		"/E/LaraVel/LaraBara/app/Http/Middleware/TerminateMiddleware.php",
@@ -179,8 +203,70 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "idea.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 286,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								286,
+								286
+							]
+						],
+						"settings":
+						{
+							"auto_name": "idea",
+							"incomplete_sync": null,
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "kBooble.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4736,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3339,
+								3339
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1530.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
