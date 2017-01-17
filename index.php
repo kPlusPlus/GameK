@@ -66,7 +66,7 @@
 									<span class="image">
 										<img src="images/pic01.jpg" alt="" />
 									</span>
-									<a href="generic.html">
+									<a href="develop.html">
 									<h2>TEST page</h2>
 									<div class="content">
 											<p>Simple test page</p>
