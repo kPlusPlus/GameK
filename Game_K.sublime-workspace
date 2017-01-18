@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"ba",
+				"balloonP"
+			],
+			[
 				"text",
 				"text-align"
 			],
@@ -68,21 +72,21 @@
 	"buffers":
 	[
 		{
-			"file": "idea.txt",
-			"settings":
-			{
-				"buffer_size": 286,
-				"encoding": "UTF-8",
-				"line_ending": "Windows",
-				"name": "idea"
-			}
-		},
-		{
 			"file": "kBooble.html",
 			"settings":
 			{
-				"buffer_size": 0,
+				"buffer_size": 6942,
+				"encoding": "UTF-8 with BOM",
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "car1mp.html",
+			"settings":
+			{
+				"buffer_size": 10805,
+				"encoding": "UTF-8 with BOM",
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -126,10 +130,16 @@
 	},
 	"expanded_folders":
 	[
-		"/E/GameK"
+		"/E/GameK",
+		"/E/GameK/test"
 	],
 	"file_history":
 	[
+		"/E/GameK/test/p1Read.php",
+		"/E/GameK/test/phpfile1.php",
+		"/E/GameK/index.php",
+		"/E/GameK/develop.html",
+		"/E/GameK/idea.txt",
 		"/E/GameK/car1.html",
 		"/E/GameK/test.html",
 		"/E/GameK/sample.html",
@@ -184,6 +194,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"scoreText",
 			"});"
 		],
 		"highlight": true,
@@ -202,54 +213,24 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "idea.txt",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 286,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								286,
-								286
-							]
-						],
-						"settings":
-						{
-							"auto_name": "idea",
-							"incomplete_sync": null,
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
 					"file": "kBooble.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 0,
+						"buffer_size": 6942,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								3248,
+								3248
 							]
 						],
 						"settings":
@@ -260,10 +241,39 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1681.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "car1mp.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10805,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5405,
+								5405
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"syntax": "Packages/HTML/HTML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 3160.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -350,7 +360,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 250.0,
+	"side_bar_width": 205.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

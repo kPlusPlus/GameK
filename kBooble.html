@@ -12,23 +12,23 @@
     <link href="https://fonts.googleapis.com/css?family=Lato|Merriweather|Open+Sans|Raleway|Roboto" rel="stylesheet">
 
     <style type="text/css">
-                body {
-                    margin: 0;
-                    font-weight: 100;
-                    font-family: 'Lato';
-                }
-                /*
+        body {
+            margin: 0;
+            font-weight: 100;
+            font-family: 'Lato';
+        }
+        /*
             font-family: 'Open Sans', sans-serif;
             font-family: 'Raleway', sans-serif;
             font-family: 'Merriweather', serif;
             font-family: 'Lato', sans-serif;
             font-family: 'Roboto', sans-serif;
         */
-                .score_line {
-                    font-family: 'Merriweather', serif;
-                    text-align: center;
-                    color: yellow;
-                }
+        .score_line {
+            font-family: 'Merriweather', serif;
+            text-align: center;
+            color: yellow;
+        }
     </style>
 </head>
 <body>
@@ -41,6 +41,7 @@
 
         function preload() {
             game.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js');
+            game.load.physics('physicsData', 'booble/physicsData.json');
             game.load.image('player1', 'booble/pinP1.png');
             game.load.image('player2', 'booble/pinP2.png');
             game.load.image('balloonN1', 'booble/balloonN1.png');
@@ -64,11 +65,12 @@
         var scoreText;
         var maxScore = 100;
         var angle;
-        balloonP = 5;
-        balloonN = 3;
+        balloonP = 2;
+        balloonN = 2;
         var bP;
         var bN;
         var balontip = 0;
+
 
         function create() {
 
@@ -84,13 +86,55 @@
             game.physics.p2.gravity = 0.25;
 
 
-            player1 = game.add.sprite(0 + 100, game.world.height / 2 + 100, 'player1');
-            player2 = game.add.sprite(0 + 50, game.world.height / 2 + 100, 'player2');
+            player1 = game.add.sprite(0 + 20, game.world.height / 2 + 100, 'player1');
+            player2 = game.add.sprite(0 + 20, game.world.height / 2 + 180, 'player2');
+            generateBalloon();
+
+            //  Enable the physics bodies on all the sprites
+            game.physics.p2.enable([player1, player2, bN, bP], false);
+            game.physics.p2.world.defaultContactMaterial.friction = 0.3;
+
+            //  The following just loads the polygon data into the objects
+            player1.body.clearShapes();
+            player1.body.loadPolygon('physicsData', 'pin');
+            player1.body.setZeroVelocity();
+
+            bP.body.clearShapes();
+            bP.body.loadPolygon('physicsData', 'balloon')
+            bP.body.setZeroVelocity();
+            bP.body.static = true;
+
+            bN.body.clearShapes();
+            bN.body.loadPolygon('physicsData', 'balloon')
+            bN.body.setZeroVelocity();
+            bN.body.static = true;
+
+            gamerMaterial = game.physics.p2.createMaterial('gamerMaterial');
+            player1.body.setMaterial(gamerMaterial);
+            player2.body.setMaterial(gamerMaterial);
+            player1.body.mass = 1;
+            player2.body.mass = 1;
+            player1.anchor.setTo(0.5, 0.5);
+            player2.anchor.setTo(0.5, 0.5);
+            var worldMaterial = game.physics.p2.createMaterial('worldMaterial');
+            game.physics.p2.setWorldMaterial(worldMaterial, true, true, true, true);
+            var contactMaterial = game.physics.p2.createContactMaterial(gamerMaterial, worldMaterial);
+
+            cursors = game.input.keyboard.createCursorKeys();
+            key2 = {
+                up: game.input.keyboard.addKey(Phaser.Keyboard.W),
+                down: game.input.keyboard.addKey(Phaser.Keyboard.S),
+                left: game.input.keyboard.addKey(Phaser.Keyboard.A),
+                right: game.input.keyboard.addKey(Phaser.Keyboard.D),
+            };
+
+            //  Check for the block hitting another object
+            player1.body.onBeginContact.add(blockHit, this);
 
             scoreText = game.add.text(16, 60, 'Score : ' + score1 + ' : 0',
                 { font: 'Merriweather', fontSize: '12px', fill: '#FFF' });
 
-            generateBalloon();
+
         }
 
         function generateBalloon() {
@@ -98,26 +142,28 @@
             var x = 0;
             var y = 0;
 
+            bP = game.add.group();
+
             for (i = 0; i < balloonP; i++) {
-                x = Math.floor((Math.random() * gWidth));
-                y = Math.floor((Math.random() * gHeight));
-                
+                x = Math.floor((Math.random() * gWidth * 0.95));
+                y = Math.floor((Math.random() * gHeight * 0.95));
+
                 balontip = Math.floor((Math.random() * 3));
                 //alert(balontip);
                 if (balontip == 1)
-                    bP = game.add.sprite(x, y, 'balloonP1');
+                    bP = bP.create(x, y, 'balloonP1');
                 else if (balontip == 2)
-                    bP = game.add.sprite(x, y, 'balloonP2');
+                    bP = bP.create(x, y, 'balloonP2');
                 else if (balontip == 3)
-                    bP = game.add.sprite(x, y, 'balloonP3');
+                    bP = bP.create(x, y, 'balloonP3');
                 else
-                    bP = game.add.sprite(x, y, 'balloonP1');
+                    bP = bP.create(x, y, 'balloonP1');
 
             }
 
             for (j = 0; j < balloonN; j++) {
-                x = Math.floor((Math.random() * gWidth));
-                y = Math.floor((Math.random() * gHeight));
+                x = Math.floor((Math.random() * gWidth * 0.95));
+                y = Math.floor((Math.random() * gHeight * 0.95));
 
                 balontip = Math.floor((Math.random() * 2));
                 if (balontip == 1)
@@ -130,6 +176,25 @@
 
         }
 
+        function blockHit(body, bodyB, shapeA, shapeB, equation) {
+            var nameBalloon;
+            if (body) {
+                nameBalloon = body.sprite.key;
+                //alert("ave maria" + body.sprite.key);
+                alert(body.sprite);
+
+                if (nameBalloon.indexOf("balloon") == 0) {
+                    if (nameBalloon.indexOf("balloonP") == 0)
+                        score1 = score1 + 1;
+                    else
+                        life1 = life1 - 1;
+                    
+                    body.sprite.body = null;
+                    //body.sprite.destroy(true);
+                }
+            }
+        }
+
         function startRace() {
             loadData();
             InitVal();
@@ -137,8 +202,14 @@
         }
 
         function update() {
+            if (cursors.left.isDown)
+            { player1.body.rotateLeft(100); }   //car movement
+            else if (cursors.right.isDown) { player1.body.rotateRight(100); }
+            else { player1.body.setZeroRotation(); }
+            if (cursors.up.isDown) { player1.body.thrust(100); }
+            else if (cursors.down.isDown) { player1.body.reverse(100); }
 
-
+            ShowResult();
         }
 
         function InitVal() {
@@ -166,7 +237,7 @@
         }
 
         function ShowResult() {
-            scoreText.text = 'Scores: ' + score1 + ' : ' + score2;
+            scoreText.text = 'Scores: ' + score1 + ' : ' + score2 + " LIFE:" + life1 + " " + life2;
         }
 
         function render() {
@@ -186,6 +257,8 @@
         var saveObjects = {
             score1,
             score2,
+            life1,
+            life2
         };
 
         function save() {
@@ -198,8 +271,8 @@
         function beforeSave() {
             saveObjects.score1 = score1;
             saveObjects.score2 = score2;
-            //saveObjects.bestLap1 = bestLap1;
-            //saveObjects.bestLap2 = bestLap2;
+            saveObjects.bestLap1 = life1;
+            saveObjects.bestLap2 = life2;
         }
 
         function loadData() {
