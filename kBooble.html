@@ -65,8 +65,9 @@
         var scoreText;
         var maxScore = 100;
         var angle;
-        balloonP = 2;
-        balloonN = 2;
+        var balloonP = 3;
+        var balloonN = 3;
+        var activeBalloons;
         var balloons;
         var bP;
         var bN;
@@ -95,8 +96,8 @@
             game.physics.p2.enable([player1, player2, bN, bP], false);
             game.physics.p2.world.defaultContactMaterial.friction = 0.3;
 
-            playerCollisionGroup = game.physics.p2.createCollisionGroup(balloons);
-            ballonCollisionGroup = game.physics.p2.createCollisionGroup(player1);
+            playerCollisionGroup = game.physics.p2.createCollisionGroup(player1);
+            ballonCollisionGroup = game.physics.p2.createCollisionGroup(balloons);
             game.physics.p2.updateBoundsCollisionGroup();
 
             //  The following just loads the polygon data into the objects
@@ -105,17 +106,6 @@
             player1.body.setZeroVelocity();
 
             balloonSet();
-            /*
-            bP.body.clearShapes();
-            bP.body.loadPolygon('physicsData', 'balloon')
-            bP.body.setZeroVelocity();
-            bP.body.static = true;
-            
-            bN.body.clearShapes();
-            bN.body.loadPolygon('physicsData', 'balloon')
-            bN.body.setZeroVelocity();
-            bN.body.static = true;
-            */
 
             gamerMaterial = game.physics.p2.createMaterial('gamerMaterial');
             player1.body.setMaterial(gamerMaterial);
@@ -137,7 +127,7 @@
             };
 
             //  Check for the block hitting another object
-            // player1.body.onBeginContact.add(blockHit, this);
+            player1.body.onBeginContact.add(blockHit, this);
 
             scoreText = game.add.text(16, 60, 'Score : ' + score1 + ' : 0',
                 { font: 'Merriweather', fontSize: '12px', fill: '#FFF' });
@@ -146,8 +136,7 @@
 
         function balloonSet() {
 
-            for (i = 0; i < balloons.children.length; i++)
-            {
+            for (i = 0; i < balloons.children.length; i++) {
                 balloons.children[i].body.clearShapes();
                 balloons.children[i].body.loadPolygon('physicsData', 'balloon')
                 balloons.children[i].body.setZeroVelocity();
@@ -194,23 +183,29 @@
                     bN = game.add.sprite(x, y, 'balloonN1');
                 balloons.add(bN);
             }
-            
+            activeBalloons = balloonP;
         }
         function blockHit(body, bodyB, shapeA, shapeB, equation) {
             var nameBalloon;
             if (body) {
                 nameBalloon = body.sprite.key;
-                //alert("ave maria" + body.sprite.key);
-                alert(nameBalloon);
 
                 if (nameBalloon.indexOf("balloon") == 0) {
                     if (nameBalloon.indexOf("balloonP") == 0)
                         score1 = score1 + 1;
                     else
                         life1 = life1 - 1;
-                    
-                    //body.sprite.body = null;
-                    //body.sprite.destroy(true);
+                    for (i = 0; i < balloons.children.length; i++) {
+                        if (balloons.children[i].body.x == body.x)
+                            if (balloons.children[i].body.y == body.y) {
+                                balloons.children[i].body.x = gWidth * 2;
+                                balloons.children[i].body.y = gHeight * 2;
+                                if (nameBalloon.indexOf("balloonP") == 0)
+                                    activeBalloons = activeBalloons - 1;
+                                if (activeBalloons == 0)
+                                    GameOver();
+                            }
+                    }
                 }
             }
         }
@@ -257,7 +252,7 @@
         }
 
         function ShowResult() {
-            scoreText.text = 'Scores: ' + score1 + ' : ' + score2 + " LIFE:" + life1 + " " + life2;
+            scoreText.text = 'Scores: ' + score1 + ' : ' + score2 + " LIFE:" + life1 + " " + life2 + " balloons " + activeBalloons;
         }
 
         function render() {
