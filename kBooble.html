@@ -67,10 +67,12 @@
         var angle;
         balloonP = 2;
         balloonN = 2;
+        var balloons;
         var bP;
         var bN;
         var balontip = 0;
-
+        var playerCollisionGroup;
+        var ballonCollisionGroup;
 
         function create() {
 
@@ -85,7 +87,6 @@
             game.physics.p2.restitution = 1;
             game.physics.p2.gravity = 0.25;
 
-
             player1 = game.add.sprite(0 + 20, game.world.height / 2 + 100, 'player1');
             player2 = game.add.sprite(0 + 20, game.world.height / 2 + 180, 'player2');
             generateBalloon();
@@ -93,6 +94,10 @@
             //  Enable the physics bodies on all the sprites
             game.physics.p2.enable([player1, player2, bN, bP], false);
             game.physics.p2.world.defaultContactMaterial.friction = 0.3;
+
+            playerCollisionGroup = game.physics.p2.createCollisionGroup();
+            ballonCollisionGroup = game.physics.p2.createCollisionGroup();
+            game.physics.p2.updateBoundsCollisionGroup();
 
             //  The following just loads the polygon data into the objects
             player1.body.clearShapes();
@@ -104,11 +109,12 @@
             bP.body.setZeroVelocity();
             bP.body.static = true;
 
+            
             bN.body.clearShapes();
             bN.body.loadPolygon('physicsData', 'balloon')
             bN.body.setZeroVelocity();
             bN.body.static = true;
-
+            
             gamerMaterial = game.physics.p2.createMaterial('gamerMaterial');
             player1.body.setMaterial(gamerMaterial);
             player2.body.setMaterial(gamerMaterial);
@@ -129,11 +135,10 @@
             };
 
             //  Check for the block hitting another object
-            player1.body.onBeginContact.add(blockHit, this);
+            // player1.body.onBeginContact.add(blockHit, this);
 
             scoreText = game.add.text(16, 60, 'Score : ' + score1 + ' : 0',
                 { font: 'Merriweather', fontSize: '12px', fill: '#FFF' });
-
 
         }
 
@@ -142,28 +147,28 @@
             var x = 0;
             var y = 0;
 
-            bP = game.add.group();
+            balloons = game.add.group();
 
             for (i = 0; i < balloonP; i++) {
-                x = Math.floor((Math.random() * gWidth * 0.95));
-                y = Math.floor((Math.random() * gHeight * 0.95));
+                x = Math.floor((Math.random() * gWidth));
+                y = Math.floor((Math.random() * gHeight));
 
                 balontip = Math.floor((Math.random() * 3));
                 //alert(balontip);
                 if (balontip == 1)
-                    bP = bP.create(x, y, 'balloonP1');
+                    bP = game.add.sprite(x, y, 'balloonP1');
                 else if (balontip == 2)
-                    bP = bP.create(x, y, 'balloonP2');
+                    bP = game.add.sprite(x, y, 'balloonP2');
                 else if (balontip == 3)
-                    bP = bP.create(x, y, 'balloonP3');
+                    bP = game.add.sprite(x, y, 'balloonP3');
                 else
-                    bP = bP.create(x, y, 'balloonP1');
-
+                    bP = game.add.sprite(x, y, 'balloonP1');
+                balloons.add(bP);
             }
 
             for (j = 0; j < balloonN; j++) {
-                x = Math.floor((Math.random() * gWidth * 0.95));
-                y = Math.floor((Math.random() * gHeight * 0.95));
+                x = Math.floor((Math.random() * gWidth));
+                y = Math.floor((Math.random() * gHeight));
 
                 balontip = Math.floor((Math.random() * 2));
                 if (balontip == 1)
@@ -172,16 +177,16 @@
                     bN = game.add.sprite(x, y, 'balloonN2');
                 else
                     bN = game.add.sprite(x, y, 'balloonN1');
+                balloons.add(bN);
             }
 
         }
-
         function blockHit(body, bodyB, shapeA, shapeB, equation) {
             var nameBalloon;
             if (body) {
                 nameBalloon = body.sprite.key;
                 //alert("ave maria" + body.sprite.key);
-                alert(body.sprite);
+                alert(nameBalloon);
 
                 if (nameBalloon.indexOf("balloon") == 0) {
                     if (nameBalloon.indexOf("balloonP") == 0)
@@ -189,7 +194,7 @@
                     else
                         life1 = life1 - 1;
                     
-                    body.sprite.body = null;
+                    //body.sprite.body = null;
                     //body.sprite.destroy(true);
                 }
             }
