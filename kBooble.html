@@ -63,7 +63,7 @@
         var life1 = 10;
         var life2 = 10;
         var scoreText;
-        var maxScore = 100;
+        var maxScore = 0;
         var angle;
         var balloonP = 3;
         var balloonN = 3;
@@ -202,7 +202,7 @@
                                 balloons.children[i].body.y = gHeight * 2;
                                 if (nameBalloon.indexOf("balloonP") == 0)
                                     activeBalloons = activeBalloons - 1;
-                                if (activeBalloons == 0)
+                                if (activeBalloons < 1)
                                     GameOver();
                             }
                     }
