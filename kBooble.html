@@ -71,6 +71,7 @@
         var balloons;
         var bP;
         var bN;
+        var bb = new Array();
         var balontip = 0;
         var playerCollisionGroup;
         var ballonCollisionGroup;
@@ -167,6 +168,7 @@
                 else
                     bP = game.add.sprite(x, y, 'balloonP1');
                 balloons.add(bP);
+                bb.push(1);
             }
 
             for (j = 0; j < balloonN; j++) {
@@ -181,8 +183,9 @@
                 else
                     bN = game.add.sprite(x, y, 'balloonN1');
                 balloons.add(bN);
+                bb.push(1);
             }
-            activeBalloons = balloonP;
+            activeBalloons = balloonP;            
         }
 
         function blockHit(body, bodyB, shapeA, shapeB, equation) {
@@ -192,18 +195,19 @@
                 nameBalloon = body.sprite.key;
 
                 if (nameBalloon.indexOf("balloon") == 0) {
-                    if (nameBalloon.indexOf("balloonP") == 0)
-                        score1 = score1 + 1;
-                    else
-                        life1 = life1 - 1;
+
                     for (i = 0; i < balloons.children.length; i++) {
                         if (balloons.children[i].body.x == body.x)
-                            if (balloons.children[i].body.y == body.y) {
+                            if (balloons.children[i].body.y == body.y && (bb[i] == 1)) {
+                                if (nameBalloon.indexOf("balloonP") == 0)
+                                    score1 = score1 + 1;
+                                else
+                                    life1 = life1 - 1;
                                 balloons.children[i].body.x = gWidth * 2;
                                 balloons.children[i].body.y = gHeight * 2;
-                                
+                                bb[i] = 0;
                                 if (nameBalloon.indexOf("balloonP") == 0) {                                    
-                                    if (activeBalloons < 0)
+                                    if (activeBalloons <= 0)
                                         GameOver();
                                     activeBalloons = activeBalloons - 1;
                                 }
