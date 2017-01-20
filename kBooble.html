@@ -7,7 +7,7 @@
     <title>kBooble 0.01</title>
 
     <script type="text/javascript" src="js/phaser.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js" async></script>
+    <script src="js/webfont.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Revalia" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato|Merriweather|Open+Sans|Raleway|Roboto" rel="stylesheet">
 
@@ -34,14 +34,15 @@
 <body>
 
     <script type="text/javascript">
-        var gWidth = 800;
-        var gHeight = 600;
+        var gWidth = window.innerWidth; // 800;
+        var gHeight = window.innerHeight; // 600 ;
 
         var game = new Phaser.Game(gWidth, gHeight, Phaser.CANVAS, 'booble double', { preload: preload, create: create, update: update, render: render });
 
         function preload() {
-            game.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js');
+            game.load.script('webfont', 'js/webfont.js');
             game.load.physics('physicsData', 'booble/physicsData.json');
+            game.load.physics('physicsDataBorder', 'booble/physicsDataBorder.json')
             game.load.image('player1', 'booble/pinP1.png');
             game.load.image('player2', 'booble/pinP2.png');
             game.load.image('balloonN1', 'booble/balloonN1.png');
@@ -49,11 +50,17 @@
             game.load.image('balloonP1', 'booble/balloonP1.png');
             game.load.image('balloonP2', 'booble/balloonP2.png');
             game.load.image('balloonP3', 'booble/balloonP3.png');
+            //game.load.image('ground', 'booble/platform.png');
+            //game.load.image('groundVer', 'booble/platformVer.png');
+            game.load.image('groundLeft', 'booble/platformLeft.png');
+            game.load.image('groundRight', 'booble/platformRight.png');
+            game.load.image('groundDown', 'booble/platformDown.png');
+            game.load.image('groundUp', 'booble/platformUp.png');
         }
 
         var player1;
         var player2;
-
+        var platforms;
         var cursors;
         var key2;
 
@@ -62,6 +69,8 @@
         var score2 = 0;
         var life1 = 10;
         var life2 = 10;
+        var timer1 = 0;
+        var timer2 = 0;
         var scoreText;
         var maxScore = 0;
         var angle;
@@ -75,11 +84,12 @@
         var balontip = 0;
         var playerCollisionGroup;
         var ballonCollisionGroup;
+        var platformCollisionGroup;
+        var csumHor, csumVer;
 
         function create() {
 
             game.scale.setMaximum();
-            //game.scale.setScreenSize(true);
             resizeGame();
 
             //  Enable p2 physics
@@ -91,21 +101,30 @@
 
             player1 = game.add.sprite(0 + 20, game.world.height / 2 + 100, 'player1');
             player2 = game.add.sprite(0 + 20, game.world.height / 2 + 180, 'player2');
+
+            platforms = game.add.group();
+            platforms.enableBody = true;
+            platforms.physicsBodyType = Phaser.Physics.P2JS
+
             generateBalloon();
+            generateBorder();
 
             //  Enable the physics bodies on all the sprites
-            game.physics.p2.enable([player1, player2, bN, bP], false);
+            game.physics.p2.enable([player1, player2, bN, bP, platforms], false);
             game.physics.p2.world.defaultContactMaterial.friction = 0.3;
 
             playerCollisionGroup = game.physics.p2.createCollisionGroup(player1);
             ballonCollisionGroup = game.physics.p2.createCollisionGroup(balloons);
+            platformCollisionGroup = game.physics.p2.createCollisionGroup(platforms);
             game.physics.p2.updateBoundsCollisionGroup();
 
             //  The following just loads the polygon data into the objects
             player1.body.clearShapes();
             player1.body.loadPolygon('physicsData', 'pin');
             player1.body.setZeroVelocity();
+            player1.body.collideWorldBounds = true;
 
+            player2.visible = false;
             balloonSet();
 
             gamerMaterial = game.physics.p2.createMaterial('gamerMaterial');
@@ -142,20 +161,30 @@
                 balloons.children[i].body.setZeroVelocity();
                 balloons.children[i].body.static = true;
             }
+            for (i = 0; i < platforms.children.length; i++) {
+                platforms.children[i].body.clearShapes();
+                if (i < (csumHor * 2))
+                    platforms.children[i].body.loadPolygon('physicsDataBorder', 'platform')
+                else
+                    platforms.children[i].body.loadPolygon('physicsDataBorder', 'platformVer')
+                platforms.children[i].body.setZeroVelocity();
+                platforms.children[i].body.static = true;
+            }
         }
 
         function generateBalloon() {
 
             var x = 0;
             var y = 0;
+            var rasp = 0.80;
 
             balloons = game.add.group();
             balloons.enableBody = true;
             balloons.physicsBodyType = Phaser.Physics.P2JS;
 
             for (i = 0; i < balloonP; i++) {
-                x = Math.floor((Math.random() * gWidth));
-                y = Math.floor((Math.random() * gHeight));
+                x = Math.round((Math.random() * gWidth * rasp + 100));
+                y = Math.round((Math.random() * gHeight * rasp + 100));
 
                 balontip = Math.round((Math.random() * 3));
                 //alert(balontip);
@@ -172,8 +201,8 @@
             }
 
             for (j = 0; j < balloonN; j++) {
-                x = Math.floor((Math.random() * gWidth));
-                y = Math.floor((Math.random() * gHeight));
+                x = Math.round((Math.random() * gWidth) * rasp + 100);
+                y = Math.round((Math.random() * gHeight) * rasp + 100);
 
                 balontip = Math.floor((Math.random() * 2));
                 if (balontip == 1)
@@ -185,12 +214,32 @@
                 balloons.add(bN);
                 bb.push(1);
             }
-            activeBalloons = balloonP;            
+            activeBalloons = balloonP;
+        }
+
+        function generateBorder() {
+            var ledge;
+            var x, y;
+            csumHor = Math.ceil(gWidth / 400);
+            for (i = 0; i < csumHor; i++) {
+                ledge = game.add.sprite(000 + 400 * i, 000 - 10, 'groundDown');
+                platforms.add(ledge);
+                ledge = game.add.sprite(000 + 400 * i, gHeight + 10, 'groundUp');
+                platforms.add(ledge);
+            }
+            csumVer = Math.ceil(gHeight / 300);
+            for (i = 0; i < csumVer; i++) {
+                ledge = game.add.sprite(000 - 10, 000 + 400 * i, 'groundLeft');
+                platforms.add(ledge);
+                ledge = game.add.sprite(gWidth + 10, 000 + 400 * i, 'groundRight');
+                platforms.add(ledge);
+            }
+
         }
 
         function blockHit(body, bodyB, shapeA, shapeB, equation) {
             var nameBalloon;
-            
+
             if (body) {
                 nameBalloon = body.sprite.key;
 
@@ -203,13 +252,14 @@
                                     score1 = score1 + 1;
                                 else
                                     life1 = life1 - 1;
+                                balloons.children[i].visible = false;
                                 balloons.children[i].body.x = gWidth * 2;
                                 balloons.children[i].body.y = gHeight * 2;
                                 bb[i] = 0;
-                                if (nameBalloon.indexOf("balloonP") == 0) {                                    
-                                    if (activeBalloons <= 0)
-                                        GameOver();
+                                if (nameBalloon.indexOf("balloonP") == 0) {
                                     activeBalloons = activeBalloons - 1;
+                                    if (activeBalloons == 0)
+                                        GameOver();
                                 }
                             }
                     }
@@ -224,6 +274,7 @@
         }
 
         function update() {
+
             if (cursors.left.isDown)
             { player1.body.rotateLeft(100); }   //car movement
             else if (cursors.right.isDown) { player1.body.rotateRight(100); }
@@ -266,7 +317,6 @@
         function render() {
             // empty functions
         }
-
 
         var resizeGame = this._fitScreen = function () {
             game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;

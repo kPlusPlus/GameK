@@ -1,0 +1,30 @@
+{ 
+    
+    "platform": [
+        
+        {
+            "density": 2, "friction": 0, "bounce": 0, 
+            "filter": { "categoryBits": 1, "maskBits": 65535 },
+            "shape": [   2, -0.5  ,  399.5, 31  ,  0, 31.5  ,  -0.5, 0  ,  1, -0.5  ]
+        } ,
+        {
+            "density": 2, "friction": 0, "bounce": 0, 
+            "filter": { "categoryBits": 1, "maskBits": 65535 },
+            "shape": [   399.5, 31  ,  2, -0.5  ,  399, -0.5  ]
+        }
+    ]
+    , 
+    "platformVer": [
+        
+        {
+            "density": 2, "friction": 0, "bounce": 0, 
+            "filter": { "categoryBits": 1, "maskBits": 65535 },
+            "shape": [   31.5, 0  ,  -0.5, 399  ,  -0.5, 0  ,  1, -0.5  ]
+        } ,
+        {
+            "density": 2, "friction": 0, "bounce": 0, 
+            "filter": { "categoryBits": 1, "maskBits": 65535 },
+            "shape": [   -0.5, 399  ,  31.5, 0  ,  31, 399.5  ]
+        }
+    ]
+}
