@@ -65,7 +65,7 @@
         var scoreText;
         var maxScore = 0;
         var angle;
-        var balloonP = 3;
+        var balloonP = 5;
         var balloonN = 3;
         var activeBalloons;
         var balloons;
@@ -135,7 +135,6 @@
         }
 
         function balloonSet() {
-
             for (i = 0; i < balloons.children.length; i++) {
                 balloons.children[i].body.clearShapes();
                 balloons.children[i].body.loadPolygon('physicsData', 'balloon')
@@ -157,7 +156,7 @@
                 x = Math.floor((Math.random() * gWidth));
                 y = Math.floor((Math.random() * gHeight));
 
-                balontip = Math.floor((Math.random() * 3));
+                balontip = Math.round((Math.random() * 3));
                 //alert(balontip);
                 if (balontip == 1)
                     bP = game.add.sprite(x, y, 'balloonP1');
@@ -185,8 +184,10 @@
             }
             activeBalloons = balloonP;
         }
+
         function blockHit(body, bodyB, shapeA, shapeB, equation) {
             var nameBalloon;
+            
             if (body) {
                 nameBalloon = body.sprite.key;
 
@@ -200,10 +201,12 @@
                             if (balloons.children[i].body.y == body.y) {
                                 balloons.children[i].body.x = gWidth * 2;
                                 balloons.children[i].body.y = gHeight * 2;
-                                if (nameBalloon.indexOf("balloonP") == 0)
+                                
+                                if (nameBalloon.indexOf("balloonP") == 0) {                                    
+                                    if (activeBalloons < 0)
+                                        GameOver();
                                     activeBalloons = activeBalloons - 1;
-                                if (activeBalloons < 1)
-                                    GameOver();
+                                }
                             }
                     }
                 }
@@ -231,15 +234,16 @@
             score1 = 0;
             score2 = 0;
         }
+
         function GameOver() {
             if (score1 >= maxScore) {
                 save();
                 //confirm("Press a button!");
-                window.location.href = "GameOver.html" + "?score1=" + score1 + "&score2=" + score2;
+                window.location.href = "GameOverBooble.html" + "?score1=" + score1 + "&score2=" + score2;
             }
             if (score2 >= maxScore) {
                 save();
-                window.location.href = "GameOver.html" + "?score1=" + score1 + "&score2=" + score2;
+                window.location.href = "GameOverBooble.html" + "?score1=" + score1 + "&score2=" + score2;
             }
         }
 
