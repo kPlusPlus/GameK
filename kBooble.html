@@ -40,7 +40,7 @@
         var game = new Phaser.Game(gWidth, gHeight, Phaser.CANVAS, 'booble double', { preload: preload, create: create, update: update, render: render });
 
         function preload() {
-            game.load.script('webfont', 'js/webfont.js');
+            //game.load.script('webfont', 'js/webfont.js');
             game.load.physics('physicsData', 'booble/physicsData.json');
             game.load.physics('physicsDataBorder', 'booble/physicsDataBorder.json')
             game.load.image('player1', 'booble/pinP1.png');
@@ -50,8 +50,6 @@
             game.load.image('balloonP1', 'booble/balloonP1.png');
             game.load.image('balloonP2', 'booble/balloonP2.png');
             game.load.image('balloonP3', 'booble/balloonP3.png');
-            //game.load.image('ground', 'booble/platform.png');
-            //game.load.image('groundVer', 'booble/platformVer.png');
             game.load.image('groundLeft', 'booble/platformLeft.png');
             game.load.image('groundRight', 'booble/platformRight.png');
             game.load.image('groundDown', 'booble/platformDown.png');
