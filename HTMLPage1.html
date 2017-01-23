@@ -6,7 +6,8 @@
     <title></title>
 </head>
 <body>
-    <script>
+    <script type="text/javascript">
+        /*
         var adminManager = new ActiveXObject('Microsoft.ApplicationHost.WritableAdminManager');
         adminManager.CommitPath = "MACHINE/WEBROOT/APPHOST";
 
@@ -14,15 +15,37 @@
         webSocketSection.Properties.Item("enabled").Value = true;
         webSocketSection.Properties.Item("receiveBufferLimit").Value = 4194304;
         webSocketSection.Properties.Item("pingInterval").Value = "00:00:10";
+        
 
         adminManager.CommitChanges();
         adminManager.mess("eee");
+        adminManager.CommitChanges();
+        */
+        var webSocket = new WebSocket("ws://echo.websocket.org", "sample");
+        webSocket.binaryType = "arraybuffer";
+        webSocket.onopen = function (e) { alert("opened"); }
+        webSocket.onclose = function (e) { alert("closed"); }
+        webSocket.onerror = function (e) { alert("error"); }
+        webSocket.onmessage = function (e) { alert("got: " + e.data); }
+        
+        function sendText() {
+            // Construct a msg object containing the data the server needs to process the message from the chat client.
+            var msg = {
+                type: "message",
+                text: document.getElementById("text").value,
+                id: 123, //clientID,
+                date: Date.now()
+            };
 
-        function sendwe(mess) {
+            // Send the msg object as a JSON-formatted string.
+            webSocket.send(JSON.stringify(msg));
 
-            WebSocket.OPEN();
+            // Blank the text input element, ready to receive the next line of text from the user.
+            document.getElementById("text").value = "";
         }
     </script>
-    <input type="button" onclick="sendwe('ave maria')" value="test" />
+    <input type="button" onclick="sendText()" value="test" />
+    <input type="text" id="text" value="test 123" />
+    <div id="holder" style="width:600px; height:300px"></div>
 </body>
 </html>
