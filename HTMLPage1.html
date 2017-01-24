@@ -16,10 +16,8 @@
         webSocketSection.Properties.Item("receiveBufferLimit").Value = 4194304;
         webSocketSection.Properties.Item("pingInterval").Value = "00:00:10";
         
-
         adminManager.CommitChanges();
-        adminManager.mess("eee");
-        adminManager.CommitChanges();
+        
         */
         var webSocket = new WebSocket("ws://echo.websocket.org", "sample");
         webSocket.binaryType = "arraybuffer";

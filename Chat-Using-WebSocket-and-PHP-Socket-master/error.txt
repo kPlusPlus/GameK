@@ -1,0 +1,5 @@
+
+Fatal error: Uncaught Error: Call to undefined function socket_create() in E:\GameK\Chat-Using-WebSocket-and-PHP-Socket-master\server.php:10
+Stack trace:
+#0 {main}
+  thrown in E:\GameK\Chat-Using-WebSocket-and-PHP-Socket-master\server.php on line 10
