@@ -5,9 +5,7 @@
 <style type="text/css">
 
 .panel{
-
-	
-margin-right: 3px;
+	margin-right: 3px;
 }
 
 .button {
@@ -22,13 +20,12 @@ margin-right: 3px;
     cursor: pointer;
 	width:30%;
     height:40px;
-	margin-top: 5px;
-	 
+	margin-top: 5px;	 
 }
+
 input[type=text]{
 		width:100%;
-		margin-top:5px;
-		
+		margin-top:5px;		
 	}
 
 
@@ -63,10 +60,12 @@ input[type=text]{
 	height: 40%;
 	}
     
-	.button{ width:100%;
+	.button{ 
+	width:100%;
 	margin-right:auto;   
 	margin-left:auto;
-	height:40px;}
+	height:40px;
+	}
 				
 }
 
@@ -77,7 +76,6 @@ input[type=text]{
 $colours = array('007AFF','FF7000','FF7000','15E25F','CFC700','CFC700','CF1100','CF00BE','F00');
 $user_colour = array_rand($colours);
 ?>
-
 
 <script src="jquery-3.1.1.js"></script>
 

@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"soc",
+				"socket_create"
+			],
+			[
 				"ba",
 				"balloonP"
 			],
@@ -75,17 +79,25 @@
 			"file": "kBooble.html",
 			"settings":
 			{
-				"buffer_size": 6942,
+				"buffer_size": 13476,
 				"encoding": "UTF-8 with BOM",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "car1mp.html",
+			"file": "car1sock.html",
 			"settings":
 			{
-				"buffer_size": 10805,
+				"buffer_size": 13616,
 				"encoding": "UTF-8 with BOM",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Chat-Using-WebSocket-and-PHP-Socket-master/server.php",
+			"settings":
+			{
+				"buffer_size": 4450,
 				"line_ending": "Unix"
 			}
 		}
@@ -130,11 +142,14 @@
 	},
 	"expanded_folders":
 	[
-		"/E/GameK",
-		"/E/GameK/test"
+		"/E/GameK"
 	],
 	"file_history":
 	[
+		"/E/GameK/Chat-Using-WebSocket-and-PHP-Socket-master/index.php",
+		"/E/GameK/car1mp.html",
+		"/E/GameK/Chat-Using-WebSocket-and-PHP-Socket-master/info.txt",
+		"/E/GameK/Chat-Using-WebSocket-and-PHP-Socket-master/server.php",
 		"/E/GameK/test/p1Read.php",
 		"/E/GameK/test/phpfile1.php",
 		"/E/GameK/index.php",
@@ -148,7 +163,6 @@
 		"/E/GameK/WEB/index.html",
 		"/E/GameK/WEB/assets/js/util.js",
 		"/E/Sublime Text Build 3114 x64/Data/Packages/Package Control/Package Control.sublime-settings",
-		"/E/GameK/car1mp.html",
 		"/E/LaraVel/LaraBara/backup.php",
 		"/E/LaraVel/pok.php",
 		"/E/LaraVel/LaraBara/.env",
@@ -180,7 +194,7 @@
 	],
 	"find":
 	{
-		"height": 27.0
+		"height": 36.0
 	},
 	"find_in_files":
 	{
@@ -194,6 +208,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"urlParam",
+			"socket",
+			"php_sockets.dll",
 			"scoreText",
 			"});"
 		],
@@ -222,15 +239,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6942,
+						"buffer_size": 13476,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3248,
-								3248
+								1096,
+								1186
 							]
 						],
 						"settings":
@@ -241,7 +258,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1681.0,
+						"translation.y": 701.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -249,31 +266,66 @@
 				},
 				{
 					"buffer": 1,
-					"file": "car1mp.html",
+					"file": "car1sock.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 10805,
+						"buffer_size": 13616,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5405,
-								5405
+								9983,
+								9983
 							]
 						],
 						"settings":
 						{
 							"incomplete_sync": null,
-							"syntax": "Packages/HTML/HTML.sublime-syntax"
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3160.0,
+						"translation.y": 6511.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "Chat-Using-WebSocket-and-PHP-Socket-master/server.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4450,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								109,
+								109
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
 					"type": "text"
 				}
 			]

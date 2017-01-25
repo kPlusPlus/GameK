@@ -1,6 +1,6 @@
 <?php
 $res = json_decode($_REQUEST['data'], true);
-$res["php_message"] = "kRace";
+//$res["php_message"] = "kRace";
 //echo json_encode($res);
 
 $myFile = 'player1.json';

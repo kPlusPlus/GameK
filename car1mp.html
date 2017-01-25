@@ -24,8 +24,8 @@
 	<script type="text/javascript">
 		// kresimir ivkovic
 		// 2016 
-		var gWidth = 800;
-		var gHeight = 600;
+		var gWidth = window.innerWidth; // 800;
+        var gHeight = window.innerHeight; // 600 ;
 
 		var game = new Phaser.Game(gWidth, gHeight, Phaser.CANVAS, 'car drive', { preload: preload, create: create, update: update, render: render });
 
