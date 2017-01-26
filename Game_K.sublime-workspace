@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"arr",
+				"array"
+			],
+			[
 				"soc",
 				"socket_create"
 			],
@@ -76,29 +80,30 @@
 	"buffers":
 	[
 		{
-			"file": "kBooble.html",
-			"settings":
-			{
-				"buffer_size": 13476,
-				"encoding": "UTF-8 with BOM",
-				"line_ending": "Windows"
-			}
-		},
-		{
 			"file": "car1sock.html",
 			"settings":
 			{
-				"buffer_size": 13616,
+				"buffer_size": 14440,
 				"encoding": "UTF-8 with BOM",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "Chat-Using-WebSocket-and-PHP-Socket-master/server.php",
+			"file": "server/server.php",
 			"settings":
 			{
-				"buffer_size": 4450,
+				"buffer_size": 4419,
+				"encoding": "UTF-8",
 				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/E/Sublime Text Build 3114 x64/Data/Packages/User/sftp_servers/hostinger_develop",
+			"settings":
+			{
+				"buffer_size": 942,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -142,14 +147,16 @@
 	},
 	"expanded_folders":
 	[
-		"/E/GameK"
+		"/E/GameK",
+		"/E/GameK/server"
 	],
 	"file_history":
 	[
+		"/E/GameK/Chat-Using-WebSocket-and-PHP-Socket-master/server.php",
+		"/E/GameK/kBooble.html",
 		"/E/GameK/Chat-Using-WebSocket-and-PHP-Socket-master/index.php",
 		"/E/GameK/car1mp.html",
 		"/E/GameK/Chat-Using-WebSocket-and-PHP-Socket-master/info.txt",
-		"/E/GameK/Chat-Using-WebSocket-and-PHP-Socket-master/server.php",
 		"/E/GameK/test/p1Read.php",
 		"/E/GameK/test/phpfile1.php",
 		"/E/GameK/index.php",
@@ -208,6 +215,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"$user_name",
 			"urlParam",
 			"socket",
 			"php_sockets.dll",
@@ -230,55 +238,24 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "kBooble.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 13476,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1096,
-								1186
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 701.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
 					"file": "car1sock.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 13616,
+						"buffer_size": 14440,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								9983,
-								9983
+								12490,
+								12490
 							]
 						],
 						"settings":
@@ -290,27 +267,27 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 6511.0,
+						"translation.y": 6600.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "Chat-Using-WebSocket-and-PHP-Socket-master/server.php",
+					"buffer": 1,
+					"file": "server/server.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4450,
+						"buffer_size": 4419,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								109,
-								109
+								80,
+								80
 							]
 						],
 						"settings":
@@ -325,7 +302,40 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/E/Sublime Text Build 3114 x64/Data/Packages/User/sftp_servers/hostinger_develop",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 942,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								501,
+								506
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 216.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -368,7 +378,7 @@
 	},
 	"output.sftp":
 	{
-		"height": 118.0
+		"height": 325.0
 	},
 	"pinned_build_system": "",
 	"project": "Game_K.sublime-project",

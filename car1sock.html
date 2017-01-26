@@ -183,11 +183,11 @@
             if (playerActive > 0) {
                 if (playerActive == 1) {
                     game.time.events.add(Phaser.Timer.SECOND * 2, savePlayer1, this);
-                    game.time.events.add(Phaser.Timer.SECOND * 2, readPlayer2, this);
+                    //game.time.events.add(Phaser.Timer.SECOND * 2, readPlayer2, this);
                 }
                 if (playerActive == 2) {
                     game.time.events.add(Phaser.Timer.SECOND * 2, savePlayer2, this);
-                    game.time.events.add(Phaser.Timer.SECOND * 2, readPlayer1, this);
+                    //game.time.events.add(Phaser.Timer.SECOND * 2, readPlayer1, this);
                 }
             }
 
@@ -329,12 +329,13 @@
             if(type == 'usermsg')
             {
                 if (playerActive != msg.id && msg.id == 1)
-                {
+                {   
                     player1.x = msg.x;
                     player1.y = msg.y;
                     player1.body.angle = msg.angle;
                 }
-                if (playerActive != msg.id && msg.id == 2) {
+                if (playerActive != msg.id && msg.id == 2) 
+                {
                     player2.x = msg.x;
                     player2.y = msg.y;
                     player2.body.angle = msg.angle;

@@ -77,7 +77,7 @@
 									<span class="image">
 										<img src="images/pic02.jpg" alt="" />
 									</span>
-									<a href="generic.html">
+									<a href="car2.html">
 										<h2>kCAR</h2>
 										<div class="content">
 										  <p>kCar is simple race game for 2 gamers.</p>
@@ -88,7 +88,7 @@
 									<span class="image">
 										<img src="images/pic03.jpg" alt="" />
 									</span>
-									<a href="generic.html">
+									<a href="car1sock.html">
 										<h2>kCar 0.11<hr> multyplay</h2>
 										<div class="content">
 											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
