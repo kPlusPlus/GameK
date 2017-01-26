@@ -54,13 +54,15 @@ while (true) {
 		{
 			$received_text = unmask($buf); //unmask data
 			$tst_msg = json_decode($received_text); //json decode
-			//echo($tst_msg);
-
+			$myfile = fopen("testfile.txt", "a");
+			fwrite($myfile,$received_text);
+			
 			$m_id = $tst_msg->id;
 			$m_x = $tst_msg->x;
 			$m_y = $tst_msg->y;
 			$m_angle = $tst_msg->angle;
 			
+			fclose($myfile);
 			//prepare data to be sent to client
 			$response_text = mask(json_encode(array('type'=>'usermsg', 'id'=>$m_id, 'x'=>$m_x, 'y'=>$m_y, 'angle'=>$m_angle)));
 

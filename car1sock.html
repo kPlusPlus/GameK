@@ -21,6 +21,7 @@
     </style>
 </head>
 <body>
+    
     <script type="text/javascript">
         // kresimir ivkovic
         // 2016
@@ -182,11 +183,11 @@
 
             if (playerActive > 0) {
                 if (playerActive == 1) {
-                    game.time.events.add(Phaser.Timer.SECOND * 2, savePlayer1, this);
+                    game.time.events.add(Phaser.Timer.SECOND * 4, savePlayer1, this);
                     //game.time.events.add(Phaser.Timer.SECOND * 2, readPlayer2, this);
                 }
                 if (playerActive == 2) {
-                    game.time.events.add(Phaser.Timer.SECOND * 2, savePlayer2, this);
+                    game.time.events.add(Phaser.Timer.SECOND * 4, savePlayer2, this);
                     //game.time.events.add(Phaser.Timer.SECOND * 2, readPlayer1, this);
                 }
             }
@@ -333,12 +334,14 @@
                     player1.x = msg.x;
                     player1.y = msg.y;
                     player1.body.angle = msg.angle;
+                    $('#message_box').html = "<hr>" + msg.id + " " + msg.x + " " + msg.y;
                 }
-                if (playerActive != msg.id && msg.id == 2) 
+                else if (playerActive != msg.id && msg.id == 2) 
                 {
                     player2.x = msg.x;
                     player2.y = msg.y;
                     player2.body.angle = msg.angle;
+                    $('#message_box').html =  "<hr>" + msg.id + " " + msg.x + " " + msg.y;
                 }
             }
         };
@@ -394,6 +397,7 @@
         };
 
     </script>
-
+    <div class="message_box" id="message_box"></div>
+    <input type="text" id="status" value="default" style="width:400px;height:100px;" />
 </body>
 </html>
