@@ -1,5 +1,35 @@
 # Changelog
 
+## 0.4.6 (2017-01-26)
+
+* Feature: Support socket context options passed to `Server`
+  (#64 by @clue)
+
+* Fix: Properly return `null` for unknown addresses
+  (#63 by @clue)
+
+* Improve documentation for `ServerInterface` and lock test suite requirements
+  (#60 by @clue, #57 by @shaunbramley)
+
+## 0.4.5 (2017-01-08)
+
+* Feature: Add `SecureServer` for secure TLS connections
+  (#55 by @clue)
+
+* Add functional integration tests
+  (#54 by @clue)
+
+## 0.4.4 (2016-12-19)
+
+* Feature / Fix: `ConnectionInterface` should extend `DuplexStreamInterface` + documentation
+  (#50 by @clue)
+
+* Feature / Fix: Improve test suite and switch to normal stream handler
+  (#51 by @clue)
+
+* Feature: Add examples
+  (#49 by @clue)
+
 ## 0.4.3 (2016-03-01)
 
 * Bug fix: Suppress errors on stream_socket_accept to prevent PHP from crashing
