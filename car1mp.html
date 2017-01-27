@@ -169,15 +169,22 @@
                 else if (cursors.down.isDown) { player1.body.reverse(400); }
             }
 
-            if (playerActive > 0) {
-                if (playerActive == 1) {
-                    game.time.events.add(Phaser.Timer.SECOND * 2, savePlayer1, this);
-                    game.time.events.add(Phaser.Timer.SECOND * 2, readPlayer2, this);
+            try {
+                if (playerActive > 0) {
+                    if (playerActive == 1) {
+                        game.time.events.add(Phaser.Timer.SECOND * 2, savePlayer1, this);
+                        game.time.events.add(Phaser.Timer.SECOND * 3, readPlayer2, this);
+                        //readPlayer2();
+                    }
+                    if (playerActive == 2) {
+                        game.time.events.add(Phaser.Timer.SECOND * 2, savePlayer2, this);
+                        game.time.events.add(Phaser.Timer.SECOND * 3, readPlayer1, this);
+                        //readPlayer1();
+                    }
                 }
-                if (playerActive == 2) {
-                    game.time.events.add(Phaser.Timer.SECOND * 2, savePlayer2, this);
-                    game.time.events.add(Phaser.Timer.SECOND * 2, readPlayer1, this);
-                }
+            }
+            catch (err) {
+                alert("error : " + err);
             }
 
             if (playerActive == 2) {
@@ -313,20 +320,25 @@
         }
 
         function readPlayer1() {
-            $.getJSON('test/p1Read.php', function (jsonData) {
-                player1.body.x = jsonData["x"];
-                player1.body.y = jsonData["y"];
-                player1.body.angle = jsonData["angle"];
-            });
+            try {
+                $.getJSON('test/p1Read.php', function (jsonData) {
+                    player1.body.x = jsonData["x"];
+                    player1.body.y = jsonData["y"];
+                    player1.body.angle = jsonData["angle"];
+                });
+            }
+            catch(err) { }
         }
 
-
         function readPlayer2() {
-            $.getJSON('test/p2Read.php', function (jsonData) {
-                player2.body.x = jsonData["x"];
-                player2.body.y = jsonData["y"];
-                player2.body.angle = jsonData["angle"];
-            });
+            try{
+                $.getJSON('test/p2Read.php', function (jsonData) {
+                    player2.body.x = jsonData["x"];
+                    player2.body.y = jsonData["y"];
+                    player2.body.angle = jsonData["angle"];
+                });
+            }
+            catch (err) { }
         }
 
 
