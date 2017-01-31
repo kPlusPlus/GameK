@@ -162,9 +162,9 @@
             for (i = 0; i < platforms.children.length; i++) {
                 platforms.children[i].body.clearShapes();
                 if (i < (csumHor * 2))
-                    platforms.children[i].body.loadPolygon('physicsDataBorder', 'platform')
+                    platforms.children[i].body.loadPolygon('physicsData', 'platform')
                 else
-                    platforms.children[i].body.loadPolygon('physicsDataBorder', 'platformVer')
+                    platforms.children[i].body.loadPolygon('physicsData', 'platformVer')
                 platforms.children[i].body.setZeroVelocity();
                 platforms.children[i].body.static = true;
             }
