@@ -1,4 +1,4 @@
-#!C:\php\php.exe -q 
+#!C:\php\php.exe -q
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -28,55 +28,64 @@ while (true) {
 	$changed = $clients;
 	//returns the socket resources in $changed array
 	socket_select($changed, $null, $null, 0, 10);
-	
+
 	//check for new socket
 	if (in_array($socket, $changed)) {
 		$socket_new = socket_accept($socket); //accpet new socket
 		$clients[] = $socket_new; //add socket to client array
-		
+
 		$header = socket_read($socket_new, 1024); //read data sent by the socket
 		perform_handshaking($header, $socket_new, $host, $port); //perform websocket handshake
-		
+
 		socket_getpeername($socket_new, $ip); //get ip address of connected socket
 		$response = mask(json_encode(array('type'=>'system', 'message'=>$ip.' connected'))); //prepare json data
 		send_message($response); //notify all users about new connection
-		
+
 		//make room for new socket
 		$found_socket = array_search($socket, $changed);
 		unset($changed[$found_socket]);
 	}
-	
+
 	//loop through all connected sockets
-	foreach ($changed as $changed_socket) {	
-		
+	foreach ($changed as $changed_socket) {
+
 		//check for any incomming data
 		while(socket_recv($changed_socket, $buf, 1024, 0) >= 1)
 		{
 			$received_text = unmask($buf); //unmask data
 			$tst_msg = json_decode($received_text); //json decode
-			$myfile = fopen("testfile.txt", "a");
-			fwrite($myfile,$received_text);
-			
+            //echo var_dump( $tst_msg );
 			$m_id = $tst_msg->id;
 			$m_x = $tst_msg->x;
 			$m_y = $tst_msg->y;
 			$m_angle = $tst_msg->angle;
-			
-			fclose($myfile);
-			//prepare data to be sent to client
+            /*
+            $fmsg = array();
+            $fmsg  = array('x'=>$m_x, 'y'=>$m_y,'angle'=>$m_angle);
+            if($m_id == 1) {
+                $fp = fopen('player1.json', 'w');
+                fwrite($fp, json_encode($fmsg));
+                fclose($fp);
+            }
+            if($m_id == 2) {
+                $fp = fopen('player2.json', 'w');
+                fwrite($fp, json_encode($fmsg));
+                fclose($fp);
+            }
+            */
 			$response_text = mask(json_encode(array('type'=>'usermsg', 'id'=>$m_id, 'x'=>$m_x, 'y'=>$m_y, 'angle'=>$m_angle)));
 
 			send_message($response_text); //send data
 			break 2; //exist this loop
 		}
-		
+
 		$buf = @socket_read($changed_socket, 1024, PHP_NORMAL_READ);
 		if ($buf === false) { // check disconnected client
 			// remove client for $clients array
 			$found_socket = array_search($changed_socket, $clients);
 			socket_getpeername($changed_socket, $ip);
 			unset($clients[$found_socket]);
-			
+
 			//notify all users about disconnected connection
 			$response = mask(json_encode(array('type'=>'system', 'message'=>$ip.' disconnected')));
 			send_message($response);
@@ -124,7 +133,7 @@ function mask($text)
 {
 	$b1 = 0x80 | (0x1 & 0x0f);
 	$length = strlen($text);
-	
+
 	if($length <= 125)
 		$header = pack('CC', $b1, $length);
 	elseif($length > 125 && $length < 65536)

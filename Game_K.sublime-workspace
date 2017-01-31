@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"textar",
+				"textarea\tTag"
+			],
+			[
 				"arr",
 				"array"
 			],
@@ -83,7 +87,7 @@
 			"file": "car1sock.html",
 			"settings":
 			{
-				"buffer_size": 14440,
+				"buffer_size": 14723,
 				"encoding": "UTF-8 with BOM",
 				"line_ending": "Windows"
 			}
@@ -92,18 +96,9 @@
 			"file": "server/server.php",
 			"settings":
 			{
-				"buffer_size": 4419,
+				"buffer_size": 4502,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/E/Sublime Text Build 3114 x64/Data/Packages/User/sftp_servers/hostinger_develop",
-			"settings":
-			{
-				"buffer_size": 942,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
 			}
 		}
 	],
@@ -152,6 +147,8 @@
 	],
 	"file_history":
 	[
+		"/E/GameK/server/testfile.txt",
+		"/E/Sublime Text Build 3114 x64/Data/Packages/User/sftp_servers/hostinger_develop",
 		"/E/GameK/Chat-Using-WebSocket-and-PHP-Socket-master/server.php",
 		"/E/GameK/kBooble.html",
 		"/E/GameK/Chat-Using-WebSocket-and-PHP-Socket-master/index.php",
@@ -215,6 +212,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"message_box",
 			"$user_name",
 			"urlParam",
 			"socket",
@@ -238,7 +236,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -247,15 +245,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 14440,
+						"buffer_size": 14723,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								12490,
-								12490
+								14699,
+								14699
 							]
 						],
 						"settings":
@@ -264,13 +262,14 @@
 							"remote_loading": false,
 							"synced": false,
 							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 6600.0,
+						"translation.y": 7551.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -279,15 +278,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4419,
+						"buffer_size": 4502,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								80,
-								80
+								1782,
+								1782
 							]
 						],
 						"settings":
@@ -299,43 +298,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 940.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "/E/Sublime Text Build 3114 x64/Data/Packages/User/sftp_servers/hostinger_develop",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 942,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								501,
-								506
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 216.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
 					"type": "text"
 				}
 			]

@@ -32,6 +32,11 @@
         var wsUri = "ws://localhost:9000/demo/server.php";
         websocket = new WebSocket(wsUri);
 
+        $(window).on('beforeunload', function () {
+            websocket.close();
+        });
+
+
         websocket.onopen = function (ev) { // connection is open
             $('#message_box').append("<div class=\"system_msg\">Connected!</div>"); //notify user
         }
@@ -334,14 +339,14 @@
                     player1.x = msg.x;
                     player1.y = msg.y;
                     player1.body.angle = msg.angle;
-                    $('#message_box').html = "<hr>" + msg.id + " " + msg.x + " " + msg.y;
+                    $('#message_box').append( "<hr>" + msg.id + " " + msg.x + " " + msg.y );
                 }
                 else if (playerActive != msg.id && msg.id == 2) 
                 {
                     player2.x = msg.x;
                     player2.y = msg.y;
                     player2.body.angle = msg.angle;
-                    $('#message_box').html =  "<hr>" + msg.id + " " + msg.x + " " + msg.y;
+                    $('#message_box').append(  "<hr>" + msg.id + " " + msg.x + " " + msg.y );
                 }
             }
         };
@@ -397,7 +402,7 @@
         };
 
     </script>
-    <div class="message_box" id="message_box"></div>
-    <input type="text" id="status" value="default" style="width:400px;height:100px;" />
+    <textarea class="message_box" id="message_box"></textarea>
+    <input type="text" id="status" value="default" style="width:400px;height:20px;" />
 </body>
 </html>
