@@ -42,8 +42,8 @@
         }
 
         //
-        var gWidth = window.innerWidth; // 800;
-        var gHeight = window.innerHeight; // 600 ;
+        var gWidth = 800; //window.innerWidth; // 800;
+        var gHeight = 600; //window.innerHeight; // 600 ;
 
         var game = new Phaser.Game(gWidth, gHeight, Phaser.CANVAS, 'car drive', { preload: preload, create: create, update: update, render: render });
 
@@ -188,11 +188,11 @@
 
             if (playerActive > 0) {
                 if (playerActive == 1) {
-                    game.time.events.add(Phaser.Timer.SECOND * 4, savePlayer1, this);
+                    game.time.events.add(Phaser.Timer.SECOND * 4, savePlayer1, this).autodestroy = true;
                     //game.time.events.add(Phaser.Timer.SECOND * 2, readPlayer2, this);
                 }
                 if (playerActive == 2) {
-                    game.time.events.add(Phaser.Timer.SECOND * 4, savePlayer2, this);
+                    game.time.events.add(Phaser.Timer.SECOND * 4, savePlayer2, this).autodestroy = true;
                     //game.time.events.add(Phaser.Timer.SECOND * 2, readPlayer1, this);
                 }
             }
