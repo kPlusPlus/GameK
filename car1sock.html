@@ -27,7 +27,6 @@
         // 2016
 
         // web socket
-
         //create a new WebSocket object.
         var wsUri = "ws://localhost:9000/demo/server.php";
         websocket = new WebSocket(wsUri);
@@ -35,7 +34,6 @@
         $(window).on('beforeunload', function () {
             websocket.close();
         });
-
 
         websocket.onopen = function (ev) { // connection is open
             $('#message_box').append("<div class=\"system_msg\">Connected!</div>"); //notify user

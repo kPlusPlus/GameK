@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"f",
+				"func"
+			],
+			[
+				"en",
+				"endl"
+			],
+			[
+				"b",
+				"blue"
+			],
+			[
 				"textar",
 				"textarea\tTag"
 			],
@@ -84,51 +96,95 @@
 	"buffers":
 	[
 		{
-			"file": "car1sock.html",
+			"file": "/E/00/p5.cpp",
 			"settings":
 			{
-				"buffer_size": 14723,
-				"encoding": "UTF-8 with BOM",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "server/server.php",
-			"settings":
-			{
-				"buffer_size": 4502,
+				"buffer_size": 368,
 				"encoding": "UTF-8",
-				"line_ending": "Unix"
+				"line_ending": "Windows",
+				"name": "#include <iostream>"
 			}
 		}
 	],
-	"build_system": "",
+	"build_system": "Packages/C++/C++ Single File.sublime-build",
 	"build_system_choices":
 	[
+		[
+			[
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Packages/C++/C++ Single File.sublime-build",
+				"Run"
+			]
+		]
 	],
-	"build_varint": "",
+	"build_varint": "Run",
 	"command_palette":
 	{
-		"height": 368.0,
-		"last_filter": "",
+		"height": 392.0,
+		"last_filter": "rein",
 		"selected_items":
 		[
 			[
-				"",
-				"HTML: Wrap Selection With Tag"
+				"rein",
+				"Indentation: Reindent Lines"
 			],
 			[
 				"Package Control: ",
 				"Package Control: Install Package"
+			],
+			[
+				"b",
+				"Build With: C++ Single File - Run"
+			],
+			[
+				"PackageResourceViewer",
+				"PackageResourceViewer: Open Resource"
+			],
+			[
+				"Package Control: Install Package",
+				"Package Control: Install Package"
+			],
+			[
+				"package reso",
+				"Package Control: Upgrade/Overwrite All Packages"
+			],
+			[
+				"Snippet: ",
+				"Snippet: main()"
+			],
+			[
+				"pacl",
+				"Package Control: List Packages"
+			],
+			[
+				"reinde",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"",
+				"HTML: Wrap Selection With Tag"
 			]
 		],
-		"width": 432.0
+		"width": 400.0
 	},
 	"console":
 	{
-		"height": 126.0,
+		"height": 160.0,
 		"history":
 		[
+			"gcc",
+			"help",
+			"list",
+			"import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) "
 		]
 	},
 	"distraction_free":
@@ -142,59 +198,15 @@
 	},
 	"expanded_folders":
 	[
-		"/E/GameK",
-		"/E/GameK/server"
 	],
 	"file_history":
 	[
-		"/E/GameK/server/testfile.txt",
-		"/E/Sublime Text Build 3114 x64/Data/Packages/User/sftp_servers/hostinger_develop",
-		"/E/GameK/Chat-Using-WebSocket-and-PHP-Socket-master/server.php",
-		"/E/GameK/kBooble.html",
-		"/E/GameK/Chat-Using-WebSocket-and-PHP-Socket-master/index.php",
-		"/E/GameK/car1mp.html",
-		"/E/GameK/Chat-Using-WebSocket-and-PHP-Socket-master/info.txt",
-		"/E/GameK/test/p1Read.php",
-		"/E/GameK/test/phpfile1.php",
-		"/E/GameK/index.php",
-		"/E/GameK/develop.html",
-		"/E/GameK/idea.txt",
-		"/E/GameK/car1.html",
-		"/E/GameK/test.html",
-		"/E/GameK/sample.html",
-		"/E/WebApplication1/Views/Account/_ExternalLoginsListPartial.cshtml",
-		"/E/GameK/Templates/GK.dwt - Copy.php",
-		"/E/GameK/WEB/index.html",
-		"/E/GameK/WEB/assets/js/util.js",
-		"/E/Sublime Text Build 3114 x64/Data/Packages/Package Control/Package Control.sublime-settings",
-		"/E/LaraVel/LaraBara/backup.php",
-		"/E/LaraVel/pok.php",
-		"/E/LaraVel/LaraBara/.env",
-		"/E/LaraVel/web.config",
-		"/E/composer.json",
-		"/E/LaraVel/LaraBara/app/Http/routes.php",
-		"/E/LaraVel/LaraBara/app/Http/Controllers/StudViewController.php",
-		"/E/LaraVel/useradmin/app/Http/Controllers/Controller.php",
-		"/E/LaraVel/LaraBara/app/Http/Controllers/CookieController.php",
-		"/E/LaraVel/LaraBara/app/Providers/AppServiceProvider.php",
-		"/E/LaraVel/LaraBara/app/Http/Controllers/CustomerController.php",
-		"/E/LaraVel/LaraBara/app/Http/Middleware/FistMiddleware.php",
-		"/E/LaraVel/LaraBara/app/Http/Middleware/SecondMiddleware.php",
-		"/E/LaraVel/LaraBara/app/Http/Controllers/UserController.php",
-		"/E/LaraVel/LaraBara/app/Http/Kernel.php",
-		"/E/LaraVel/LaraBara/app/Http/Controllers/ABCController.php",
-		"/E/LaraVel/LaraBara/app/Http/Controllers/TestController.php",
-		"/E/LaraVel/LaraBara/app/Http/Middleware/TerminateMiddleware.php",
-		"/E/LaraVel/LaraBara/app/Customer.php",
-		"/E/GameK/car2.html",
-		"/E/LaraVel/LaraBara/app/Http/Controllers/CustromerController.php",
-		"/E/LaraVel/LaraBara/app/Http/Controllers/Controller.php",
-		"/E/LaraVel/LaraBara/app/Order.php",
-		"/E/LaraVel/LaraBara/app/Address.php",
-		"/E/LaraVel/LaraBara/app/Http/Controllers/CustomerControllerO.php",
-		"/E/LaraVel/LaraBara/app/database/migrations/2016_07_31_023430_create_users_table.php",
-		"/E/LaraVel/LaraBara/app/routes.php",
-		"/E/Program Files (x86)/EasyPHP-Devserver-16.1/eds-www/test.php"
+		"/E/GameK/node_modules/boom/lib/index.js",
+		"/E/00/p3.cpp",
+		"/E/Sublime Text Build 3114 x64/Data/Packages/C++/C++ Single File.sublime-build",
+		"/E/00/p1.c",
+		"/E/00/p2.cpp",
+		"/E/Sublime Text Build 3114 x64/Data/Packages/C++/Comments (C++).tmPreferences"
 	],
 	"find":
 	{
@@ -202,7 +214,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 96.0,
 		"where_history":
 		[
 		]
@@ -241,67 +253,32 @@
 			[
 				{
 					"buffer": 0,
-					"file": "car1sock.html",
+					"file": "/E/00/p5.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 14723,
+						"buffer_size": 368,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								14699,
-								14699
+								100,
+								100
 							]
 						],
 						"settings":
 						{
+							"auto_name": "#include <iostream>",
 							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/C++/C++.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 7551.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "server/server.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4502,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1782,
-								1782
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 940.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -338,6 +315,10 @@
 		]
 	},
 	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 109.0
+	},
 	"output.find_results":
 	{
 		"height": 0.0
@@ -373,12 +354,20 @@
 	},
 	"select_symbol":
 	{
-		"height": 0.0,
-		"last_filter": "",
+		"height": 392.0,
+		"last_filter": "refo",
 		"selected_items":
 		[
+			[
+				"refo",
+				"reformat"
+			],
+			[
+				"indent",
+				"indent"
+			]
 		],
-		"width": 0.0
+		"width": 984.0
 	},
 	"selected_group": 0,
 	"settings":
@@ -388,7 +377,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 205.0,
+	"side_bar_width": 125.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
