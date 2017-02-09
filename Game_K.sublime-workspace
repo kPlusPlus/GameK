@@ -96,13 +96,22 @@
 	"buffers":
 	[
 		{
-			"file": "/E/00/p5.cpp",
+			"file": "greasemonkey/script1.js",
 			"settings":
 			{
-				"buffer_size": 368,
+				"buffer_size": 3882,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "greasemonkey/template.js",
+			"settings":
+			{
+				"buffer_size": 347,
 				"encoding": "UTF-8",
 				"line_ending": "Windows",
-				"name": "#include <iostream>"
+				"name": "// ==UserScript=="
 			}
 		}
 	],
@@ -126,13 +135,17 @@
 			]
 		]
 	],
-	"build_varint": "Run",
+	"build_varint": "",
 	"command_palette":
 	{
 		"height": 392.0,
-		"last_filter": "rein",
+		"last_filter": "pack",
 		"selected_items":
 		[
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
 			[
 				"rein",
 				"Indentation: Reindent Lines"
@@ -174,13 +187,15 @@
 				"HTML: Wrap Selection With Tag"
 			]
 		],
-		"width": 400.0
+		"width": 416.0
 	},
 	"console":
 	{
-		"height": 160.0,
+		"height": 301.0,
 		"history":
 		[
+			"clear",
+			"cls",
 			"gcc",
 			"help",
 			"list",
@@ -198,9 +213,14 @@
 	},
 	"expanded_folders":
 	[
+		"/E/GameK",
+		"/E/GameK/greasemonkey"
 	],
 	"file_history":
 	[
+		"/E/GameK/greasemonkey/Package Control Messages.txt",
+		"/E/Sublime Text Build 3114 x64/Data/Packages/AutoBackups/AutoBackups (Windows).sublime-settings",
+		"/E/00/p5.cpp",
 		"/E/GameK/node_modules/boom/lib/index.js",
 		"/E/00/p3.cpp",
 		"/E/Sublime Text Build 3114 x64/Data/Packages/C++/C++ Single File.sublime-build",
@@ -253,32 +273,63 @@
 			[
 				{
 					"buffer": 0,
-					"file": "/E/00/p5.cpp",
+					"file": "greasemonkey/script1.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 368,
+						"buffer_size": 3882,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								100,
-								100
+								446,
+								446
 							]
 						],
 						"settings":
 						{
-							"auto_name": "#include <iostream>",
 							"incomplete_sync": null,
-							"syntax": "Packages/C++/C++.sublime-syntax"
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/JavaScript Ultimate/javascript.dom.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "greasemonkey/template.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 347,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								164,
+								164
+							]
+						],
+						"settings":
+						{
+							"auto_name": "// ==UserScript==",
+							"incomplete_sync": null,
+							"syntax": "Packages/JavaScript Ultimate/javascript.dom.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
