@@ -1,0 +1,18 @@
+15.2.2017. 21:09:55: ERROR: Address 188.129.89.179 has not changed.
+
+15.2.2017. 21:10:20: ERROR: Address 188.129.89.179 has not changed.
+
+15.2.2017. 21:10:55: ERROR: Address 188.129.89.179 has not changed.
+
+15.2.2017. 21:20:47: ERROR: Address 188.129.89.179 has not changed.
+
+15.2.2017. 21:21:25: ERROR: Address 188.129.89.179 has not changed.
+
+15.2.2017. 21:29:59: ERROR: Address 188.129.89.179 has not changed.
+
+15.2.2017. 21:30:53: ERROR: Address 188.129.89.179 has not changed.
+
+15.2.2017. 21:31:10: ERROR: Address 188.129.89.179 has not changed.
+
+15.2.2017. 22:03:20: ERROR: Address 188.129.89.179 has not changed.
+

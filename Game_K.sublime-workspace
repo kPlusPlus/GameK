@@ -4,6 +4,46 @@
 		"selected_items":
 		[
 			[
+				"logf",
+				"logFileDirectory"
+			],
+			[
+				"upda",
+				"updateURL"
+			],
+			[
+				"g",
+				"game"
+			],
+			[
+				"s",
+				"start\tmethod"
+			],
+			[
+				"get",
+				"getElementById\tmethod"
+			],
+			[
+				"clea",
+				"clearTimeout\tfunction"
+			],
+			[
+				"inn",
+				"innerHTML\tproperty"
+			],
+			[
+				"setI",
+				"setInterval\tfunction"
+			],
+			[
+				"cre",
+				"createElement\tmethod"
+			],
+			[
+				"html",
+				"html5\tSimple HTML5 Boilerplate"
+			],
+			[
 				"inp",
 				"inputt\tinput - text"
 			],
@@ -14,10 +54,6 @@
 			[
 				"ht",
 				"html5\tSimple HTML5 Boilerplate"
-			],
-			[
-				"g",
-				"greeter\tfunction"
 			],
 			[
 				"pero",
@@ -132,51 +168,16 @@
 	"buffers":
 	[
 		{
-			"file": "ts/sample2.ts",
+			"file": "dns/DNSUpdateURL.vbs",
 			"settings":
 			{
-				"buffer_size": 279,
+				"buffer_size": 2541,
 				"encoding": "UTF-8",
-				"line_ending": "Windows",
-				"name": "function greeter(person) {"
-			}
-		},
-		{
-			"file": "ts/sample2.js",
-			"settings":
-			{
-				"buffer_size": 206,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "ts/sample3.ts",
-			"settings":
-			{
-				"buffer_size": 430,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "ts/sample3.js",
-			"settings":
-			{
-				"buffer_size": 485,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "ts/test.html",
-			"settings":
-			{
-				"buffer_size": 395,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
+				"line_ending": "Unix"
 			}
 		}
 	],
-	"build_system": "Packages/C++/C++ Single File.sublime-build",
+	"build_system": "Packages/VBScript/VBScript.sublime-build",
 	"build_system_choices":
 	[
 		[
@@ -194,15 +195,39 @@
 				"Packages/C++/C++ Single File.sublime-build",
 				"Run"
 			]
+		],
+		[
+			[
+				[
+					"Packages/VBScript/VBScript.sublime-build",
+					""
+				],
+				[
+					"Packages/VBScript/VBScript.sublime-build",
+					"Run with WScript"
+				],
+				[
+					"Packages/VBScript/VBScript.sublime-build",
+					"Debug with CScript"
+				]
+			],
+			[
+				"Packages/VBScript/VBScript.sublime-build",
+				"Run with WScript"
+			]
 		]
 	],
-	"build_varint": "",
+	"build_varint": "Run with WScript",
 	"command_palette":
 	{
-		"height": 392.0,
-		"last_filter": "",
+		"height": 306.0,
+		"last_filter": "P",
 		"selected_items":
 		[
+			[
+				"P",
+				"Package Control: Install Package"
+			],
 			[
 				"Package Control: ",
 				"Package Control: Disable Package"
@@ -252,7 +277,7 @@
 	},
 	"console":
 	{
-		"height": 301.0,
+		"height": 146.0,
 		"history":
 		[
 			"clear",
@@ -274,12 +299,21 @@
 	},
 	"expanded_folders":
 	[
-		"/E/GameK",
-		"/E/GameK/ts"
+		"/E/GameK"
 	],
 	"file_history":
 	[
+		"/E/GameK/kBooble.html",
+		"/E/GameK/dns/DNSUpdateLog.txt",
+		"/E/GameK/app.ts",
+		"/E/GameK/app.js",
+		"/E/GameK/dns/DNSUpdateURL.vbs",
+		"/E/GameK/ts/sample2.ts",
+		"/E/GameK/ts/sample2.js",
+		"/E/GameK/ts/sample3.ts",
+		"/E/GameK/ts/sample3.js",
 		"/E/GameK/ts/test.html",
+		"/E/GameK/default.htm",
 		"/E/GameK/composer.json",
 		"/E/GameK/ts/sample1.html",
 		"/E/GameK/GameK.html",
@@ -312,6 +346,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"localPath",
+			"logFilePath",
 			"message_box",
 			"$user_name",
 			"urlParam",
@@ -336,61 +372,24 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "ts/sample2.ts",
+					"file": "dns/DNSUpdateURL.vbs",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 279,
+						"buffer_size": 2541,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								101,
-								101
-							]
-						],
-						"settings":
-						{
-							"auto_name": "function greeter(person) {",
-							"incomplete_sync": null,
-							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
-							"typescript_plugin_format_options":
-							{
-								"convertTabsToSpaces": false,
-								"indentSize": 4,
-								"tabSize": 4
-							},
-							"use_tab_stops": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "ts/sample2.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 206,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								206,
-								206
+								0,
+								0
 							]
 						],
 						"settings":
@@ -398,105 +397,8 @@
 							"incomplete_sync": null,
 							"remote_loading": false,
 							"synced": false,
-							"syntax": "Packages/JavaScript Ultimate/javascript.dom.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "ts/sample3.ts",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 430,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								430,
-								430
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
-							"typescript_plugin_format_options":
-							{
-								"convertTabsToSpaces": false,
-								"indentSize": 4,
-								"tabSize": 4
-							},
-							"use_tab_stops": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "ts/sample3.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 485,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								444,
-								484
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/JavaScript Ultimate/javascript.dom.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "ts/test.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 395,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								15,
-								15
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/HTML/HTML.sublime-syntax"
+							"syntax": "Packages/VBScript/VBScript.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -545,7 +447,7 @@
 	},
 	"output.exec":
 	{
-		"height": 109.0
+		"height": 118.0
 	},
 	"output.find_results":
 	{
@@ -568,6 +470,10 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"kb",
+				"kBooble.html"
+			]
 		],
 		"width": 0.0
 	},
