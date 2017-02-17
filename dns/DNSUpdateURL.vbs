@@ -76,5 +76,14 @@ sub Log (msg)
 	Set oTextFile = oFSO.OpenTextFile(logFilePath, 8, True)
 	oTextFile.writeline date & " " & time & ": " & msg
 	oTextFile.close
+	
+' message about proccess
+	if(InStr(msg,"ERROR") >0) then
+        MsgBox("*** " & msg)
+    end if
+    if(InStr(msg,"Updated") >0) then
+        MsgBox(msg)
+    end if
+	
 end sub
 
