@@ -917,7 +917,7 @@
             <param name="body">Method body.</param>
             <returns>Method node.</returns>
         </member>
-        <member name="M:Devsense.PHP.Syntax.Ast.INodesFactory`2.TraitUse(`1,System.Collections.Generic.IEnumerable{Devsense.PHP.Syntax.QualifiedNameRef},`0)">
+        <member name="M:Devsense.PHP.Syntax.Ast.INodesFactory`2.TraitUse(`1,System.Collections.Generic.IEnumerable{Devsense.PHP.Syntax.Ast.TypeRef},`0)">
             <summary>
             Creates class trait use statement.
             </summary>

@@ -167,15 +167,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "dns/DNSUpdateURL.vbs",
-			"settings":
-			{
-				"buffer_size": 2541,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "Packages/VBScript/VBScript.sublime-build",
 	"build_system_choices":
@@ -217,7 +208,7 @@
 			]
 		]
 	],
-	"build_varint": "Run with WScript",
+	"build_varint": "",
 	"command_palette":
 	{
 		"height": 306.0,
@@ -303,11 +294,12 @@
 	],
 	"file_history":
 	[
+		"/E/GameK/dns/DNSUpdateURL.vbs",
+		"/E/GameK/app.html",
 		"/E/GameK/kBooble.html",
 		"/E/GameK/dns/DNSUpdateLog.txt",
 		"/E/GameK/app.ts",
 		"/E/GameK/app.js",
-		"/E/GameK/dns/DNSUpdateURL.vbs",
 		"/E/GameK/ts/sample2.ts",
 		"/E/GameK/ts/sample2.js",
 		"/E/GameK/ts/sample3.ts",
@@ -372,41 +364,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "dns/DNSUpdateURL.vbs",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2541,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/VBScript/VBScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],

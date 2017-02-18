@@ -34,3 +34,5 @@
 
 17.2.2017. 9:09:47: ERROR: Address 188.129.58.214 has not changed.
 
+18.2.2017. 21:30:22: Updated kgame.chickenkiller.com to 188.129.25.6 in 0.179 seconds
+
