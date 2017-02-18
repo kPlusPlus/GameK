@@ -167,6 +167,18 @@
 	},
 	"buffers":
 	[
+		{
+			"contents": "' DNS URL Updater\n' By Nirklars\n\n'===================================================================================\n'SETTINGS\n'===================================================================================\nDim WshShell, strCurDir\nSet WshShell = CreateObject(\"WScript.Shell\")\n\n\n'Change this file name to whichever you prever\nlogFileName = \"DNSUpdateLog.txt\"\n'Change the path to whereever you prefer\n'logFileDirectory = \"E:\\GameK\\dns\\\"\nlogFileDirectory = WshShell.CurrentDirectory ' set CurrentDirectory\n\ndim allDomains, currDomain\nallDomains = 3\ncurrDomain = 1\n\n\n'This is where you copy and paste your own update url\n'ORIG updateURL = \"http://freedns.afraid.org/dynamic/update.php?herebemanyrandomletters\"\nupdateURL = \"https://freedns.afraid.org/dynamic/update.php?VU12QDlLMzFVMVVBQUxaN0IxTUFBQUFCOjE2NjM4NTg1\"\n\n'===================================================================================\n'DECLARATIONS\n'===================================================================================\n\ndim localPath, logFilePath\n\n'Find local path where the script run from\nlocalPath = CreateObject(\"Scripting.FileSystemObject\").GetAbsolutePathName(\".\")\n\n'Declare Log function variables\nDim logFile, oFSO\nlogFilePath = logFileDirectory & \"\\\" & logFileName\n\n'Declare File System object in order to write to log file\nSet oFSO = CreateObject(\"Scripting.FileSystemObject\")\n\n'Declare http object\nSet oXMLHTTP = CreateObject(\"MSXML2.XMLHTTP.3.0\")\n\n\n'===================================================================================\n'PROGRAM\n'===================================================================================\n\nLog(httpGET(updateURL))\n\n'===================================================================================\n'FUNCTIONS\n'===================================================================================\n\n'Retrieve a webpage\nfunction httpGET(strURL)\n\tOn Error Resume Next\n\t\toXMLHTTP.Open \"GET\", strURL, False\n\t\toXMLHTTP.Send\n\t\tIf oXMLHTTP.Status = 200 Then\n\t\t\thttpGET = oXMLHTTP.responseText ' function return \n\t\telse\n\t\t\thttpGET = \"http GET failed\" ' function return \n\t\tend if\n\t\toXMLHTTP.Close\nend function\n\n'Write to a logfile\nsub Log (msg)\n\tif oFSO.FileExists(logFilePath) then\n\t\tSet oTextFileCheck = oFSO.GetFile(logFilePath)\n\t\t'Check if the log file has become larger than 1 mb\n\t\tif oTextFileCheck.Size > 1048576 Then\n      'If its too large, delete it\n\t\t\toTextFileCheck.Delete\n\t\tend if\n\tend if\n\t\n\tSet oTextFile = oFSO.OpenTextFile(logFilePath, 8, True)\n\toTextFile.writeline date & \" \" & time & \": \" & msg\n\toTextFile.close\n\t\n' message about proccess\n\tif(InStr(msg,\"ERROR\") >0) then\n        MsgBox(\"*** \" & msg)\n    end if\n    if(InStr(msg,\"Updated\") >0) then\n        MsgBox(msg)\n    end if\n\t\nend sub\n\n",
+			"file": "dns/DNSUpdateURL.vbs",
+			"file_size": 2769,
+			"file_write_time": 131319239777288346,
+			"settings":
+			{
+				"buffer_size": 2730,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "Packages/VBScript/VBScript.sublime-build",
 	"build_system_choices":
@@ -290,7 +302,8 @@
 	},
 	"expanded_folders":
 	[
-		"/E/GameK"
+		"/E/GameK",
+		"/E/GameK/dns"
 	],
 	"file_history":
 	[
@@ -364,8 +377,71 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "dns/DNSUpdateURL.vbs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2730,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								568,
+								568
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/VBScript/VBScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 0,
+					"file": "dns/DNSUpdateURL.vbs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2730,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								440,
+								440
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/VBScript/VBScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],

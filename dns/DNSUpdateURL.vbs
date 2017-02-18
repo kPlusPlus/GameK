@@ -14,6 +14,11 @@ logFileName = "DNSUpdateLog.txt"
 'logFileDirectory = "E:\GameK\dns\"
 logFileDirectory = WshShell.CurrentDirectory ' set CurrentDirectory
 
+dim allDomains, currDomain
+allDomains = 3
+currDomain = 1
+
+
 'MsgBox "curr dir " & logFileDirectory
 'This is where you copy and paste your own update url
 'ORIG updateURL = "http://freedns.afraid.org/dynamic/update.php?herebemanyrandomletters"
