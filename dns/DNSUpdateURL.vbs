@@ -22,7 +22,7 @@ currDomain = 1
 'MsgBox "curr dir " & logFileDirectory
 'This is where you copy and paste your own update url
 'ORIG updateURL = "http://freedns.afraid.org/dynamic/update.php?herebemanyrandomletters"
-updateURL = "https://freedns.afraid.org/dynamic/update.php?VU12QDlLMzFVMVVBQUxaN0IxTUFBQUFCOjE2NjM4NTg1"
+' updateURL = "https://freedns.afraid.org/dynamic/update.php?VU12QDlLMzFVMVVBQUxaN0IxTUFBQUFCOjE2NjM4NTg1"
 
 '===================================================================================
 'DECLARATIONS
@@ -47,7 +47,11 @@ Set oXMLHTTP = CreateObject("MSXML2.XMLHTTP.3.0")
 '===================================================================================
 'PROGRAM
 '===================================================================================
-
+updateURL = "https://freedns.afraid.org/dynamic/update.php?VU12QDlLMzFVMVVBQUxaN0IxTUFBQUFCOjE2NjM4NTg1"
+Log(httpGET(updateURL))
+updateURL = "https://freedns.afraid.org/dynamic/update.php?VU12QDlLMzFVMVVBQUxaN0IxTUFBQUFCOjg3NjM0NTQ="
+Log(httpGET(updateURL))
+updateURL = "https://freedns.afraid.org/dynamic/update.php?VU12QDlLMzFVMVVBQUxaN0IxTUFBQUFCOjg3NjM0NTY="
 Log(httpGET(updateURL))
 
 '===================================================================================
