@@ -4,9 +4,9 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>kBooble 0.01</title>
+    <title>kBooble 0.011</title>
 
-    <script type="text/javascript" src="js/phaser.js"></script>
+    <script type="text/javascript" src="Scripts/phaser.js"</script>
     <script src="js/webfont.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Revalia|Lato|Merriweather|Open+Sans|Raleway|Roboto" rel="stylesheet">
 
@@ -41,7 +41,7 @@
         function preload() {
             //game.load.script('webfont', 'js/webfont.js');
             game.load.physics('physicsData', 'booble/physicsData.json');
-            game.load.physics('physicsDataBorder', 'booble/physicsDataBorder.json')
+            //game.load.physics('physicsDataBorder', 'booble/physicsDataBorder.json')
             game.load.image('player1', 'booble/pinP1.png');
             game.load.image('player2', 'booble/pinP2.png');
             game.load.image('balloonN1', 'booble/balloonN1.png');
@@ -148,6 +148,8 @@
 
             scoreText = game.add.text(16, 60, 'Score : ' + score1 + ' : 0',
                 { font: 'Merriweather', fontSize: '12px', fill: '#FFF' });
+
+            scoreText = 'Score : ' + score1 + ' : 0';
 
         }
 

@@ -72,3 +72,21 @@
 
 24.2.2017. 12:13:27: Updated kresimirivkovic.chickenkiller.com to 188.129.102.45 in 0.017 seconds
 
+25.2.2017. 20:19:16: Updated kgame.chickenkiller.com to 188.129.87.8 in 0.228 seconds
+
+25.2.2017. 20:19:17: Updated kplusplus.chickenkiller.com to 188.129.87.8 in 0.018 seconds
+
+25.2.2017. 20:19:18: Updated kresimirivkovic.chickenkiller.com to 188.129.87.8 in 0.020 seconds
+
+26.2.2017. 8:41:45: Updated kgame.chickenkiller.com to 188.129.87.72 in 0.244 seconds
+
+26.2.2017. 8:41:47: Updated kplusplus.chickenkiller.com to 188.129.87.72 in 0.018 seconds
+
+26.2.2017. 8:41:48: Updated kresimirivkovic.chickenkiller.com to 188.129.87.72 in 0.011 seconds
+
+27.2.2017. 8:59:43: Updated kgame.chickenkiller.com to 188.129.124.40 in 0.102 seconds
+
+27.2.2017. 8:59:48: Updated kplusplus.chickenkiller.com to 188.129.124.40 in 0.019 seconds
+
+27.2.2017. 8:59:49: Updated kresimirivkovic.chickenkiller.com to 188.129.124.40 in 0.015 seconds
+
