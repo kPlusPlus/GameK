@@ -171,18 +171,9 @@
 			"file": "kBooble.html",
 			"settings":
 			{
-				"buffer_size": 13389,
+				"buffer_size": 13414,
 				"encoding": "UTF-8 with BOM",
 				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "dns/DNSUpdateURL.vbs",
-			"settings":
-			{
-				"buffer_size": 3133,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
 			}
 		}
 	],
@@ -308,14 +299,14 @@
 	},
 	"expanded_folders":
 	[
-		"/E/GameK",
-		"/E/GameK/dns"
+		"/E/GameK"
 	],
 	"file_history":
 	[
+		"/E/GameK/composer.json",
+		"/E/GameK/kBooble.html",
 		"/E/GameK/dns/DNSUpdateURL.vbs",
 		"/E/GameK/app.html",
-		"/E/GameK/kBooble.html",
 		"/E/GameK/dns/DNSUpdateLog.txt",
 		"/E/GameK/app.ts",
 		"/E/GameK/app.js",
@@ -325,7 +316,6 @@
 		"/E/GameK/ts/sample3.js",
 		"/E/GameK/ts/test.html",
 		"/E/GameK/default.htm",
-		"/E/GameK/composer.json",
 		"/E/GameK/ts/sample1.html",
 		"/E/GameK/GameK.html",
 		"/E/GameK/greasemonkey/template.js",
@@ -384,7 +374,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -393,15 +383,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 13389,
+						"buffer_size": 13414,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								15,
-								15
+								5733,
+								5733
 							]
 						],
 						"settings":
@@ -414,36 +404,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "dns/DNSUpdateURL.vbs",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3133,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1985,
-								1985
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"syntax": "Packages/VBScript/VBScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 375.0,
+						"translation.y": 2589.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,

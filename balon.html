@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<!--k++ 16/01/2017  boobler game -->
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+    <meta charset="utf-8" />
+    <title>balončeki 0.001</title>
+
+    <script type="text/javascript" src="Scripts/phaser.js"</script>
+    <script src="js/webfont.js"></script>
+    
+    <style type="text/css">
+        body {
+            margin: 0;
+            font-weight: 100;
+            /*font-family: 'Lato';*/
+        }
+
+        .score_line {
+            /*font-family: 'Merriweather', serif;*/
+            text-align: center;
+            color: yellow;
+        }
+    </style>
+</head>
+<body>
+
+    <script type="text/javascript">
+        var gWidth = window.innerWidth; // 800;
+        var gHeight = window.innerHeight; // 600 ;
+
+        var game = new Phaser.Game(gWidth, gHeight, Phaser.CANVAS, 'booble double', { preload: preload, create: create, update: update, render: render });
+
+        function preload() {
+            //game.load.script('webfont', 'js/webfont.js');
+            game.load.image('player1', 'balon/pump_up.png');
+            game.load.image("balon1", "balon/balloon_blue.png");
+            game.load.image("balon2", "balon/balloon_green.png");
+            game.load.image("balon3", "balon/balloon_red.png");
+            game.load.image("pumbbase", "balon/pumpbase.png");
+            game.load.image("pump_up", "balon/pump_up.png");
+            game.load.image("totem", "balon/totem.png");
+        }
+
+        var player1;
+        var platforms;
+        var cursors;
+        var result = 'Move with the cursors';
+        var score1 = 0;
+        var life1 = 10;
+        var timer1 = 0;
+        var scoreText;
+        var maxScore = 0;
+        var angle;
+
+        function create() {
+
+            game.scale.setMaximum();
+            resizeGame();
+
+            game.physics.startSystem(Phaser.Physics.ARCADE);
+            game.add.sprite(0, 0, "totem");
+            game.add.sprite(100, 0, "pumpbase");
+
+            scoreText = game.add.text(16, 40, 'bodovi : ' + score1 + ' : život : ' + life1,
+                { fontSize: '12px', fill: '#FFF' });
+
+        }
+
+
+        function startRace() {
+            loadData();
+            InitVal();
+            ShowResult();
+        }
+
+        function update() {
+            ShowResult();
+        }
+
+
+
+        function GameOver() {
+            if (score1 >= maxScore) {
+                save();
+                //confirm("Press a button!");
+                window.location.href = "GameOverBooble.html" + "?score1=" + score1;
+            }
+        }
+
+        function checkOverlap(spriteA, spriteB) {
+
+            var boundsA = spriteA.getBounds();
+            var boundsB = spriteB.getBounds();
+
+            return Phaser.Rectangle.intersects(boundsA, boundsB);
+        }
+
+        function ShowResult() {
+            scoreText.text = 'bodovi : ' + score1 + " životi : " + life1;
+        }
+
+        function render() {
+            // empty functions
+        }
+
+        var resizeGame = this._fitScreen = function () {
+            game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+            game.scale.pageAlignHorizontally = true;
+            game.scale.pageAlignVertically = true;
+            game.scale.forceOrientation(true, true);
+            game.scale.setShowAll();
+            game.scale.refresh();
+        }
+
+        var saveObjects = {
+            score1,
+            life1
+        };
+
+        function save() {
+            //alert( JSON.stringify(saveObjects) );
+            beforeSave();
+            localStorage.setItem("save", JSON.stringify(saveObjects));
+            alert("Save Result");
+        }
+
+        function beforeSave() {
+            saveObjects.score1 = score1;
+            saveObjects.bestLap1 = life1;
+        }
+
+        function loadData() {
+            var myObj = JSON.parse(localStorage.getItem("save"));
+            //bestLap1 = myObj["bestLap1"];
+            //bestLap2 = myObj["bestLap2"];
+        }
+
+        // Converts from degrees to radians.
+        Math.radians = function (degrees) {
+            return degrees * Math.PI / 180;
+        };
+
+        // Converts from radians to degrees.
+        Math.degrees = function (radians) {
+            return radians * 180 / Math.PI;
+        };
+
+    </script>
+
+</body>
+</html>
