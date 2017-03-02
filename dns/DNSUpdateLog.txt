@@ -114,3 +114,9 @@
 
 2.3.2017. 6:00:29: ERROR: Address 188.129.122.76 has not changed.
 
+2.3.2017. 10:18:58: Updated kgame.chickenkiller.com to 188.129.42.88 in 0.207 seconds
+
+2.3.2017. 10:19:03: Updated kplusplus.chickenkiller.com to 188.129.42.88 in 0.015 seconds
+
+2.3.2017. 10:19:04: Updated kresimirivkovic.chickenkiller.com to 188.129.42.88 in 0.186 seconds
+
