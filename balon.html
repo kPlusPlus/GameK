@@ -26,19 +26,19 @@
             game.load.image("totem", "balon/totem.png");
             game.load.image("pumpbase", "balon/pumpbase.png");
             game.load.image("pumpup", "balon/pump_up.png");
-
-            //game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
-
+            game.load.spritesheet("button", "balon/button.png", 176, 79);
         }
 
         var player;
         var platforms;
         var cursors;
         var pumpa, balon, balonPerc = 0.01, balonWidth, balonHeight;
+        var pumpaSmjer = 0; pumpaStep = 0;
         var score = 0;
         var power = 0;
         var scoreText, powerText;
         var timer = 0;
+        var button;
 
         function create() {
             game.scale.setMaximum();
@@ -48,8 +48,8 @@
 
             //  A simple background for our game
             game.add.sprite(0, 0, 'totem');
-            pumpa = game.add.sprite(gWidth / 2, gHeight / 2, "pumpbase");
-            player = game.add.sprite(gWidth / 2, 10, "pumpup");
+            player = game.add.sprite(gWidth / 2 - 2, 200, "pumpup");
+            pumpa = game.add.sprite(gWidth / 2, gHeight / 2, "pumpbase");            
             balon = game.add.sprite(gWidth / 2 - 100, 0, "balon1");
             //balon.anchor.setTo(0.5, 0.5);
             balonWidth = balon.width;
@@ -70,11 +70,15 @@
             
             if (timer == 5) {
                 power = power - 0.2;
-                if (cursors.left.isDown)
+                if (cursors.left.isDown){
                     power = power + 1;
+                    pumpaj();
+                }
 
-                if (cursors.right.isDown)
+                if (cursors.right.isDown){
                     power = power + 1;
+                    pumpaj();
+                }
                 timer = 0;
                 ShowPower();
                 ShowBalon();
@@ -87,8 +91,22 @@
             balon.height = balonHeight * balonPerc;
         }
 
+        function pumpaj() {
+            if (pumpaSmjer == 0) {
+                pumpaStep = pumpaStep + 1;
+                if (pumpaStep == 100) pumpaSmjer = 1;
+                player.y = player.y + 1;
+            }
+            if (pumpaSmjer == 1){
+                pumpaStep = pumpaStep - 1;
+                if (pumpaStep == 0) pumpaSmjer = 0;
+                player.y = player.y - 1;
+            }
+            
+        }
+
         function ShowPower() {
-            powerText.text = "snaga: " + power;
+            powerText.text = "snaga: " + power + "\n balon " + balonPerc;
         }
 
         var resizeGame = this._fitScreen = function () {
