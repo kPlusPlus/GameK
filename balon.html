@@ -19,10 +19,12 @@
         var game = new Phaser.Game(gWidth, gHeight, Phaser.AUTO, '', { preload: preload, create: create, update: update });
 
         function preload() {
-
             game.load.image('balon1', 'balon/balloon_blue.png');
             game.load.image('balon2', 'balon/balloon_green.png');
             game.load.image('balon3', 'balon/balloon_red.png');
+            game.load.image('balon4', 'balon/balloon_gold.png');
+            game.load.image('balon5', 'balon/balloon_yellow.png');
+            game.load.image('balon6', 'balon/balloon_white.png');
             game.load.image("totem", "balon/totem.png");
             game.load.image("pumpbase", "balon/pumpbase.png");
             game.load.image("pumpup", "balon/pump_up.png");
@@ -33,6 +35,7 @@
         var platforms;
         var cursors;
         var pumpa, balon, balonPerc = 0.01, balonWidth, balonHeight;
+        var balonNumber = 1;
         var pumpaSmjer = 0; pumpaStep = 0;
         var score = 0;
         var power = 0;
@@ -49,8 +52,9 @@
             //  A simple background for our game
             game.add.sprite(0, 0, 'totem');
             player = game.add.sprite(gWidth / 2 - 2, 200, "pumpup");
-            pumpa = game.add.sprite(gWidth / 2, gHeight / 2, "pumpbase");            
+            pumpa = game.add.sprite(gWidth / 2, gHeight / 2, "pumpbase");
             balon = game.add.sprite(gWidth / 2 - 100, 0, "balon1");
+            button = game.add.button(100, 100, "button", actionOnClick)
             //balon.anchor.setTo(0.5, 0.5);
             balonWidth = balon.width;
             balonHeight = balon.height;
@@ -67,15 +71,15 @@
 
         function update() {
             timer = timer + 1;
-            
+
             if (timer == 5) {
                 power = power - 0.2;
-                if (cursors.left.isDown){
+                if (cursors.left.isDown) {
                     power = power + 1;
                     pumpaj();
                 }
 
-                if (cursors.right.isDown){
+                if (cursors.right.isDown) {
                     power = power + 1;
                     pumpaj();
                 }
@@ -97,16 +101,46 @@
                 if (pumpaStep == 100) pumpaSmjer = 1;
                 player.y = player.y + 1;
             }
-            if (pumpaSmjer == 1){
+            if (pumpaSmjer == 1) {
                 pumpaStep = pumpaStep - 1;
                 if (pumpaStep == 0) pumpaSmjer = 0;
                 player.y = player.y - 1;
             }
-            
+
         }
 
         function ShowPower() {
             powerText.text = "snaga: " + power + "\n balon " + balonPerc;
+        }
+
+        function actionOnClick() {
+            if (balonPerc > 0.95)
+                newballoon();
+        }
+
+        function newballoon() {
+            alert("Osvojili ste !!! " + balonNumber * 10 + " %%% popusta");
+            balonNumber = balonNumber + 1;
+            balon.x = gWidth - 100;
+            balon.y = (gHeight / 10) * balonNumber;
+            balon.width = balonWidth/10;
+            balon.height = balonHeight/10;
+
+            if (balonNumber == 2)
+                balon = game.add.sprite(gWidth / 2 - 100, 0, "balon2");
+            if (balonNumber == 3)
+                balon = game.add.sprite(gWidth / 2 - 100, 0, "balon3");
+            if (balonNumber == 4)
+                balon = game.add.sprite(gWidth / 2 - 100, 0, "balon4");
+            if (balonNumber == 5)
+                balon = game.add.sprite(gWidth / 2 - 100, 0, "balon5");
+            if (balonNumber == 6)
+                balon = game.add.sprite(gWidth / 2 - 100, 0, "balon6");
+
+            balonPerc = 0.01;
+            power = 0;
+            balon.width = balonWidth;
+            balon.height = balonHeight;
         }
 
         var resizeGame = this._fitScreen = function () {
