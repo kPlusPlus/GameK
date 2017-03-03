@@ -71,7 +71,7 @@
             button = game.add.button(100, 100, "button", actionOnClick);
             music_inflate = game.add.audio('inflate');
             music_explode = game.add.audio('explode');
-            balon.anchor.setTo(0.5, 1);
+            //balon.anchor.setTo(0.5, 1);
             balonWidth = balon.width;
             balonHeight = balon.height;
             balon.x = gWidth / 2 + 10;
@@ -156,14 +156,13 @@
             var bY;
             alert("Osvojili ste !!! " + balonNumber * 10 + " %%% popusta");
             balonNumber = balonNumber + 1;
-            balon.x = gWidth - 100;
-            bY = (gHeight / 10) * balonNumber;
+            balon.x = gWidth;
+            bY = (gHeight / 10) * balonNumber + (balonHeight / 10);
             balon.y = bY;
             balon.width = balonWidth / 10;
             balon.height = balonHeight / 10;
 
             if (balonNumber == 2) {
-                alert("EEE" + bY);
                 perc = game.add.image(gWidth - 250, bY, 'perc10');
                 perc.alpha = 0.1;
                 game.add.tween(perc).to({ alpha: 1 }, 2000, "Linear", true);
