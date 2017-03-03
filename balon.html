@@ -29,19 +29,33 @@
             game.load.image("pumpbase", "balon/pumpbase.png");
             game.load.image("pumpup", "balon/pump_up.png");
             game.load.spritesheet("button", "balon/button.png", 176, 79);
+            game.load.image('perc10', 'balon/perc10.png');
+            game.load.image('perc20', 'balon/perc20.png');
+            game.load.image('perc30', 'balon/perc30.png');
+            game.load.image('perc40', 'balon/perc40.png');
+            game.load.image('perc50', 'balon/perc50.png');
+            game.load.image('perc60', 'balon/perc60.png');
+            game.load.image('progressBar', 'balon/progressBar.png');
+            game.load.image('progressBarLine', 'balon/progressBarLine.png');
+            game.load.audio('inflate', 'balon/234212__terhen__balloon-inflate-3.wav');
+            game.load.audio('explode', 'balon/54874__lematt__balonexplose1.wav');
+
         }
 
         var player;
         var platforms;
         var cursors;
         var pumpa, balon, balonPerc = 0.01, balonWidth, balonHeight;
+        var balonLow = 0.95, balonHigh = 1.1;
         var balonNumber = 1;
         var pumpaSmjer = 0; pumpaStep = 0;
         var score = 0;
         var power = 0;
         var scoreText, powerText;
         var timer = 0;
-        var button;
+        var button, perc;
+        var music_inflate, music_explode;
+        var progressBar, progressBarLine;
 
         function create() {
             game.scale.setMaximum();
@@ -54,17 +68,22 @@
             player = game.add.sprite(gWidth / 2 - 2, 200, "pumpup");
             pumpa = game.add.sprite(gWidth / 2, gHeight / 2, "pumpbase");
             balon = game.add.sprite(gWidth / 2 - 100, 0, "balon1");
-            button = game.add.button(100, 100, "button", actionOnClick)
-            //balon.anchor.setTo(0.5, 0.5);
+            button = game.add.button(100, 100, "button", actionOnClick);
+            music_inflate = game.add.audio('inflate');
+            music_explode = game.add.audio('explode');
+            balon.anchor.setTo(0.5, 1);
             balonWidth = balon.width;
             balonHeight = balon.height;
             balon.x = gWidth / 2 + 10;
-            balon.y = gHeight - pumpa.height - 15;
+            balon.y = pumpa.y;
             balon.width = balonWidth * balonPerc;
             balon.height = balonHeight * balonPerc;
-            scoreText = game.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#0CAAFF' });
+            //scoreText = game.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#0CAAFF' });
             powerText = game.add.text(50, 180, "snaga: " + power);
-            //  Our controls.
+            powerText.fontSize = 20;
+            powerText.fill = '#000000';
+            progressBar = game.add.sprite(50, 250, 'progressBar');
+            progressBarLine = game.add.sprite(50, 250, 'progressBarLine');
             cursors = game.input.keyboard.createCursorKeys();
 
         }
@@ -75,16 +94,17 @@
             if (timer == 5) {
                 power = power - 0.2;
                 if (cursors.left.isDown) {
-                    power = power + 1;
+                    power = power + .5;
                     pumpaj();
                 }
 
                 if (cursors.right.isDown) {
-                    power = power + 1;
+                    power = power + .5;
                     pumpaj();
                 }
                 timer = 0;
                 ShowPower();
+                ShowBar();
                 ShowBalon();
             }
         }
@@ -93,6 +113,12 @@
             balonPerc = balonPerc + (power / 1000);
             balon.width = balonWidth * balonPerc;
             balon.height = balonHeight * balonPerc;
+            if (balonPerc > balonHigh)
+                music_explode.play();
+        }
+
+        function ShowBar() {
+            progressBarLine.width = balonPerc * 100;
         }
 
         function pumpaj() {
@@ -106,41 +132,71 @@
                 if (pumpaStep == 0) pumpaSmjer = 0;
                 player.y = player.y - 1;
             }
-
+            music_inflate.play();
         }
 
         function ShowPower() {
             powerText.text = "snaga: " + power + "\n balon " + balonPerc;
+            if (balonPerc > balonLow && balonPerc < balonHigh)
+                button.visible = true;
+            else
+                button.visible = false;
         }
 
         function actionOnClick() {
-            if (balonPerc > 0.95)
+            if (balonPerc > balonLow && balonPerc < balonHigh)
                 newballoon();
         }
 
         function newballoon() {
+            var bY;
             alert("Osvojili ste !!! " + balonNumber * 10 + " %%% popusta");
             balonNumber = balonNumber + 1;
             balon.x = gWidth - 100;
-            balon.y = (gHeight / 10) * balonNumber;
-            balon.width = balonWidth/10;
-            balon.height = balonHeight/10;
+            bY = (gHeight / 10) * balonNumber;
+            balon.y = bY;
+            balon.width = balonWidth / 10;
+            balon.height = balonHeight / 10;
 
-            if (balonNumber == 2)
-                balon = game.add.sprite(gWidth / 2 - 100, 0, "balon2");
-            if (balonNumber == 3)
-                balon = game.add.sprite(gWidth / 2 - 100, 0, "balon3");
-            if (balonNumber == 4)
-                balon = game.add.sprite(gWidth / 2 - 100, 0, "balon4");
-            if (balonNumber == 5)
-                balon = game.add.sprite(gWidth / 2 - 100, 0, "balon5");
-            if (balonNumber == 6)
-                balon = game.add.sprite(gWidth / 2 - 100, 0, "balon6");
+            if (balonNumber == 2) {
+                alert("EEE" + bY);
+                perc = game.add.image(gWidth - 250, bY, 'perc10');
+                perc.alpha = 0.1;
+                game.add.tween(perc).to({ alpha: 1 }, 2000, "Linear", true);
+                balon = game.add.sprite(pumpa.y, 0, "balon2");
+                //balon = game.add.sprite(gWidth / 2 - 100, 0, "balon2");
+            }
+            else if (balonNumber == 3) {
+                perc = game.add.image(gWidth - 250, (gHeight / 10) * balonNumber, 'perc20');
+                perc.alpha = 0.1;
+                game.add.tween(perc).to({ alpha: 1 }, 2000, "Linear", true);
+                balon = game.add.sprite(pumpa.y, 0, "balon3");
+            }
+            else if (balonNumber == 4) {
+                perc = game.add.image(gWidth - 250, (gHeight / 10) * balonNumber, 'perc30');
+                perc.alpha = 0.1;
+                game.add.tween(perc).to({ alpha: 1 }, 2000, "Linear", true);
+                balon = game.add.sprite(pumpa.y, 0, "balon4");
+            }
+            else if (balonNumber == 5) {
+                perc = game.add.image(gWidth - 250, (gHeight / 10) * balonNumber, 'perc40');
+                perc.alpha = 0.1;
+                game.add.tween(perc).to({ alpha: 1 }, 2000, "Linear", true);
+                balon = game.add.sprite(pumpa.y, 0, "balon5");
+            }
+            else if (balonNumber == 6) {
+                perc = game.add.image(gWidth - 250, (gHeight / 10) * balonNumber, 'perc50');
+                perc.alpha = 0.1;
+                game.add.tween(perc).to({ alpha: 1 }, 2000, "Linear", true);
+                balon = game.add.sprite(pumpa.y, 0, "balon6");
+            }
 
             balonPerc = 0.01;
             power = 0;
-            balon.width = balonWidth;
-            balon.height = balonHeight;
+            balon.width = balonWidth * balonPerc;
+            balon.height = balonHeight * balonPerc;
+            balon.x = gWidth / 2 + 10;
+            balon.y = gHeight - pumpa.height - 15;
         }
 
         var resizeGame = this._fitScreen = function () {
