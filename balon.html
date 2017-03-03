@@ -43,11 +43,11 @@
         }
 
         var player;
-        var platforms;
+        //var platforms;
         var cursors;
         var pumpa, balon, balonPerc = 0.01, balonWidth, balonHeight;
         var balonLow = 0.95, balonHigh = 1.1;
-        var balonNumber = 1;
+        var balons, balonNumber = 1;
         var pumpaSmjer = 0; pumpaStep = 0;
         var score = 0;
         var power = 0;
@@ -60,14 +60,14 @@
         function create() {
             game.scale.setMaximum();
             resizeGame();
-
             game.physics.startSystem(Phaser.Physics.ARCADE);
 
-            //  A simple background for our game
             game.add.sprite(0, 0, 'totem');
             player = game.add.sprite(gWidth / 2 - 2, 200, "pumpup");
             pumpa = game.add.sprite(gWidth / 2, gHeight / 2, "pumpbase");
+            balons = game.add.group();
             balon = game.add.sprite(gWidth / 2 - 100, 0, "balon1");
+            addBalons();
             button = game.add.button(100, 100, "button", actionOnClick);
             music_inflate = game.add.audio('inflate');
             music_explode = game.add.audio('explode');
@@ -86,6 +86,10 @@
             progressBarLine = game.add.sprite(50, 250, 'progressBarLine');
             cursors = game.input.keyboard.createCursorKeys();
 
+        }
+
+        function addBalons() {
+            balons.add(balon);
         }
 
         function update() {
@@ -164,33 +168,42 @@
                 perc.alpha = 0.1;
                 game.add.tween(perc).to({ alpha: 1 }, 2000, "Linear", true);
                 balon = game.add.sprite(pumpa.y, 0, "balon2");
-                //balon = game.add.sprite(gWidth / 2 - 100, 0, "balon2");
+                addBalons();
             }
             else if (balonNumber == 3) {
                 perc = game.add.image(gWidth - 250, (gHeight / 10) * balonNumber, 'perc20');
                 perc.alpha = 0.1;
                 game.add.tween(perc).to({ alpha: 1 }, 2000, "Linear", true);
                 balon = game.add.sprite(pumpa.y, 0, "balon3");
+                addBalons();
             }
             else if (balonNumber == 4) {
                 perc = game.add.image(gWidth - 250, (gHeight / 10) * balonNumber, 'perc30');
                 perc.alpha = 0.1;
                 game.add.tween(perc).to({ alpha: 1 }, 2000, "Linear", true);
                 balon = game.add.sprite(pumpa.y, 0, "balon4");
+                addBalons();
             }
             else if (balonNumber == 5) {
                 perc = game.add.image(gWidth - 250, (gHeight / 10) * balonNumber, 'perc40');
                 perc.alpha = 0.1;
                 game.add.tween(perc).to({ alpha: 1 }, 2000, "Linear", true);
                 balon = game.add.sprite(pumpa.y, 0, "balon5");
+                addBalons();
             }
             else if (balonNumber == 6) {
                 perc = game.add.image(gWidth - 250, (gHeight / 10) * balonNumber, 'perc50');
                 perc.alpha = 0.1;
                 game.add.tween(perc).to({ alpha: 1 }, 2000, "Linear", true);
                 balon = game.add.sprite(pumpa.y, 0, "balon6");
+                addBalons();
             }
 
+        /*
+            for (i = 0; i < (balons.children.length - 2) ; i++) {
+                balons.children[i].y = (gHeight / 10) * (i+1);
+            }
+        */
             balonPerc = 0.01;
             power = 0;
             balon.width = balonWidth * balonPerc;
