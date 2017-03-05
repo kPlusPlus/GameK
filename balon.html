@@ -170,32 +170,37 @@
                 addBalons();
             }
             else if (balonNumber == 3) {
-                perc = game.add.image(gWidth - 250, (gHeight / 10) * balonNumber, 'perc20');
+                perc = game.add.image(gWidth - 250, bY, 'perc20');
                 perc.alpha = 0.1;
                 game.add.tween(perc).to({ alpha: 1 }, 2000, "Linear", true);
                 balon = game.add.sprite(pumpa.y, 0, "balon3");
                 addBalons();
             }
             else if (balonNumber == 4) {
-                perc = game.add.image(gWidth - 250, (gHeight / 10) * balonNumber, 'perc30');
+                perc = game.add.image(gWidth - 250, bY, 'perc30');
                 perc.alpha = 0.1;
                 game.add.tween(perc).to({ alpha: 1 }, 2000, "Linear", true);
                 balon = game.add.sprite(pumpa.y, 0, "balon4");
                 addBalons();
             }
             else if (balonNumber == 5) {
-                perc = game.add.image(gWidth - 250, (gHeight / 10) * balonNumber, 'perc40');
+                perc = game.add.image(gWidth - 250, bY, 'perc40');
                 perc.alpha = 0.1;
                 game.add.tween(perc).to({ alpha: 1 }, 2000, "Linear", true);
                 balon = game.add.sprite(pumpa.y, 0, "balon5");
                 addBalons();
             }
             else if (balonNumber == 6) {
-                perc = game.add.image(gWidth - 250, (gHeight / 10) * balonNumber, 'perc50');
+                perc = game.add.image(gWidth - 250, bY, 'perc50');
                 perc.alpha = 0.1;
                 game.add.tween(perc).to({ alpha: 1 }, 2000, "Linear", true);
                 balon = game.add.sprite(pumpa.y, 0, "balon6");
                 addBalons();
+            }
+            else if (balonNumber == 7) {
+                perc = game.add.image(gWidth - 250, bY, 'perc60');
+                perc.alpha = 0.1;
+                game.add.tween(perc).to({ alpha: 1 }, 2000, "Linear", true);
             }
 
         /*
