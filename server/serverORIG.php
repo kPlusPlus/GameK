@@ -3,7 +3,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-$host = 'DESKTOP-592JOJD'; //host
+$host = 'localhost'; //host
 $port = '9000'; //port
 $null = NULL; //null var
 
@@ -59,6 +59,20 @@ while (true) {
 			$m_x = $tst_msg->x;
 			$m_y = $tst_msg->y;
 			$m_angle = $tst_msg->angle;
+            /*
+            $fmsg = array();
+            $fmsg  = array('x'=>$m_x, 'y'=>$m_y,'angle'=>$m_angle);
+            if($m_id == 1) {
+                $fp = fopen('player1.json', 'w');
+                fwrite($fp, json_encode($fmsg));
+                fclose($fp);
+            }
+            if($m_id == 2) {
+                $fp = fopen('player2.json', 'w');
+                fwrite($fp, json_encode($fmsg));
+                fclose($fp);
+            }
+            */
 			$response_text = mask(json_encode(array('type'=>'usermsg', 'id'=>$m_id, 'x'=>$m_x, 'y'=>$m_y, 'angle'=>$m_angle)));
 
 			send_message($response_text); //send data

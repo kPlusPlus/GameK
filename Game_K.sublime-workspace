@@ -167,15 +167,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "kBooble.html",
-			"settings":
-			{
-				"buffer_size": 13414,
-				"encoding": "UTF-8 with BOM",
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "Packages/VBScript/VBScript.sublime-build",
 	"build_system_choices":
@@ -299,12 +290,17 @@
 	},
 	"expanded_folders":
 	[
-		"/E/GameK"
+		"/E/GameK",
+		"/E/GameK/server"
 	],
 	"file_history":
 	[
-		"/E/GameK/composer.json",
+		"/E/proj/Libri/httpd.conf",
+		"/E/kBookMark/priprema/bookmarks-2017-03-12.json",
 		"/E/GameK/kBooble.html",
+		"/E/GameK/php_mail.php",
+		"/E/GameK/server/server.php",
+		"/E/GameK/composer.json",
 		"/E/GameK/dns/DNSUpdateURL.vbs",
 		"/E/GameK/app.html",
 		"/E/GameK/dns/DNSUpdateLog.txt",
@@ -374,42 +370,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "kBooble.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 13414,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5733,
-								5733
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2589.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
