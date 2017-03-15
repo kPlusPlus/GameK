@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <title>balončeki 0.001</title>
+    <title>balončeki 0.002</title>
     <script type="text/javascript" src="Scripts/phaser.js"></script>
     <style type="text/css">
         body {
@@ -19,6 +19,7 @@
         var game = new Phaser.Game(gWidth, gHeight, Phaser.AUTO, '', { preload: preload, create: create, update: update });
 
         function preload() {
+            game.load.image('background', 'balon/background1.png');
             game.load.image('balon1', 'balon/balloon_blue.png');
             game.load.image('balon2', 'balon/balloon_green.png');
             game.load.image('balon3', 'balon/balloon_red.png');
@@ -51,7 +52,7 @@
         var pumpaSmjer = 0; pumpaStep = 0;
         var score = 0;
         var power = 0;
-        var scoreText, powerText;
+        var scoreText, powerText, balonText;
         var timer = 0;
         var button, perc, percWin = 0;
         var music_inflate, music_explode;
@@ -61,11 +62,16 @@
             game.scale.setMaximum();
             resizeGame();
             game.physics.startSystem(Phaser.Physics.ARCADE);
-
-            game.add.sprite(0, 0, 'totem');
+            
+            bck = game.add.sprite(0, 0, 'background');
+            bck.width = gWidth;
+            bck.height = gHeight;
+            //game.add.sprite(0, 0, 'totem');
+            
             player = game.add.sprite(gWidth / 2 - 2, 200, "pumpup");
             pumpa = game.add.sprite(gWidth / 2, gHeight / 2, "pumpbase");
             balon = game.add.sprite(gWidth / 2 - 100, 0, "balon1");
+            
             button = game.add.button(100, 100, "button", actionOnClick);
             music_inflate = game.add.audio('inflate');
             music_explode = game.add.audio('explode');
@@ -78,8 +84,11 @@
             balon.height = balonHeight * balonPerc;
             //scoreText = game.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#0CAAFF' });
             powerText = game.add.text(50, 180, "snaga: " + power);
+            balonText = game.add.text(50, 50, "EEEEEEEEEEEE");
             powerText.fontSize = 20;
             powerText.fill = '#000000';
+            balonText.fontSize = 30;
+            balonText.fill = '#FFFF00';
             progressBar = game.add.sprite(50, 250, 'progressBar');
             progressBarLine = game.add.sprite(50, 250, 'progressBarLine');
             cursors = game.input.keyboard.createCursorKeys();
@@ -115,6 +124,11 @@
             balonPerc = balonPerc + (power / 1000);
             balon.width = balonWidth * balonPerc;
             balon.height = balonHeight * balonPerc;
+
+            //var L = (50 + (100 - (balonPerc * 100)) / 2) / 100
+            //var rgb = Phaser.Color.HSLtoRGB(0, 1, L)
+            //var hex = (rgb.r * 0x010000) + (rgb.g * 0x000100) + (rgb.b * 0x000001)
+            //balon.tint = hex;
             if (balonPerc > balonHigh) {
                 music_explode.play();
                 GameOver();
@@ -145,6 +159,9 @@
 
         function ShowPower() {
             powerText.text = "snaga: " + power + "\n balon " + balonPerc;
+            balonText.text = Math.round(balonPerc * 100);
+            balonText.x = balon.x + balon.width / 3;
+            balonText.y = balon.y + balon.height / 3;
             if (balonPerc > balonLow && balonPerc < balonHigh)
                 button.visible = true;
             else

@@ -167,6 +167,15 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "/E/proj/Libri/functions.js",
+			"settings":
+			{
+				"buffer_size": 4825,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "Packages/VBScript/VBScript.sublime-build",
 	"build_system_choices":
@@ -290,11 +299,20 @@
 	},
 	"expanded_folders":
 	[
-		"/E/GameK",
-		"/E/GameK/server"
+		"/E/GameK"
 	],
 	"file_history":
 	[
+		"/E/proj/Libri/sftp-config.json",
+		"/E/Sublime Text Build 3114 x64/Data/Packages/SFTP/SFTP.sublime-settings",
+		"/E/GameK/chate/index.php",
+		"/E/GameK/chate/chat.js",
+		"/E/GameK/car1sock.html",
+		"/E/GameK/car2.html",
+		"/E/GameK/car_test.html",
+		"/E/GameK/car1.html",
+		"/E/GameK/chate/chat.php",
+		"/E/GameK/chate/chat.html",
 		"/E/proj/Libri/httpd.conf",
 		"/E/kBookMark/priprema/bookmarks-2017-03-12.json",
 		"/E/GameK/kBooble.html",
@@ -370,8 +388,42 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "/E/proj/Libri/functions.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4825,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								158,
+								158
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/JavaScript Ultimate/javascript.dom.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
