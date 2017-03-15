@@ -1,0 +1,242 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>balončeki 0.001</title>
+    <script type="text/javascript" src="Scripts/phaser.js"></script>
+    <style type="text/css">
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <script type="text/javascript">
+        var gWidth = window.innerWidth; // 800;
+        var gHeight = window.innerHeight; // 600 ;
+
+        var game = new Phaser.Game(gWidth, gHeight, Phaser.AUTO, '', { preload: preload, create: create, update: update });
+
+        function preload() {
+            game.load.image('balon1', 'balon/balloon_blue.png');
+            game.load.image('balon2', 'balon/balloon_green.png');
+            game.load.image('balon3', 'balon/balloon_red.png');
+            game.load.image('balon4', 'balon/balloon_gold.png');
+            game.load.image('balon5', 'balon/balloon_yellow.png');
+            game.load.image('balon6', 'balon/balloon_white.png');
+            game.load.image("totem", "balon/totem.png");
+            game.load.image("pumpbase", "balon/pumpbase.png");
+            game.load.image("pumpup", "balon/pump_up.png");
+            game.load.spritesheet("button", "balon/button.png", 176, 79);
+            game.load.image('perc10', 'balon/perc10.png');
+            game.load.image('perc20', 'balon/perc20.png');
+            game.load.image('perc30', 'balon/perc30.png');
+            game.load.image('perc40', 'balon/perc40.png');
+            game.load.image('perc50', 'balon/perc50.png');
+            game.load.image('perc60', 'balon/perc60.png');
+            game.load.image('progressBar', 'balon/progressBar.png');
+            game.load.image('progressBarLine', 'balon/progressBarLine.png');
+            game.load.audio('inflate', 'balon/234212__terhen__balloon-inflate-3.wav');
+            game.load.audio('explode', 'balon/54874__lematt__balonexplose1.wav');
+
+        }
+
+        var player;
+        //var platforms;
+        var cursors;
+        var pumpa, balon, balonPerc = 0.01, balonWidth, balonHeight;
+        var balonLow = 0.95, balonHigh = 1.2;
+        var balonNumber = 1;
+        var pumpaSmjer = 0; pumpaStep = 0;
+        var score = 0;
+        var power = 0;
+        var scoreText, powerText;
+        var timer = 0;
+        var button, perc, percWin = 0;
+        var music_inflate, music_explode;
+        var progressBar, progressBarLine;
+
+        function create() {
+            game.scale.setMaximum();
+            resizeGame();
+            game.physics.startSystem(Phaser.Physics.ARCADE);
+
+            game.add.sprite(0, 0, 'totem');
+            player = game.add.sprite(gWidth / 2 - 2, 200, "pumpup");
+            pumpa = game.add.sprite(gWidth / 2, gHeight / 2, "pumpbase");
+            balon = game.add.sprite(gWidth / 2 - 100, 0, "balon1");
+            button = game.add.button(100, 100, "button", actionOnClick);
+            music_inflate = game.add.audio('inflate');
+            music_explode = game.add.audio('explode');
+            //balon.anchor.setTo(0.5, 1);
+            balonWidth = balon.width;
+            balonHeight = balon.height;
+            balon.x = gWidth / 2 + 10;
+            balon.y = pumpa.y;
+            balon.width = balonWidth * balonPerc;
+            balon.height = balonHeight * balonPerc;
+            //scoreText = game.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#0CAAFF' });
+            powerText = game.add.text(50, 180, "snaga: " + power);
+            powerText.fontSize = 20;
+            powerText.fill = '#000000';
+            progressBar = game.add.sprite(50, 250, 'progressBar');
+            progressBarLine = game.add.sprite(50, 250, 'progressBarLine');
+            cursors = game.input.keyboard.createCursorKeys();
+
+        }
+
+        function addBalons() {
+            balons.add(balon);
+        }
+
+        function update() {
+            timer = timer + 1;
+
+            if (timer == 5) {
+                power = power - 0.2;
+                if (cursors.left.isDown) {
+                    power = power + .5;
+                    pumpaj();
+                }
+
+                if (cursors.right.isDown) {
+                    power = power + .5;
+                    pumpaj();
+                }
+                timer = 0;
+                ShowPower();
+                ShowBar();
+                ShowBalon();
+            }
+        }
+
+        function ShowBalon() {
+            balonPerc = balonPerc + (power / 1000);
+            balon.width = balonWidth * balonPerc;
+            balon.height = balonHeight * balonPerc;
+            if (balonPerc > balonHigh) {
+                music_explode.play();
+                GameOver();
+            }
+            if (balonPerc < -0.2) {
+                music_explode.play();
+                GameOver();
+            }
+        }
+
+        function ShowBar() {
+            progressBarLine.width = balonPerc * 100;
+        }
+
+        function pumpaj() {
+            if (pumpaSmjer == 0) {
+                pumpaStep = pumpaStep + 1;
+                if (pumpaStep == 100) pumpaSmjer = 1;
+                player.y = player.y + 1;
+            }
+            if (pumpaSmjer == 1) {
+                pumpaStep = pumpaStep - 1;
+                if (pumpaStep == 0) pumpaSmjer = 0;
+                player.y = player.y - 1;
+            }
+            music_inflate.play();
+        }
+
+        function ShowPower() {
+            powerText.text = "snaga: " + power + "\n balon " + balonPerc;
+            if (balonPerc > balonLow && balonPerc < balonHigh)
+                button.visible = true;
+            else
+                button.visible = false;
+        }
+
+        function actionOnClick() {
+            if (balonPerc > balonLow && balonPerc < balonHigh)
+                newballoon();
+        }
+
+        function newballoon() {
+            var bY;
+            alert("Osvojili ste !!! " + balonNumber * 10 + " %%% popusta");
+            balonNumber = balonNumber + 1;
+            balon.x = gWidth - 50;
+            bY = (gHeight / 10) * balonNumber + (balonHeight / 10);
+            balon.y = bY;
+            balon.width = balonWidth / 10;
+            balon.height = balonHeight / 10;
+
+            if (balonNumber == 2) {
+                percWin = 10;
+                perc = game.add.image(gWidth - 250, bY, 'perc10');
+                perc.alpha = 0.1;
+                game.add.tween(perc).to({ alpha: 1 }, 2000, "Linear", true);
+                balon = game.add.sprite(pumpa.y, 0, "balon2");
+                addBalons();
+            }
+            else if (balonNumber == 3) {
+                percWin = 20;
+                perc = game.add.image(gWidth - 250, bY, 'perc20');
+                perc.alpha = 0.1;
+                game.add.tween(perc).to({ alpha: 1 }, 2000, "Linear", true);
+                balon = game.add.sprite(pumpa.y, 0, "balon3");
+                addBalons();
+            }
+            else if (balonNumber == 4) {
+                percWin = 30;
+                perc = game.add.image(gWidth - 250, bY, 'perc30');
+                perc.alpha = 0.1;
+                game.add.tween(perc).to({ alpha: 1 }, 2000, "Linear", true);
+                balon = game.add.sprite(pumpa.y, 0, "balon4");
+                addBalons();
+            }
+            else if (balonNumber == 5) {
+                percWin = 40;
+                perc = game.add.image(gWidth - 250, bY, 'perc40');
+                perc.alpha = 0.1;
+                game.add.tween(perc).to({ alpha: 1 }, 2000, "Linear", true);
+                balon = game.add.sprite(pumpa.y, 0, "balon5");
+                addBalons();
+            }
+            else if (balonNumber == 6) {
+                percWin = 50;
+                perc = game.add.image(gWidth - 250, bY, 'perc50');
+                perc.alpha = 0.1;
+                game.add.tween(perc).to({ alpha: 1 }, 2000, "Linear", true);
+                balon = game.add.sprite(pumpa.y, 0, "balon6");
+                addBalons();
+            }
+            else if (balonNumber == 7) {
+                percWin = 60;
+                perc = game.add.image(gWidth - 250, bY, 'perc60');
+                perc.alpha = 0.1;
+                game.add.tween(perc).to({ alpha: 1 }, 2000, "Linear", true);
+            }
+
+            balonPerc = 0.01;
+            power = 0;
+            balon.width = balonWidth * balonPerc;
+            balon.height = balonHeight * balonPerc;
+            balon.x = gWidth / 2 + 10;
+            balon.y = gHeight - pumpa.height - 15;
+        }
+
+        function GameOver() {
+            game.add.text(gWidth / 2 - 100, gHeight / 2 - 100, "Game Over ");
+            alert('Kraj igre ' + "\n osvojili ste " + percWin);
+        }
+
+        var resizeGame = this._fitScreen = function () {
+            game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+            game.scale.pageAlignHorizontally = true;
+            game.scale.pageAlignVertically = true;
+            game.scale.forceOrientation(true, true);
+            game.scale.setShowAll();
+            game.scale.refresh();
+        }
+
+
+    </script>
+
+</body>
+</html>
