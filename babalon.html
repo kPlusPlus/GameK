@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <title>balončeki 0.001</title>
+    <title>balončeki 0.003</title>
     <script type="text/javascript" src="Scripts/phaser.js"></script>
+    <script type="text/javascript" src="Scripts/jquery-3.1.1.js"></script>
+
     <style type="text/css">
         body {
             margin: 0;
@@ -53,14 +55,14 @@
 
             baloni = game.add.group();            
             baloni.enableBody = true;
-            baloni.physicsBodyType = Phaser.Physics.P2JS;
-
-            //baloni.physicsBodyType = Phaser.Physics.P2JS;
+            baloni.physicsBodyType = Phaser.Physics.P2JS;            
 
             game.physics.arcade.enable(baloni);
             createBaloni();
-            //balloonSet();
+            balloonSet();
             moveBalone();
+
+            game.input.onTap.add(moveBalone, this);
         }
 
         function createBaloni() {
@@ -84,7 +86,7 @@
                 
                 //balon.body.enableBody = true;
                 balon.scale.setTo(0.2, 0.2);
-                balon.physicsType = Phaser.Physics.P2JS;
+                balon.physicsType = Phaser.Physics.P2JS;                
                 baloni.add(balon);
             }
         }
@@ -93,8 +95,8 @@
             for (i = 0; i < baloni.children.length; i++) {
                 baloni.children[i].body.clearShapes();
                 baloni.children[i].body.loadPolygon('physicsData', 'balloon')
-                baloni.children[i].body.setZeroVelocity();
-                baloni.children[i].body.static = true;
+                //baloni.children[i].body.setZeroVelocity();
+                //baloni.children[i].body.static = true;
             }
         }
 
@@ -104,10 +106,10 @@
         }
 
         function moveBalone() {            
-            for (i = 0; i < baloni.children.length; i++) {
+            for (i = 0; i < baloni.children.length - 1; i++) {
                 //baloni.children[i].body.enable = true;
                 game.add.tween(baloni.children[i]).to({ x: this.game.world.randomX, y: this.game.world.randomY }, moveTime, Phaser.Easing.Quadratic.InOut, true);
-            }
+            }            
         }
 
 
