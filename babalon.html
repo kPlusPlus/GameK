@@ -34,24 +34,23 @@
 
         var player;
         var cursors;
-        var balonNum = 50 /*218*/, balon, baloni;
+        var balonNum = 100 /*218*/, balon, baloni;
         var baloniListaPopust = new Array();
         var baloniPopust = new Array();
         var life = 3;
         var maxScore = 0;
-        var moveTime = 10000;
+        var moveTime = 2000;
+        var cTimer = 0;
 
 
         function create() {
             game.scale.setMaximum();
-            resizeGame();
-            //game.physics.startSystem(Phaser.Physics.ARCADE);
+            resizeGame();            
             game.physics.startSystem(Phaser.Physics.P2JS);
 
             bck = game.add.sprite(0, 0, 'background');
             bck.width = gWidth;
-            bck.height = gHeight;
-            //bck.body.enableBody = true;
+            bck.height = gHeight;            
 
             baloni = game.add.group();
             baloni.enableBody = true;
@@ -59,7 +58,7 @@
 
             game.physics.arcade.enable(baloni);
             createBaloni();
-            baloni.scale.setTo(0.5, 0.5);
+            //baloni.scale.setTo(1, 1);
             balloonSet();            
         }
 
@@ -80,10 +79,7 @@
                 else if (tip == 5)
                     balon = game.add.sprite(x, y, 'balon5');
                 else if (tip == 6)
-                    balon = game.add.sprite(x, y, 'balon6');
-
-                //balon.body.enableBody = true;
-                //balon.scale.setTo(0.2, 0.2);
+                    balon = game.add.sprite(x, y, 'balon6');                
                 balon.physicsType = Phaser.Physics.P2JS;
                 baloni.add(balon);
             }
@@ -102,7 +98,7 @@
                 var balonX = gWidth * Math.round();
                 var balonY = gHeight * Math.round();
                 var timeFor = moveTime * Math.round();
-                game.add.tween(baloni.children[n]).to({ x: balonX, y: balonY }, timeFor, Phaser.Easing.Quadratic.InOut, true,5,20,true).loop(true);
+                game.add.tween(baloni.children[n]).to({ x: balonX, y: balonY }, timeFor, Phaser.Easing.Quadratic.InOut, true);
             }
         }
 
@@ -113,7 +109,20 @@
         }
 
         function update() {
-            // some code
+            cTimer = cTimer + 1;
+            if (cTimer > 600)
+            {
+                game.tweens.removeAll();
+                cTimer = 0;
+                for(i = 0; i < baloni.children.length; i++)
+                {
+                    game.tweens.removeFrom(baloni.children[i]);
+                    if (game.tweens.isTweening(baloni.children[i]) == false) {
+                        moveBal(i);
+                        //alert(i);
+                    }
+                }
+            }
         }
 
 
