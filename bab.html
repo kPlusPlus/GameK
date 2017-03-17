@@ -34,12 +34,12 @@
 
         var player;
         var cursors;
-        var balonNum = 50 /*218*/, balon, baloni;
+        var balonNum = 10 /*218*/, balon, baloni;
         var baloniListaPopust = new Array();
         var baloniPopust = new Array();
         var life = 3;
         var maxScore = 0;
-        var moveTime = 10000;
+        var moveTime = 9000;
 
 
         function create() {
@@ -57,16 +57,29 @@
             baloni.enableBody = true;
             baloni.physicsBodyType = Phaser.Physics.P2JS;
 
-            game.physics.arcade.enable(baloni);
-            createBaloni();
-            baloni.scale.setTo(0.5, 0.5);
-            balloonSet();            
+            balon = game.add.sprite(10, 100, 'balon1');
+            //balon.scale.setTo(0.2, 0.2);
+            balon.physicsType = Phaser.Physics.P2JS;
+            game.physics.enable(balon, Phaser.Physics.P2JS);
+            baloni.add(balon);
+            //moveBal(0);
+            
+            balon = game.add.sprite(1800, 1200, 'balon2');
+            //balon.scale.setTo(0.2, 0.2);
+            balon.physicsType = Phaser.Physics.P2JS;
+            game.physics.enable(balon, Phaser.Physics.P2JS);
+            baloni.add(balon);
+            //movebal(1);
+            //balloonSet();
+            smallBalone();
+            balloonSet();
+                        
         }
 
         function createBaloni() {
             for (i = 0; i < balonNum; i++) {
-                var x = Math.random() * gWidth * 5;
-                var y = Math.random() * gHeight * 5;
+                var x = Math.random() * gWidth;
+                var y = Math.random() * gHeight;
                 var tip = Math.round(Math.random() * 6);
                 if (tip == 0) tip = 1;
                 if (tip == 1)
@@ -83,7 +96,7 @@
                     balon = game.add.sprite(x, y, 'balon6');
 
                 //balon.body.enableBody = true;
-                //balon.scale.setTo(0.2, 0.2);
+                balon.scale.setTo(0.2, 0.2);
                 balon.physicsType = Phaser.Physics.P2JS;
                 baloni.add(balon);
             }
@@ -97,28 +110,34 @@
             }
         }
 
+        function update() {
+            // some code
+        }
+
+        function smallBalone() {
+            baloni.scale.setTo(0.6, 0.6);
+            /*
+            for (i = 0; i < baloni.children.length; i++) {
+                game.add.tween(baloni.children[i]).to({ scaleX: 0.2, scaleY: 0.2 }, 10, Phaser.Easing.Sinusoidal.InOut, true);
+            }
+            */
+        }
+
+        function moveBalone() {
+            for (i = 0; i < baloni.children.length; i++) {
+                //baloni.children[i].body.enable = true;
+                game.add.tween(baloni.children[i]).to({ x: this.game.world.randomX, y: this.game.world.randomY }, moveTime, Phaser.Easing.Quadratic.InOut, true);
+            }
+        }
+
         function moveBal(n) {
             if (n < baloni.children.length) {
                 var balonX = gWidth * Math.round();
                 var balonY = gHeight * Math.round();
                 var timeFor = moveTime * Math.round();
-                game.add.tween(baloni.children[n]).to({ x: balonX, y: balonY }, timeFor, Phaser.Easing.Quadratic.InOut, true,5,20,true).loop(true);
+                game.add.tween(baloni.children[n]).to({ x: balonX, y: balonY }, timeFor, Phaser.Easing.Quadratic.InOut, true);                
             }
         }
-
-        function moveBalone() {
-            for (i = 0; i < baloni.children.length; i++) {
-                game.add.tween(baloni.children[i]).to({ x: this.game.world.randomX, y: this.game.world.randomY }, moveTime, Phaser.Easing.Quadratic.InOut, true);
-            }
-        }
-
-        function update() {
-            // some code
-        }
-
-
-
-
 
 
         var resizeGame = this._fitScreen = function () {
