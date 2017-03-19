@@ -13,7 +13,8 @@
     </style>
 </head>
 <body>
-    <span id="info" name="info">AAAA</span>
+    <span id="info" name="info">AAAA</span><hr />
+    <span id="infoS" name="infoS">BBBB</span><hr />
     <script type="text/javascript">
         var gWidth = window.innerWidth; // 800;
         var gHeight = window.innerHeight; // 600 ;
@@ -84,11 +85,13 @@
             var mjesto;
             for (i = 0; i < baloniListaPopust.length; i++) {
                 for (j = 0; j < baloniListaPopust[i]; j++) {
-                    mjesto = Math.round(Math.random() * balonNum);
-                    if (baloniPopust[mjesto] > 0) j = j - 1;
-                    else if (baloniListaPopust[i] > 0 && baloniPopust[mjesto] == 0) {
-                        baloniPopust[mjesto] = (i + 1) * 5;
-                        baloniListaPopust[0] = baloniListaPopust[0] - 1;
+                    if (baloniListaPopust[i] > 0) {
+                        mjesto = Math.round(Math.random() * balonNum);
+                        if (baloniPopust[mjesto] > 0) j = j - 1;
+                        else if (baloniListaPopust[i] > 0 && baloniPopust[mjesto] == 0) {
+                            baloniPopust[mjesto] = (i + 2) * 5;
+                            baloniListaPopust[i] = baloniListaPopust[i] - 1;
+                        }
                     }
                 }
             }
@@ -100,6 +103,12 @@
                 sText += baloniPopust[i] + "\n";
             }
             $("#info").text(sText);
+
+            sText = "";
+            for (i = 0; i < baloniListaPopust.length; i++) {
+                sText += baloniListaPopust[i] + "\n";
+            }
+            $("#infoS").text(sText);
         }
 
         function createBaloni() {
