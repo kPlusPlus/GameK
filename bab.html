@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <title>balončeki 0.003</title>
+    <title>bab TEST 0.006</title>
     <script type="text/javascript" src="Scripts/phaser.js"></script>
     <script type="text/javascript" src="Scripts/jquery-3.1.1.js"></script>
 
@@ -13,7 +13,8 @@
     </style>
 </head>
 <body>
-
+    <span id="info" name="info">BBB</span>
+    <span id="infoS" name="infoS" >AAA</span>
     <script type="text/javascript">
         var gWidth = window.innerWidth; // 800;
         var gHeight = window.innerHeight; // 600 ;
@@ -34,52 +35,101 @@
 
         var player;
         var cursors;
-        var balonNum = 10 /*218*/, balon, baloni;
+        var balonNum = 12 /*218*/, balon, baloni;
         var baloniListaPopust = new Array();
         var baloniPopust = new Array();
         var life = 3;
         var maxScore = 0;
-        var moveTime = 9000;
+        var moveTime = 120000;
+        var cTimer = 0;
+        var tween = [];
 
 
         function create() {
             game.scale.setMaximum();
             resizeGame();
-            //game.physics.startSystem(Phaser.Physics.ARCADE);
             game.physics.startSystem(Phaser.Physics.P2JS);
 
             bck = game.add.sprite(0, 0, 'background');
             bck.width = gWidth;
             bck.height = gHeight;
-            //bck.body.enableBody = true;
 
             baloni = game.add.group();
             baloni.enableBody = true;
             baloni.physicsBodyType = Phaser.Physics.P2JS;
 
-            balon = game.add.sprite(10, 100, 'balon1');
-            //balon.scale.setTo(0.2, 0.2);
-            balon.physicsType = Phaser.Physics.P2JS;
-            game.physics.enable(balon, Phaser.Physics.P2JS);
-            baloni.add(balon);
-            //moveBal(0);
-            
-            balon = game.add.sprite(1800, 1200, 'balon2');
-            //balon.scale.setTo(0.2, 0.2);
-            balon.physicsType = Phaser.Physics.P2JS;
-            game.physics.enable(balon, Phaser.Physics.P2JS);
-            baloni.add(balon);
-            //movebal(1);
-            //balloonSet();
-            smallBalone();
+            game.physics.arcade.enable(baloni);
+            createBaloni();
+            //baloni.scale.setTo(1, 1);
             balloonSet();
+            //CreatePopust();
+            //PopuniPopust();
+            //GetListPopust();
+        }
+
+        function CreatePopust() {
+            baloniListaPopust.push(10);
+            baloniListaPopust.push(19);
+            baloniListaPopust.push(15);
+            baloniListaPopust.push(14);
+            baloniListaPopust.push(20);
+            baloniListaPopust.push(10);
+            baloniListaPopust.push(3);
+            baloniListaPopust.push(2);
+            baloniListaPopust.push(2);
+            for (i = 0; i < balonNum; i++) {
+                baloniPopust.push(0);
+            }
+        }
+
+        function PopuniPopust() {
+            var mjesto;
+            for (i = 0; i < baloniListaPopust.length; i++) {
+                for (j = 0; j < baloniListaPopust[i]; j++) {
+                    if (baloniListaPopust[i] > 0) {
+                        do  {
+                            mjesto = Math.round(Math.random() * balonNum);
+                        }                        
+                        while (baloniPopust[mjesto] > 0 );
                         
+                        if (baloniListaPopust[i] > 0 && baloniPopust[mjesto] == 0) {
+                            baloniPopust[mjesto] = (i + 2) * 5;                            
+                        }
+                    }
+                }
+                baloniListaPopust[i] = 0;
+            }
+        }
+
+        function GetListPopust() {
+            var sText = " ";
+            for (i = 0; i < baloniPopust.length; i++) {
+                sText += baloniPopust[i] + "\n";
+            }
+            $("#info").text(sText);
+
+            sText = "";
+            for (i = 0; i < baloniListaPopust.length; i++) {
+                sText += baloniListaPopust[i] + "\n";
+            }
+            //$("#infoS").text(sText);
+        }
+
+        function TEST() {
+            var sText = "";
+            $("#infoS").text(sText);
+
+            for (i = 0; i < tween.length; i++)
+            {
+                sText += tween[i].isRunning + "\n";
+            }
+            $("#infoS").text(sText);
         }
 
         function createBaloni() {
             for (i = 0; i < balonNum; i++) {
-                var x = Math.random() * gWidth;
-                var y = Math.random() * gHeight;
+                var x = Math.random() * gWidth * 5;
+                var y = Math.random() * gHeight * 5;
                 var tip = Math.round(Math.random() * 6);
                 if (tip == 0) tip = 1;
                 if (tip == 1)
@@ -94,9 +144,6 @@
                     balon = game.add.sprite(x, y, 'balon5');
                 else if (tip == 6)
                     balon = game.add.sprite(x, y, 'balon6');
-
-                //balon.body.enableBody = true;
-                balon.scale.setTo(0.2, 0.2);
                 balon.physicsType = Phaser.Physics.P2JS;
                 baloni.add(balon);
             }
@@ -110,32 +157,55 @@
             }
         }
 
-        function update() {
-            // some code
-        }
-
-        function smallBalone() {
-            baloni.scale.setTo(0.6, 0.6);
-            /*
-            for (i = 0; i < baloni.children.length; i++) {
-                game.add.tween(baloni.children[i]).to({ scaleX: 0.2, scaleY: 0.2 }, 10, Phaser.Easing.Sinusoidal.InOut, true);
-            }
-            */
-        }
-
-        function moveBalone() {
-            for (i = 0; i < baloni.children.length; i++) {
-                //baloni.children[i].body.enable = true;
-                game.add.tween(baloni.children[i]).to({ x: this.game.world.randomX, y: this.game.world.randomY }, moveTime, Phaser.Easing.Quadratic.InOut, true);
-            }
-        }
-
         function moveBal(n) {
             if (n < baloni.children.length) {
                 var balonX = gWidth * Math.round();
                 var balonY = gHeight * Math.round();
                 var timeFor = moveTime * Math.round();
-                game.add.tween(baloni.children[n]).to({ x: balonX, y: balonY }, timeFor, Phaser.Easing.Quadratic.InOut, true);                
+                var delay = 200;
+                //game.add.tween(baloni.children[n]).to({ x: balonX, y: balonY }, timeFor, Phaser.Easing.Quadratic.InOut, true);
+                tween[n] = game.add.tween(baloni.children[n]).to({ x: balonX, y: balonY }, timeFor, Phaser.Easing.Quadratic.InOut, true, delay, 1000, false);
+                tween[n].yoyo(true, 3000);                
+            }
+        }
+
+        function moveForce(n) {
+            //tween[n].stop();
+            //tween[n].pendingDelete = false;
+            var balonX = gWidth * Math.round();
+            var balonY = gHeight * Math.round();
+            //baloni.children[n].x = balonX;
+            //baloni.children[n].y = balonY;
+            //baloni.children[n].body.x = balonX;
+            //baloni.children[n].body.y = balonY;
+            tween[n].x = balonX;
+            tween[n].y = balonY;
+
+        }
+
+
+        function moveBalone() {
+            for (i = 0; i < baloni.children.length; i++) {
+                game.add.tween(baloni.children[i]).to({ x: this.game.world.randomX, y: this.game.world.randomY }, moveTime, Phaser.Easing.Quadratic.InOut, true);
+            }
+        }
+
+        function update() {
+        
+            cTimer = cTimer + 1;
+            if (cTimer > 100) {
+                game.tweens.removeAll();
+                cTimer = 0;
+                TEST();
+                for (i = 0; i < baloni.children.length; i++) {
+                    game.tweens.removeFrom(baloni.children[i]);
+                    moveForce(i);
+                    if (game.tweens.isTweening(baloni.children[i]) == false) {
+                        //moveBal(i);
+                        //alert(i);
+                    }
+                }
+                
             }
         }
 

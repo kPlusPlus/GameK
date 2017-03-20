@@ -13,8 +13,7 @@
     </style>
 </head>
 <body>
-    <span id="info" name="info">AAAA</span><hr />
-    <span id="infoS" name="infoS">BBBB</span><hr />
+    
     <script type="text/javascript">
         var gWidth = window.innerWidth; // 800;
         var gHeight = window.innerHeight; // 600 ;
@@ -42,6 +41,7 @@
         var maxScore = 0;
         var moveTime = 2000;
         var cTimer = 0;
+        var tween = [];
 
 
         function create() {
@@ -63,7 +63,7 @@
             balloonSet();
             CreatePopust();
             PopuniPopust();
-            GetListPopust();
+            //GetListPopust();
         }
 
         function CreatePopust() {
@@ -111,7 +111,7 @@
             for (i = 0; i < baloniListaPopust.length; i++) {
                 sText += baloniListaPopust[i] + "\n";
             }
-            $("#infoS").text(sText);
+            //$("#infoS").text(sText);
         }
 
         function createBaloni() {
@@ -150,9 +150,29 @@
                 var balonX = gWidth * Math.round();
                 var balonY = gHeight * Math.round();
                 var timeFor = moveTime * Math.round();
-                game.add.tween(baloni.children[n]).to({ x: balonX, y: balonY }, timeFor, Phaser.Easing.Quadratic.InOut, true);
+                var delay = 200;
+                //game.add.tween(baloni.children[n]).to({ x: balonX, y: balonY }, timeFor, Phaser.Easing.Quadratic.InOut, true);
+                tween[n] = game.add.tween(baloni.children[n]).to({ x: balonX, y: balonY }, timeFor, Phaser.Easing.Quadratic.InOut, true, delay, 1000, false);
+                tween[n].yoyo(true, 3000);
+                
             }
         }
+
+        function onStart() {
+            //	Turn off the delay, so it loops seamlessly from here on
+            tween.delay(0);
+        }
+
+        function onLoop() {
+
+        }
+
+        function onComplete() {
+            alert(this);
+            //tween = game.add.tween(ball).to({ x: 800 - ball.width }, 2000, Phaser.Easing.Exponential.Out, true);
+
+        }
+
 
         function moveBalone() {
             for (i = 0; i < baloni.children.length; i++) {
@@ -162,7 +182,7 @@
 
         function update() {
             cTimer = cTimer + 1;
-            if (cTimer > 600) {
+            if (cTimer > 100) {
                 game.tweens.removeAll();
                 cTimer = 0;
                 for (i = 0; i < baloni.children.length; i++) {
@@ -172,6 +192,7 @@
                         //alert(i);
                     }
                 }
+                
             }
         }
 
