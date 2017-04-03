@@ -311,10 +311,11 @@
 	},
 	"expanded_folders":
 	[
-		"/E/GameK"
+		"/K/GameK"
 	],
 	"file_history":
 	[
+		"/K/GameK/php.ini",
 		"/E/LaraVel/LaraBara/.env",
 		"/E/LaraVel/LaraDoctrine/.env",
 		"/E/LaraVel/pokIns.bat",
@@ -509,12 +510,16 @@
 	},
 	"select_project":
 	{
-		"height": 0.0,
+		"height": 500.0,
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"",
+				"K:\\LaraVel\\LaraBaraProject.sublime-project"
+			]
 		],
-		"width": 0.0
+		"width": 380.0
 	},
 	"select_symbol":
 	{
@@ -533,7 +538,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 194.0,
+	"side_bar_width": 216.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
