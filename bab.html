@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <title>bab TEST 0.006</title>
-    <script type="text/javascript" src="Scripts/phaser.js"></script>
+    <script type="text/javascript" src="node_modules/phaser-ce/build/phaser.js"></script>  
     <script type="text/javascript" src="Scripts/jquery-3.1.1.js"></script>
 
     <style type="text/css">
@@ -12,9 +12,7 @@
         }
     </style>
 </head>
-<body>
-    <span id="info" name="info">BBB</span>
-    <span id="infoS" name="infoS" >AAA</span>
+<body>    
     <script type="text/javascript">
         
 
@@ -37,20 +35,20 @@
             tween = game.add.tween(ball).to({ y: game.world.height - ball.height }, 1500, Phaser.Easing.Bounce.Out, true, 2500, bounces);
 
             //	There is a 2.5 second delay at the start, then it calls this function
-            tween.onStart.add(onStart, this);
+            //tween.onStart.add(onStart, this);
 
             //	This tween will repeat 10 times, calling this function every time it loops
-            tween.onRepeat.add(onLoop, this);
+            //tween.onRepeat.add(onLoop, this);
 
             //	When it completes it will call this function
-            tween.onComplete.add(onComplete, this);
+            //tween.onComplete.add(onComplete, this);
 
         }
 
         function onStart() {
 
             //	Turn off the delay, so it loops seamlessly from here on
-            tween.delay(0);
+            //tween.delay(0);
 
         }
 

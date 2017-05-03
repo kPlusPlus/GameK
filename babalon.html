@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8" />
     <title>balončeki 0.003</title>
-    <script type="text/javascript" src="Scripts/phaser.js"></script>
+    <!-- script type="text/javascript" src="Scripts/phaser.js" script> -->
+    <script type="text/javascript" src="node_modules/phaser-ce/build/phaser.js"></script>  
     <script type="text/javascript" src="Scripts/jquery-3.1.1.js"></script>
 
     <style type="text/css">
@@ -29,7 +30,6 @@
             game.load.image('balon5', 'babalon/balloon_yellow.png');
             game.load.image('balon6', 'babalon/balloon_white.png');
             game.load.physics('physicsData', 'booble/physicsData.json');
-
         }
 
         var player;
@@ -133,8 +133,16 @@
                 else if (tip == 6)
                     balon = game.add.sprite(x, y, 'balon6');
                 balon.physicsType = Phaser.Physics.P2JS;
+                balon.events.onInputDown.add(listener, this);
                 baloni.add(balon);
             }
+        }
+
+        function listener() {
+            alert("eeeee");
+            //counter++;
+            //text.text = "You clicked " + counter + " times!";
+
         }
 
         function balloonSet() {
@@ -196,11 +204,6 @@
                 
             }
         }
-
-
-
-
-
 
         var resizeGame = this._fitScreen = function () {
             game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
