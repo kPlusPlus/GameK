@@ -29,6 +29,7 @@
             game.load.image('balon4', 'babalon/balloon_gold.png');
             game.load.image('balon5', 'babalon/balloon_yellow.png');
             game.load.image('balon6', 'babalon/balloon_white.png');
+            game.load.image('smile', 'babalon/crazy.png');
             game.load.physics('physicsData', 'booble/physicsData.json');
         }
 
@@ -133,13 +134,24 @@
                 else if (tip == 6)
                     balon = game.add.sprite(x, y, 'balon6');
                 balon.physicsType = Phaser.Physics.P2JS;
+                balon.inputEnabled = true;
                 balon.events.onInputDown.add(listener, this);
                 baloni.add(balon);
             }
         }
+        
+        function listener(sprite, pointer) {
+            var mjesto, popust;
+            mjesto = baloni.getIndex(sprite);
+            popust = baloniPopust[mjesto];
+            //alert(popust);
 
-        function listener() {
-            alert("eeeee");
+
+
+            
+            //baloni.remove(sprite); // radi !!!
+
+            //alert("eeeee " + sprite.x);
             //counter++;
             //text.text = "You clicked " + counter + " times!";
 
@@ -161,7 +173,7 @@
                 var delay = 200;
                 //game.add.tween(baloni.children[n]).to({ x: balonX, y: balonY }, timeFor, Phaser.Easing.Quadratic.InOut, true);
                 tween[n] = game.add.tween(baloni.children[n]).to({ x: balonX, y: balonY }, timeFor, Phaser.Easing.Quadratic.InOut, true, delay, 1000, false);
-                tween[n].yoyo(true, 3000);
+                //tween[n].yoyo(true, 3000);
                 
                 
             }
