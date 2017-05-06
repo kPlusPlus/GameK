@@ -144,7 +144,10 @@
             var mjesto, popust;
             mjesto = baloni.getIndex(sprite);
             popust = baloniPopust[mjesto];
-            //alert(popust);
+            x = sprite.x - (sprite.width / 2);
+            y = sprite.y - (sprite.height / 2);
+
+            sprite = game.add.sprite(x, y, 'smile');
 
 
 
