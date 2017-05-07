@@ -25,11 +25,13 @@
             game.load.image('background', 'babalon/background2.jpg');
             game.load.image('balon1', 'babalon/balloon_blue.png');
             game.load.image('balon2', 'babalon/balloon_green.png');
-            game.load.image('balon3', 'babalon/balloon_red.png');
+            game.load.image('balon3', 'babalon/balloon_red.png'); 
             game.load.image('balon4', 'babalon/balloon_gold.png');
             game.load.image('balon5', 'babalon/balloon_yellow.png');
-            game.load.image('balon6', 'babalon/balloon_white.png');
-            game.load.image('smile', 'babalon/crazy.png');
+            game.load.image('balon6', 'babalon/balloon_white.png');                        
+            game.load.spritesheet('kaboom', 'assets/games/invaders/explode.png', 128, 128);
+            game.load.image('smile', 'babalon/95.png');
+            game.load.image('dialog', 'babalon/dialog.png');
             game.load.physics('physicsData', 'booble/physicsData.json');
         }
 
@@ -43,6 +45,12 @@
         var moveTime = 2000;
         var cTimer = 0;
         var tween = [];
+        var explosions;
+        var scoreText;
+        var x, y;
+        var mjesto, popust;
+        var obj;
+        var mummy;
 
 
         function create() {
@@ -65,6 +73,8 @@
             CreatePopust();
             PopuniPopust();
             //GetListPopust();
+
+            
         }
 
         function CreatePopust() {
@@ -141,24 +151,29 @@
         }
         
         function listener(sprite, pointer) {
-            var mjesto, popust;
+            
             mjesto = baloni.getIndex(sprite);
             popust = baloniPopust[mjesto];
             x = sprite.x - (sprite.width / 2);
             y = sprite.y - (sprite.height / 2);
 
-            sprite = game.add.sprite(x, y, 'smile');
-
-
-
-            
-            //baloni.remove(sprite); // radi !!!
-
-            //alert("eeeee " + sprite.x);
-            //counter++;
-            //text.text = "You clicked " + counter + " times!";
-
+            mummy = game.add.sprite(x, y, 'kaboom');
+            var walk = mummy.animations.add('walk');            
+            mummy.animations.play('walk', 30, false);            
+            game.time.events.add(Phaser.Timer.SECOND * 4, waiter, this);
         }
+
+        function waiter() {
+            var smile = game.add.sprite(x, y, 'smile');
+            smile.aplha = 0;
+            game.add.tween(smile).to({ alpha: 100 }, 2000, Phaser.Easing.Linear.None, true);
+            var dialog = game.add.sprite(x + 400, y + 200, 'dialog');
+            scoreText = game.add.text(x + 450, y + 350, 'score: 0 : 0', { fontSize: '60px', fill: '#00F' });
+            scoreText.text = 'Osvojili ste ' + popust + " %";
+            mummy.kill();
+            
+        }
+
 
         function balloonSet() {
             for (i = 0; i < baloni.children.length; i++) {
@@ -180,21 +195,6 @@
                 
                 
             }
-        }
-
-        function onStart() {
-            //	Turn off the delay, so it loops seamlessly from here on
-            tween.delay(0);
-        }
-
-        function onLoop() {
-
-        }
-
-        function onComplete() {
-            alert(this);
-            //tween = game.add.tween(ball).to({ x: 800 - ball.width }, 2000, Phaser.Easing.Exponential.Out, true);
-
         }
 
 
