@@ -30,6 +30,7 @@
             game.load.image('balon5', 'babalon/balloon_yellow.png');
             game.load.image('balon6', 'babalon/balloon_white.png');                        
             game.load.spritesheet('kaboom', 'assets/games/invaders/explode.png', 128, 128);
+            game.load.spritesheet('button', 'babalon/button_sheet.png', 193, 71);
             game.load.image('smile', 'babalon/95.png');
             game.load.image('dialog', 'babalon/dialog.png');
             game.load.physics('physicsData', 'booble/physicsData.json');
@@ -51,7 +52,7 @@
         var mjesto, popust;
         var obj;
         var mummy;
-
+        var button;
 
         function create() {
             game.scale.setMaximum();
@@ -171,7 +172,17 @@
             scoreText = game.add.text(x + 450, y + 350, 'score: 0 : 0', { fontSize: '60px', fill: '#00F' });
             scoreText.text = 'Osvojili ste ' + popust + " %";
             mummy.kill();
+            // Game Over
+            button = game.add.button(game.world.centerX - 95, 400, 'button', actionOnClick, this, 2, 1, 0);
+
+        }
+
+        function actionOnClick() {
+
+            window.location.assign("babalon/kontakt.php");
+
             
+
         }
 
 
