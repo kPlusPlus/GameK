@@ -64,12 +64,13 @@ input:focus {background-color: ##d1ea8a;}
 
 $( function() {
   $("#btnsend").click(function() {
-  		forma.submit();
-  	});
-} );  
+      // verifikacija obaveznih polja
 
-  
-  	
+      forma.submit();
+  	});
+} ); 
+
+ 
   
   
 
@@ -94,8 +95,11 @@ $( function() {
     <tr>
 		<td><label>Termin:</label></td> <td><input type="text" name="termin" id="termin"></td>
     </tr>
-        <tr>
+    <tr>
 		<td><label>Adresa:</label></td> <td><input type="text" name="adresa" id="adresa"></td>
+    </tr>
+    <tr>
+        <td><label>FBID:</label></td><td><input type="text" name="fbid" id="fbid" /></td>
     </tr>
 </table>
 <input type="button" value="Pošalji" id="btnsend" name="btnsend">
