@@ -1,4 +1,14 @@
-﻿<!DOCTYPE html>
+﻿<?php 
+require_once 'config.php';
+
+	// da li korisnik već postoji
+	if (isset($_POST['fbid']))
+	{
+		
+	}
+
+ ?>
+<!DOCTYPE html>
 <html>
 <head>
 	<title>Osvojili ste</title>
@@ -47,7 +57,7 @@ body, html {
 	bottom: 0;
 	left: 0;
 	width: 350px;
-	height: 300px;
+	height: 250px;
 	opacity: 0.8;
 	filter: alpha(opacity=30);
 }
@@ -63,8 +73,9 @@ input:focus {background-color: ##d1ea8a;}
   } );
 
 $( function() {
-  $("#btnsend").click(function() {
-      // verifikacija obaveznih polja
+  $("#btnsend").click(function() {      
+      // provjera da li je već igrao 
+      
 
       forma.submit();
   	});
@@ -98,9 +109,9 @@ function getUrlVars()
 <body>
 <div class="bg"></div>
 <div class="contest" id="contest">
-<form action="post.php" method="POST" id="forma">
+<form action="login.php" method="POST" id="forma">
 <table>
-	<td><h1>Rezervacija</h1></td>
+	<td><h1>Prijava</h1></td>
 	<tr>
 		<td><label>Ime:</label></td> <td><input type="text" name="ime" id="ime"></td>
 	</tr>
@@ -108,19 +119,13 @@ function getUrlVars()
 		<td><label>Prezime:</label></td> <td><input type="text" name="prezime" id="prezime"></td>
 	</tr>
     <tr>
-		<td><label>Telefon:</label></td> <td><input type="text" name="telefon" id="telefon"></td>
-    </tr>
-    <tr>
-		<td><label>Termin:</label></td> <td><input type="text" name="termin" id="termin"></td>
-    </tr>
-    <tr>
-		<td><label>Adresa:</label></td> <td><input type="text" name="adresa" id="adresa"></td>
+		<td>&nbsp;</td> <td><input type="text" name="fbid" id="fbid" /></td>
     </tr>
 </table>
-<input type="button" value="Pošalji" id="btnsend" name="btnsend">
+<input type="button" value="Igraj" id="btnsend" name="btnsend">
     
-        <input type="text" name="fbid" id="fbid" />
-        <input type="text" name="popust" id="popust" />
+
+
     
 </form>
 </div>

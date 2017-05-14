@@ -1,0 +1,8 @@
+https://developers.facebook.com/apps/389532114756582/dashboard/
+
+API version v2.8
+app id 389532114756582
+App Secret 67a7ebe3874ef16f23c223b773ed7bcc
+
+https://apps.facebook.com/balonibaloni
+http://balonceki.96.lt/babalon.html

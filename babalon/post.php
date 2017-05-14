@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
 	<title>Osvojili ste</title>
@@ -64,11 +64,18 @@ input:hover {background-color: #f5f5f5}
 <div class="contest" id="contest">
 <?php 
 	//echo($_POST["ime"]); 
-
+/*
 $servername = "localhost";
 $username = "root";
 $password = "kreso1004";
 $dbname = "juca";
+*/
+
+$servername = "mysql.hostinger.hr";
+$username = "u771416193_admin";
+$password = "kreso1004";
+$dbname = "u771416193_juca";
+
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
@@ -91,8 +98,8 @@ $sql = "INSERT INTO juca.korisnik(
   ,'".$_POST["prezime"]."'  -- prezime - IN varchar(60)
   ,'".$_POST["telefon"]."'  -- telefon - IN varchar(60)
   ,'".$_POST["adresa"]."'  -- adresa - IN varchar(45)
-  ,'123456'  -- FBID - IN varchar(45)
-  ,99 -- popust - IN int(11)
+  ,".$_POST["fbid"] ."  -- FBID - IN varchar(45)
+  ,".$_POST["popust"]." -- popust - IN int(11)
   ,'".$_POST["termin"]."'
 )";
 
@@ -125,11 +132,6 @@ $conn->close();
 </table>
 <input type="button" value="Pošalji" id="btnsend" name="btnsend">
 </div>
-
-
-
-
-
 
 </body>
 </html>
