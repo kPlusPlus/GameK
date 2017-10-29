@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<title>jQuery First Visit Popup Demo</title>
+		<style>
+body { margin-top: 0; }
+
+#container {
+  max-width: 1000px;
+  margin: 0 auto;
+  background: #EEE;
+}
+
+h1,
+p { padding: 1em 1em; }
+
+#fvpp-blackout {
+  display: none;
+  z-index: 499;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.5;
+}
+
+#my-welcome-message {
+  display: none;
+  z-index: 500;
+  position: fixed;
+  width: 36%;
+  left: 30%;
+  top: 20%;
+  padding: 20px 2%;
+  font-family: Calibri, Arial, sans-serif;
+  background: #FFF;
+}
+
+#fvpp-close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+}
+
+#fvpp-dialog h2 {
+  font-size: 2em;
+  margin: 0;
+}
+
+#fvpp-dialog p { margin: 0; }
+</style>
+		</head>
+
+		<body>
+<div id="container">
+          <h1>jQuery First Visit Popup Demo</h1>
+          <div class="jquery-script-ads"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-2783044520727903";
+/* jQuery_demo */
+google_ad_slot = "2780937993";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></div>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur elementum quam sed sapien adipiscing quis vehicula ante placerat. Nulla id magna nisl, ac luctus metus. Nunc sagittis, libero interdum volutpat porttitor, enim ligula fringilla tortor, vel scelerisque dolor orci ac erat. Aliquam et urna risus. Vivamus justo justo, sagittis ac egestas pellentesque, lobortis at dui. Phasellus faucibus commodo ante id eleifend. Sed ullamcorper suscipit malesuada. Phasellus feugiat diam eget ligula tempus suscipit eu at tortor. Fusce egestas aliquam quam nec bibendum. Ut lobortis, urna non lobortis pellentesque, ipsum nisl fermentum augue, eu iaculis felis sem eget erat. Suspendisse potenti. Fusce vel quam nunc. Fusce neque massa, venenatis non porttitor non, viverra eget lorem. Aliquam erat volutpat. Sed at lobortis nisi. Pellentesque sagittis eros malesuada nisi commodo eu tincidunt eros lobortis.</p>
+          <p>Nunc vulputate tortor nec nulla laoreet id pulvinar augue pellentesque. Duis sed massa sit amet massa faucibus bibendum ut non ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In blandit felis egestas orci malesuada ullamcorper. Aliquam sed elit quis turpis hendrerit pharetra in et tellus. Suspendisse vitae massa massa, quis iaculis enim. Ut nec sem orci. Donec tempus erat quis elit consectetur euismod pellentesque tortor lacinia. Ut vehicula semper rhoncus. Fusce laoreet, libero id porttitor fermentum, nulla nisi euismod dui, nec consequat nibh leo id augue. Pellentesque volutpat mi vel leo pellentesque pharetra. Cras ligula diam, malesuada at blandit sed, laoreet in eros. Curabitur ornare, turpis eget tempor accumsan, dui mauris suscipit sapien, quis mattis nunc lacus semper est.</p>
+          <p>Duis sed nisi arcu. Etiam rhoncus massa vitae mauris bibendum tincidunt. Duis id consectetur dui. Vestibulum odio magna, rhoncus at condimentum bibendum, faucibus vitae eros. Integer id arcu quis elit porta ullamcorper id a mauris. Suspendisse a turpis tincidunt diam iaculis euismod. Praesent nec metus purus. Donec pellentesque elementum nunc non porta. Maecenas in mi eu sem pretium rhoncus at nec dui. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras magna dolor, suscipit eget condimentum et, suscipit nec diam. Pellentesque eu libero elit. Sed ut lectus vitae nisl luctus volutpat et ut est. Donec molestie felis quis urna dignissim vitae vehicula turpis mattis. Vestibulum ut sapien dictum dolor ultricies rhoncus. Nulla et tellus eros.</p>
+          <p>In consectetur purus in sem suscipit fermentum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae mauris justo. Pellentesque rutrum vehicula risus, in adipiscing metus dictum eu. Fusce tempor consequat felis, at eleifend nisl gravida eu. In ut odio non justo pellentesque fermentum et sit amet nisl. Nullam vel est sollicitudin dui vulputate cursus. Nullam sed diam ac ipsum sodales varius.</p>
+          <p>Fusce consectetur erat non turpis tincidunt interdum viverra nisl porttitor. Duis tristique velit et enim sollicitudin eu mattis diam ultrices. Morbi lacus augue, convallis sed accumsan sed, adipiscing quis velit. Proin mollis lacus non arcu luctus faucibus. Vestibulum ut turpis nisl, sed volutpat enim. In consequat semper leo, ut mollis nisi adipiscing eget. Curabitur rutrum consequat leo, nec posuere neque tristique eu. Quisque vitae libero sit amet lorem ullamcorper condimentum vitae quis justo. Pellentesque ultrices blandit lacus sed fringilla. Nunc nec eros nunc, ut ornare sem.</p>
+          <p><a id="show-message">Show mesage again</a></p>
+        </div>
+<div id="my-welcome-message">
+          <h2>Welcome to my site</h2>
+          <p>Hello, welcome to my website.</p>
+        </div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
+<script src="jquery.firstVisitPopup.js"></script> 
+<script>
+			$(function () {
+				$('#my-welcome-message').firstVisitPopup({
+					cookieName : 'homepage',
+					showAgainSelector: '#show-message'
+				});
+			});
+		</script><script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</body>
+</html>

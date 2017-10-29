@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"c",
+				"compressfilename"
+			],
+			[
+				"back",
+				"backup_path"
+			],
+			[
+				"bac",
+				"backup_path"
+			],
+			[
 				"logf",
 				"logFileDirectory"
 			],
@@ -295,6 +307,68 @@
 	],
 	"file_history":
 	[
+		"/K/OneDrive/Dokumenti/EA Games/Medal of Honor Airborne(tm)/Saved/MOHASAVEDGAME",
+		"/C/Users/kresimir/AppData/Local/Temp/scp50160/var/log/clamav/clamd.log",
+		"/C/Users/kresimir/AppData/Local/Temp/scp46056/home/anatron/public_html/bck/backup.log",
+		"/C/Users/kresimir/AppData/Local/Temp/scp11099/home/anatron/public_html/bck/mario_lin.sh",
+		"/C/Users/kresimir/AppData/Local/Temp/scp16747/home/anatron/public_html/bck/freespace.sh",
+		"/C/Users/kresimir/AppData/Local/Temp/scp16825/home/anatron/public_html/bck/backup.sh",
+		"/C/Users/kresimir/AppData/Local/Temp/scp15575/home/anatron/public_html/bck/mario_lin.sh",
+		"/C/Users/kresimir/AppData/Local/Temp/scp14114/home/anatron/public_html/bck/mario_lin.sh",
+		"/C/Users/kresimir/AppData/Local/Temp/scp55405/home/anatron/public_html/bck/backup.log",
+		"/C/Users/kresimir/AppData/Local/Temp/scp05823/backup/2017-08-15/backup_incomplete",
+		"/C/Users/kresimir/AppData/Local/Temp/scp19093/var/log/boot.log",
+		"/K/Anatron/btmp",
+		"/K/Anatron/chkservd.log",
+		"/C/Users/kresimir/AppData/Local/Temp/scp25621/home/virtfs/0_README_BEFORE_DELETING_VIRTFS",
+		"/C/Users/kresimir/AppData/Local/Temp/scp55442/home/anatron/public_html/bck/test.sh",
+		"/C/Users/kresimir/AppData/Local/Temp/scp01415/home/anatron/public_html/bck/micise.sh",
+		"/C/Users/kresimir/AppData/Local/Temp/scp08522/home/anatron/public_html/.git/COMMIT_EDITMSG",
+		"/C/Users/kresimir/AppData/Local/Temp/scp06686/home/anatron/public_html/bck/backup.php",
+		"/C/Users/kresimir/AppData/Local/Temp/scp04897/home/anatron/public_html/bck/backup.sh",
+		"/C/Users/kresimir/AppData/Local/Temp/scp12720/home/anatron/public_html/bck/backup.sh",
+		"/C/Users/kresimir/AppData/Local/Temp/scp40328/home/anatron/public_html/test/includes/session.php",
+		"/C/Users/kresimir/AppData/Local/Temp/scp34827/home/anatron/public_html/test/mpodaci/index.php",
+		"/C/Users/kresimir/AppData/Local/Temp/scp29119/home/anatron/public_html/bck/backup.log",
+		"/K/Anatron/help.txt",
+		"/C/Users/kresimir/AppData/Local/Temp/scp20078/backup/help.txt",
+		"/C/Users/kresimir/AppData/Local/Temp/scp00139/home/anatron/public_html/bck/backup.log",
+		"/C/Users/kresimir/AppData/Local/Temp/scp47103/home/anatron/public_html/bck/backup.log",
+		"/C/Users/kresimir/AppData/Local/Temp/scp52364/home/anatron/public_html/test/mpodaci/bla.csv",
+		"/C/Users/kresimir/AppData/Local/Temp/scp23233/home/anatron/public_html/bck/backup.sh",
+		"/C/Users/kresimir/AppData/Local/Temp/scp23535/home/anatron/public_html/bck/samoweb.sh",
+		"/C/Users/kresimir/AppData/Local/Temp/scp44701/home/anatron/public_html/bck/backup.sh",
+		"/C/Users/kresimir/AppData/Local/Temp/scp29252/home/anatron/public_html/bck/backup.sh",
+		"/C/Users/kresimir/AppData/Local/Temp/scp28080/home/anatron/public_html/bck/backup1.log",
+		"/C/Users/kresimir/AppData/Local/Temp/scp52082/home/anatron/public_html/bck/backup.sh",
+		"/C/Users/kresimir/AppData/Local/Temp/scp24511/home/anatron/public_html/bck/te.sh",
+		"/C/Users/kresimir/AppData/Local/Temp/scp59595/home/anatron/public_html/test/index.php",
+		"/C/Users/kresimir/AppData/Local/Temp/scp44875/home/anatron/public_html/includes/session.php",
+		"/C/Users/kresimir/AppData/Local/Temp/scp22355/home/anatron/public_html/bck/backup.sh",
+		"/C/Users/kresimir/AppData/Local/Temp/scp19534/home/anatron/public_html/bck/backup.sh",
+		"/C/Users/kresimir/AppData/Local/Temp/scp35605/var/log/cron",
+		"/C/Users/kresimir/AppData/Local/Temp/scp03762/home/anatron/public_html/test/regularni.txt",
+		"/C/Users/kresimir/AppData/Local/Temp/scp52341/home/anatron/public_html/bck/backup.log",
+		"/C/Users/kresimir/AppData/Local/Temp/scp46958/home/anatron/public_html/bck/backup.sh",
+		"/Z/public_html/bck/test2.sh",
+		"/Z/public_html/bck/test.sh",
+		"/C/Users/kresimir/AppData/Local/Temp/scp55175/home/anatron/public_html/bck/backup.sh",
+		"/Z/public_html/bck/test_old.sh",
+		"/C/Users/kresimir/AppData/Local/Temp/scp48412/home/anatron/public_html/bck/test.sh",
+		"/C/Users/kresimir/AppData/Local/Temp/scp02590/home/anatron/public_html/bck/backup.log",
+		"/C/Users/kresimir/AppData/Local/Temp/scp17587/home/anatron/conn_adm.php",
+		"/C/Users/kresimir/AppData/Local/Temp/scp34052/home/anatron/public_html/test/newsletter/maillist.php",
+		"//vps.anatron.hr@SSL@2078/DavWWWRoot/public_html/bck/backup.sh",
+		"/C/Users/kresimir/AppData/Local/Temp/scp17647/home/anatron/public_html/bck/test.php",
+		"/C/Users/kresimir/AppData/Local/Temp/scp42136/public_html/newsletter_sssh/index.php",
+		"/C/Users/kresimir/AppData/Local/Temp/scp41845/public_html/include/bc.php",
+		"/C/Users/kresimir/AppData/Local/Temp/scp34309/public_html/admin/include/php/header.php",
+		"/C/Users/kresimir/AppData/Local/Temp/scp34815/public_html/admin/include/js/functions.js",
+		"/C/Users/kresimir/AppData/Local/Temp/scp34960/public_html/admin/cijena_unos.php",
+		"/C/Users/kresimir/AppData/Local/Temp/scp33693/public_html/admin/anketa_en_pregled.php",
+		"/K/00_snimi_film/Life As We Know It {2010} DVDRIP. Jaybob.srt",
+		"/C/Users/kresimir/AppData/Local/Temp/scp31193/public_html/info.php",
+		"/C/Users/kresimir/AppData/Local/Temp/scp31136/public_html/index.php",
 		"/C/Users/kresimir/Desktop/hostinger_error.txt",
 		"/C/Users/kresimir/AppData/Local/Temp/scp00837/public_html/babalon/babalon/post.php",
 		"/K/GameK/babalon.html",
@@ -345,7 +419,7 @@
 	],
 	"find":
 	{
-		"height": 27.0
+		"height": 31.0
 	},
 	"find_in_files":
 	{
@@ -359,6 +433,13 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"anon_rss=308kB,file_rss=4kB,is_cgroup=0,pid=1090,proc_name=clamd,score=333,total_vm=700128kB,uid=494,user=clam].....Skipped OOM Notification (",
+			"sshd [[check command:+][socket connect:N/A]]...",
+			"view",
+			"echo",
+			"æ",
+			"è",
+			"čita",
 			"\nupdateURL",
 			"localPath",
 			"logFilePath",
@@ -376,6 +457,8 @@
 		"regex": false,
 		"replace_history":
 		[
+			"ć",
+			"č"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -393,7 +476,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 27.0
+		"height": 31.0
 	},
 	"input":
 	{
@@ -442,7 +525,7 @@
 	"project": "Game_K.sublime-project",
 	"replace":
 	{
-		"height": 50.0
+		"height": 58.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -492,7 +575,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 265.0,
+	"side_bar_width": 50.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

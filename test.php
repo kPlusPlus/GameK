@@ -1,4 +1,7 @@
-<?php
-	$dt = date("d.m.Y h:m:s");
-	echo "mali " . $dt;
-?>
+ <?php 
+
+ echo var_dump( $argv );
+
+ echo "id clana ". $argv[1];
+
+  ?>
