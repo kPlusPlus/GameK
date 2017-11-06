@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"Mess",
+				"MessageBox\ttype"
+			],
+			[
+				"int",
+				"Int32\ttype"
+			],
+			[
 				"c",
 				"compressfilename"
 			],
@@ -179,6 +187,27 @@
 	},
 	"buffers":
 	[
+		{
+			"contents": "using System;\nusing System.Windows.Forms;\n\nclass Script\n{\n    String strName = \"Pero\";\n\n    static void Main(string[] args)\n    {\n        //Console.BackgroundColor = #010101;\n        Double a, b;\n        a = 1123;\n        b = 213.22;\n        Console.WriteLine(\"Hello, my Angel\" + a * b);\n        MessageBox.Show(\"AAA\");\n    }\n}",
+			"file": "/D/Project/kCalc/Documents/new_script.cs",
+			"file_size": 343,
+			"file_write_time": 131541319759909398,
+			"settings":
+			{
+				"buffer_size": 327,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/K/Sublime Text Build 3114 x64/Data/Packages/CS-Script/readme.md",
+			"settings":
+			{
+				"buffer_size": 16253,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "Packages/VBScript/VBScript.sublime-build",
 	"build_system_choices":
@@ -223,10 +252,14 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 306.0,
-		"last_filter": "P",
+		"height": 71.0,
+		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
 			[
 				"P",
 				"Package Control: Install Package"
@@ -234,10 +267,6 @@
 			[
 				"Package Control: ",
 				"Package Control: Disable Package"
-			],
-			[
-				"pack",
-				"Package Control: Install Package"
 			],
 			[
 				"rein",
@@ -276,7 +305,7 @@
 				"HTML: Wrap Selection With Tag"
 			]
 		],
-		"width": 432.0
+		"width": 412.0
 	},
 	"console":
 	{
@@ -302,11 +331,13 @@
 	},
 	"expanded_folders":
 	[
-		"/K/GameK",
-		"/K/GameK/babalon"
+		"/K/GameK"
 	],
 	"file_history":
 	[
+		"/K/GameK/car2.html",
+		"/K/Sublime Text Build 3114 x64/Data/Packages/cs-script-sublime/Default.sublime-keymap",
+		"/K/Sublime Text Build 3114 x64/Data/Packages/cs-script-sublime/cs-script.sublime-settings",
 		"/K/OneDrive/Dokumenti/EA Games/Medal of Honor Airborne(tm)/Saved/MOHASAVEDGAME",
 		"/C/Users/kresimir/AppData/Local/Temp/scp50160/var/log/clamav/clamd.log",
 		"/C/Users/kresimir/AppData/Local/Temp/scp46056/home/anatron/public_html/bck/backup.log",
@@ -469,8 +500,73 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "/D/Project/kCalc/Documents/new_script.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 327,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								161,
+								161
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/C#/C#.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/K/Sublime Text Build 3114 x64/Data/Packages/CS-Script/readme.md",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 16253,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6501,
+								6466
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Markdown/Markdown.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2343.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -505,6 +601,10 @@
 		]
 	},
 	"menu_visible": true,
+	"output.CS-Script":
+	{
+		"height": 150.0
+	},
 	"output.doc":
 	{
 		"height": 0.0
@@ -575,7 +675,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 50.0,
+	"side_bar_width": 333.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

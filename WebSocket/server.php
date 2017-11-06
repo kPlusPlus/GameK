@@ -9,6 +9,7 @@ require 'class.PHPWebSocket.php';
 function wsOnMessage($clientID, $message, $messageLength, $binary) {
 	global $Server;
 	$ip = long2ip( $Server->wsClients[$clientID][6] );
+	
 
 	// check if message length is 0
 	if ($messageLength == 0) {

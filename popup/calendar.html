@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Datepicker - Display inline</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<style type="text/css" media="screen">
+table.ui-datepicker-calendar tbody td.highlight > a {
+    /*background: url("images/ui-bg_inset-hard_55_ffeb80_1x100.png") repeat-x scroll 50% bottom #FFEB80;*/
+    background-color: #FFAA01;
+    color: #363636;
+    border: 1px solid #FFDE2E;
+}
+	
+</style>
+
+  <script>
+  $( function() {
+
+
+var events = [ 
+    { Title: "Five K for charity", Date: new Date("10/13/2017") }, 
+    { Title: "Dinner", Date: new Date("10/25/2017") }, 
+    { Title: "Meeting with manager", Date: new Date("10/10/2017") }
+];
+
+$("#calendar").datepicker({
+    beforeShowDay: function(date) {
+        var result = [true, '', null];
+        var matching = $.grep(events, function(event) {
+            return event.Date.valueOf() === date.valueOf();
+        });
+        
+        if (matching.length) {
+            result = [true, 'highlight', null];
+        }
+        return result;
+    },
+    onSelect: function(dateText) {
+        var date,
+            selectedDate = new Date(dateText),
+            i = 0,
+            event = null;
+        
+        while (i < events.length && !event) {
+            date = events[i].Date;
+
+            if (selectedDate.valueOf() === date.valueOf()) {
+                event = events[i];
+            }
+            i++;
+        }
+        if (event) {
+            alert(event.Title);
+        }
+    }
+});
+
+
+});
+  
+  </script>
+</head>
+<body>
+ 
+Date: <div id="calendar"></div>
+ 
+ 
+</body>
+</html>

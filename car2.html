@@ -12,12 +12,12 @@
     <script type="text/javascript" src="js/phaser.js"></script>
     <!--
     <script type="text/javascript" src="https://github.com/photonstorm/phaser/releases/download/v2.3.0/phaser.js"></script>
-    -->
-    <style type="text/css">
-        body {
-            margin: 0;
-        }
-    </style>
+-->
+<style type="text/css">
+body {
+    margin: 0;
+}
+</style>
 </head>
 <body>
 
@@ -122,93 +122,94 @@
 
             if (key2.left.isDown)
                 player2.body.sprite.angle -= 2;
-            else if (key2.right.isDown)
-                player2.body.sprite.angle += 2;
-            else if (key2.up.isDown) {
-                angle = player2.body.sprite.angle;
-                player2.body.velocity.x += 4 * Math.sin(Math.radians(angle));
-                player2.body.velocity.y -= 4 * Math.cos(Math.radians(angle));                
-            }
-            else if (key2.down.isDown) {
-                angle = player2.body.sprite.angle;
-                player2.body.velocity.x -= 4 * Math.sin(Math.radians(angle));
-                player2.body.velocity.y += 4 * Math.cos(Math.radians(angle));            }
+                else if (key2.right.isDown)
+                    player2.body.sprite.angle += 2;
+                    else if (key2.up.isDown) {
+                        angle = player2.body.sprite.angle;
+                        player2.body.velocity.x += 4 * Math.sin(Math.radians(angle));
+                        player2.body.velocity.y -= 4 * Math.cos(Math.radians(angle));                
+                    }
+                    else if (key2.down.isDown) {
+                        angle = player2.body.sprite.angle;
+                        player2.body.velocity.x -= 4 * Math.sin(Math.radians(angle));
+                        player2.body.velocity.y += 4 * Math.cos(Math.radians(angle));            }
 
-        }
-
-
-        function render() {
-
-        }
-
-        function contactHandler(body, shape1, shape2, equation) {
-            if (body) {
-                //alert(body.sprite.key);
-                if (body.sprite.key == 'goal1')
-                    score2++;
-                if (body.sprite.key == 'goal2') {
-                    score1++;
-                }
-
-                if (body.sprite.key == 'goal1') {
-                    //  And create an explosion :)
-                    var explosion = explosions.getFirstExists(false);
-                    explosion.reset(goal1.body.x, goal1.body.y);
-                    explosion.play('kaboom', 30, false, true);
-                    setCenter();
-                }
-                if (body.sprite.key == 'goal2') {
-                    //  And create an explosion :)
-                    var explosion = explosions.getFirstExists(false);
-                    explosion.reset(goal2.body.x, goal2.body.y);
-                    explosion.play('kaboom', 30, false, true);
-                    setCenter();
-                }
-
-                scoreText.text = 'score: ' + score1 + ' : ' + score2;
-
-                //if (score1 >= 2) game.Over; //game.state.start('Over');
-                //if (score2 >= 2) game.Over; //game.state.start('Over');
-                if (score1 >= maxScore) 
-                    GameOver();
-                if (score2 >= maxScore) 
-                    GameOver();
-            }
-        }
-
-        function GameOver() {
-            save();
-            window.location.href = "GameOver.html" + "?score1=" + score1 + "&score2=" + score2;
-        }
-
-        var resizeGame = this._fitScreen = function () {
-            game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-            game.scale.pageAlignHorizontally = true;
-            game.scale.pageAlignVertically = true;
-            game.scale.forceOrientation(true, true);
-            game.scale.setShowAll();
-            game.scale.refresh();
-        }
-
-        var saveObjects = {
-            score1,
-            score2
-        };
+                    }
 
 
-        function save() {
-            localStorage.setItem("save", JSON.stringify(saveObject));
-        }
+                    function render() {
 
-        // Converts from degrees to radians.
-        Math.radians = function (degrees) {
-            return degrees * Math.PI / 180;
-        };
+                    }
 
-        // Converts from radians to degrees.
-        Math.degrees = function (radians) {
-            return radians * 180 / Math.PI;
-        };
+                    function contactHandler(body, shape1, shape2, equation) {
+                        if (body) {
+                            //alert(body.sprite.key);
+                            if (body.sprite.key == 'goal1')
+                                score2++;
+                                
+                                if (body.sprite.key == 'goal2') {
+                                    score1++;
+                                }
+
+                                if (body.sprite.key == 'goal1') {
+                                    //  And create an explosion :)
+                                    var explosion = explosions.getFirstExists(false);
+                                    explosion.reset(goal1.body.x, goal1.body.y);
+                                    explosion.play('kaboom', 30, false, true);
+                                    setCenter();
+                                }
+                                if (body.sprite.key == 'goal2') {
+                                    //  And create an explosion :)
+                                    var explosion = explosions.getFirstExists(false);
+                                    explosion.reset(goal2.body.x, goal2.body.y);
+                                    explosion.play('kaboom', 30, false, true);
+                                    setCenter();
+                                }
+
+                                scoreText.text = 'score: ' + score1 + ' : ' + score2;
+
+                                //if (score1 >= 2) game.Over; //game.state.start('Over');
+                                //if (score2 >= 2) game.Over; //game.state.start('Over');
+                                if (score1 >= maxScore) 
+                                    GameOver();
+                                    if (score2 >= maxScore) 
+                                        GameOver();
+                                    }
+                                }
+
+                                function GameOver() {
+                                    save();
+                                    window.location.href = "GameOver.html" + "?score1=" + score1 + "&score2=" + score2;
+                                }
+
+                                var resizeGame = this._fitScreen = function () {
+                                    game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+                                    game.scale.pageAlignHorizontally = true;
+                                    game.scale.pageAlignVertically = true;
+                                    game.scale.forceOrientation(true, true);
+                                    game.scale.setShowAll();
+                                    game.scale.refresh();
+                                }
+
+                                var saveObjects = {
+                                    score1,
+                                    score2
+                                };
+
+
+                                function save() {
+                                    localStorage.setItem("save", JSON.stringify(saveObject));
+                                }
+
+                                // Converts from degrees to radians.
+                                Math.radians = function (degrees) {
+                                    return degrees * Math.PI / 180;
+                                };
+
+                                // Converts from radians to degrees.
+                                Math.degrees = function (radians) {
+                                    return radians * 180 / Math.PI;
+                                };
 
         /*
         // save an item
@@ -219,8 +220,8 @@ localStorage.getItem("item-key");
 localStorage.removeItem("item-key");
 // remove all items
 localStorage.clear();
-        */
-    </script>
+*/
+</script>
 
 </body>
 </html>
