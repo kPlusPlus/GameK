@@ -188,22 +188,28 @@
 	"buffers":
 	[
 		{
-			"contents": "using System;\nusing System.Windows.Forms;\n\nclass Script\n{\n    String strName = \"Pero\";\n\n    static void Main(string[] args)\n    {\n        //Console.BackgroundColor = #010101;\n        Double a, b;\n        a = 1123;\n        b = 213.22;\n        Console.WriteLine(\"Hello, my Angel\" + a * b);\n        MessageBox.Show(\"AAA\");\n    }\n}",
-			"file": "/D/Project/kCalc/Documents/new_script.cs",
-			"file_size": 343,
-			"file_write_time": 131541319759909398,
+			"file": "/K/OneDrive/Anatron/ToGit.bat",
 			"settings":
 			{
-				"buffer_size": 327,
+				"buffer_size": 120,
 				"encoding": "UTF-8",
+				"line_ending": "Windows",
+				"name": "https://github.com/kPlusPlus/WebApplication1.git"
+			}
+		},
+		{
+			"file": "test_js.js",
+			"settings":
+			{
+				"buffer_size": 162,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "/K/Sublime Text Build 3114 x64/Data/Packages/CS-Script/readme.md",
+			"file": "test_js.html",
 			"settings":
 			{
-				"buffer_size": 16253,
+				"buffer_size": 485,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -335,6 +341,13 @@
 	],
 	"file_history":
 	[
+		"/K/OneDrive/Anatron/test_project.txt",
+		"/Z/public_html/test/includes/config.php",
+		"/Z/public_html/teststuh/elements/clanovi_printanje.php",
+		"/K/kBookMark/vendor/composer/autoload_real.php",
+		"/M/Anatron/pokreniup.vbs",
+		"/K/Sublime Text Build 3114 x64/Data/Packages/CS-Script/readme.md",
+		"/D/Project/kCalc/Documents/new_script.cs",
 		"/K/GameK/car2.html",
 		"/K/Sublime Text Build 3114 x64/Data/Packages/cs-script-sublime/Default.sublime-keymap",
 		"/K/Sublime Text Build 3114 x64/Data/Packages/cs-script-sublime/cs-script.sublime-settings",
@@ -464,6 +477,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"novi član",
 			"anon_rss=308kB,file_rss=4kB,is_cgroup=0,pid=1090,proc_name=clamd,score=333,total_vm=700128kB,uid=494,user=clam].....Skipped OOM Notification (",
 			"sshd [[check command:+][socket connect:N/A]]...",
 			"view",
@@ -500,71 +514,95 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "/D/Project/kCalc/Documents/new_script.cs",
+					"file": "/K/OneDrive/Anatron/ToGit.bat",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 327,
+						"buffer_size": 120,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								161,
-								161
+								72,
+								72
+							]
+						],
+						"settings":
+						{
+							"auto_name": "https://github.com/kPlusPlus/WebApplication1.git",
+							"incomplete_sync": null,
+							"syntax": "Packages/Batch File/Batch File.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "test_js.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 162,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								162
 							]
 						],
 						"settings":
 						{
 							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/C#/C#.sublime-syntax"
+							"syntax": "Packages/JavaScript Ultimate/javascript.dom.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "test_js.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 485,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								403,
+								403
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"syntax": "Packages/HTML/HTML.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "/K/Sublime Text Build 3114 x64/Data/Packages/CS-Script/readme.md",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 16253,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								6501,
-								6466
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/Markdown/Markdown.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2343.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -675,7 +713,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 333.0,
+	"side_bar_width": 144.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
