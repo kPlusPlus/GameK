@@ -187,33 +187,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "/K/OneDrive/Anatron/ToGit.bat",
-			"settings":
-			{
-				"buffer_size": 120,
-				"encoding": "UTF-8",
-				"line_ending": "Windows",
-				"name": "https://github.com/kPlusPlus/WebApplication1.git"
-			}
-		},
-		{
-			"file": "test_js.js",
-			"settings":
-			{
-				"buffer_size": 162,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "test_js.html",
-			"settings":
-			{
-				"buffer_size": 485,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "Packages/VBScript/VBScript.sublime-build",
 	"build_system_choices":
@@ -341,6 +314,10 @@
 	],
 	"file_history":
 	[
+		"/K/OneDrive/Anatron/ToGit.bat",
+		"/K/GameK/test_js.js",
+		"/K/GameK/test_js.html",
+		"/C/Users/kresimir/Documents/sample_3.KRcal",
 		"/K/OneDrive/Anatron/test_project.txt",
 		"/Z/public_html/test/includes/config.php",
 		"/Z/public_html/teststuh/elements/clanovi_printanje.php",
@@ -514,97 +491,8 @@
 	"groups":
 	[
 		{
-			"selected": 2,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "/K/OneDrive/Anatron/ToGit.bat",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 120,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								72,
-								72
-							]
-						],
-						"settings":
-						{
-							"auto_name": "https://github.com/kPlusPlus/WebApplication1.git",
-							"incomplete_sync": null,
-							"syntax": "Packages/Batch File/Batch File.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "test_js.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 162,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								162
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"syntax": "Packages/JavaScript Ultimate/javascript.dom.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "test_js.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 485,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								403,
-								403
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"syntax": "Packages/HTML/HTML.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
